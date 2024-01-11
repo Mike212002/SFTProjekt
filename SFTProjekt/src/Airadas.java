@@ -10,6 +10,6 @@
  */
 public class Airadas {
     public void airadas(){
-    system.out.println("hellow");
+    System.out.println("hellow");
        }     
 }
