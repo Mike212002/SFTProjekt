@@ -12,4 +12,6 @@ public class Airadas {
     public void airadas(){
     System.out.println("hellow");
        }     
+public void sonderfall(int woche){
+}
 }
