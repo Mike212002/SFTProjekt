@@ -21,4 +21,8 @@ public void leon(){
 public void Mike(){
 }
 
+public void Sascha(){
+    System.out.println("Hello World.");
+}
+
 }
