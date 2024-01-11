@@ -9,5 +9,7 @@
  * @author a.januskevicius
  */
 public class Airadas {
-    
+    public void airadas(){
+    system.out.println("hellow");
+       }     
 }
