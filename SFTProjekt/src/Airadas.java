@@ -14,4 +14,8 @@ public class Airadas {
        }     
 public void sonderfall(int woche){
 }
+public void leon(){
+
+
+}
 }
