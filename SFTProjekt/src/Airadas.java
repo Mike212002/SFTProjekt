@@ -17,5 +17,8 @@ public void sonderfall(int woche){
 public void leon(){
 
 
+}  
+public void Mike(){
 }
+
 }
