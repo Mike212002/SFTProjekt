@@ -15,7 +15,7 @@ public class Airadas {
 public void sonderfall(int woche){
 }
 public void leon(){
-
+System.out.println("Leon ist ein Sondefall");
 
 }  
 public void Mike(){
