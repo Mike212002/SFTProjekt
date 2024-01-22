@@ -22,7 +22,7 @@ public class Mike {
             
         /* Schüler
                
-                   Es soll eine Suchfunktion geben, dort sollen Unternehemn aufgelsitet werden, die in einer gegebenen Postleitzahl sind
+                   Es soll eine Suchfunktion geben,d ort sollen Unternehemn aufgelsitet werden, die in einer gegebenen Postleitzahl sind
                     Also, der Schüler soll ein PLZ eingeben und dort sollen dann die verfügbaren Betriebe aufgelistet werden.
                        Filter system. 
                        Wie Maps aufgebaut werden, also wo ein Umkreis gezeigt wird, welche Betriebe dort sind.
