@@ -20,5 +20,6 @@ public class BetriebModel {
         this.PLZ = PLZ;
         this.Ansprechpartner = Ansprechpartner;
         this.Website = Website;
+        
     }
 }
