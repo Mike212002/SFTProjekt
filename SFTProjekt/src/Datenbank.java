@@ -17,10 +17,7 @@ public class Datenbank {
 
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
             System.out.println("Database connected!");
-//           String statment = "INSERT INTO Betrieb  VALUES (1, 'Hallo', 'Julian Harnasz', 'Hamm', '58989', 'Uwe Kleen', 'scheißejulian.com')";
-//            try (PreparedStatement preparedStatement = connection.prepareStatement(statment)) {
-//              preparedStatement.execute();
-//            }
+
         } catch (SQLException e) {
             System.out.println(e);
         }
