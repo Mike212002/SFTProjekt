@@ -8,7 +8,12 @@ public class SFTProjekt {
         DB.dBConnector();
         DatenbankFenster fenster = new DatenbankFenster();
        fenster.setVisible(true);
-       fenster.toFront();
+       LoginDaten LD = new LoginDaten();
+//       login fenster2 = new login();
+//       fenster2.setVisible(true);
+//      
+       
+       
     }
     
    
