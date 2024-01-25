@@ -7,7 +7,7 @@ package Login;
 
 /**
  *
- * @author ME1
+ * @author Mike Tim Nowak
  */
 public class login extends javax.swing.JFrame {
 
@@ -98,6 +98,7 @@ public class login extends javax.swing.JFrame {
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("_________________________________________");
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 147, 290, 39));
 
         txtBenutzername.setFont(txtBenutzername.getFont().deriveFont(txtBenutzername.getFont().getSize()+2f));
@@ -118,6 +119,7 @@ public class login extends javax.swing.JFrame {
         txtpasswort.setForeground(new java.awt.Color(255, 255, 255));
         txtpasswort.setBorder(null);
         txtpasswort.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtpasswort.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(txtpasswort, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 240, 30));
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));

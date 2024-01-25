@@ -7,10 +7,8 @@ public class SFTProjekt {
         Datenbank DB = new Datenbank();
         DB.dBConnector();
         DatenbankFenster fenster = new DatenbankFenster();
-        fenster.setSize(1250, 750);
-        fenster.setVisible(true);
-        fenster.setTitle("Datenbank");
-        fenster.toFront();
+       fenster.setVisible(true);
+       fenster.toFront();
     }
     
    
