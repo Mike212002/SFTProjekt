@@ -238,7 +238,8 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtpasswortActionPerformed
 
     private void AnmeldeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnmeldeButtonActionPerformed
-        // TODO add your handling code here:
+        DatenbankFenster datenbankFenster = new DatenbankFenster();
+        datenbankFenster.setVisible(true);
     }//GEN-LAST:event_AnmeldeButtonActionPerformed
 
     private void PasswortmerkenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswortmerkenActionPerformed
