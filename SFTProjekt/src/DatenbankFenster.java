@@ -56,7 +56,7 @@ public class DatenbankFenster extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Logo.png"))); // NOI18N
 
         Zurück.setText("Zurück");
-        Zurück.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Zurück.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Zurück.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ZurückActionPerformed(evt);
@@ -87,7 +87,7 @@ public class DatenbankFenster extends javax.swing.JFrame {
 
         Panel.setBackground(new java.awt.Color(25, 118, 211));
 
-        Betriebsname.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Betriebsname.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Betriebsname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BetriebsnameActionPerformed(evt);
@@ -108,7 +108,7 @@ public class DatenbankFenster extends javax.swing.JFrame {
         PLZtextfield.setForeground(new java.awt.Color(255, 255, 255));
         PLZtextfield.setText("PLZ");
 
-        Straße.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Straße.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Straße.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 StraßeActionPerformed(evt);
@@ -136,14 +136,14 @@ public class DatenbankFenster extends javax.swing.JFrame {
         Einfüge.setBackground(new java.awt.Color(255, 255, 255));
         Einfüge.setForeground(new java.awt.Color(51, 51, 255));
         Einfüge.setText("Einfügen");
-        Einfüge.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Einfüge.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Einfüge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EinfügeActionPerformed(evt);
             }
         });
 
-        Ort.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Ort.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Ort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OrtActionPerformed(evt);
@@ -152,13 +152,13 @@ public class DatenbankFenster extends javax.swing.JFrame {
 
         Orttextfield.setForeground(new java.awt.Color(255, 255, 255));
         Orttextfield.setText("Ort");
-        Orttextfield.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Orttextfield.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         Schließtast.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         Schließtast.setForeground(new java.awt.Color(255, 255, 255));
         Schließtast.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Schließtast.setText("X");
-        Schließtast.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Schließtast.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Schließtast.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SchließtastMouseClicked(evt);
@@ -289,8 +289,9 @@ public class DatenbankFenster extends javax.swing.JFrame {
     }//GEN-LAST:event_SchließtastMouseClicked
 
     private void ZurückActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZurückActionPerformed
-       login Zurück = new login();
-        Zurück.setVisible(true);
+   this.dispose();
+    login Zurück = new login();
+    Zurück.setVisible(true);
     }//GEN-LAST:event_ZurückActionPerformed
         
     /**
