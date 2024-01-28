@@ -250,19 +250,17 @@ public class login extends javax.swing.JFrame {
 
     // Check if username and password match
     if (username.equals("Schuler") && password.equals("password1")) {
-        // Provide access for Schuler
+        //  access fur Schuler
         System.out.println("Schuler logged in successfully!");
-        // You can open a new window or perform any action here for Schuler
         DatenbankFenster datenbankFenster = new DatenbankFenster();
         datenbankFenster.setVisible(true);
-        this.dispose(); // Close the login window after successful login
+        this.dispose(); // Close the login window 
     } else if (username.equals("Lehrer") && password.equals("password2")) {
-        // Provide access for Lehrer
+        // access fur Lehrer
         System.out.println("Lehrer logged in successfully!");
-        // You can open a new window or perform any action here for Lehrer
         DatenbankFenster datenbankFenster = new DatenbankFenster();
         datenbankFenster.setVisible(true);
-        this.dispose(); // Close the login window after successful login
+        this.dispose(); // Close the login window 
     } else {
         // Invalid username or password
         System.out.println("Invalid username or password. Please try again.");
