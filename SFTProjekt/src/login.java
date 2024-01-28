@@ -19,6 +19,11 @@ public class login extends javax.swing.JFrame {
         initComponents();
         txtBenutzername.setBackground(new java.awt.Color(0, 0, 0, 1));
         txtpasswort.setBackground(new java.awt.Color(0, 0, 0, 1));
+    
+jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Logo.png")));
+txtBenutzername.setText(""); // Clear the text field
+txtpasswort.setText("");      // Clear the password field
+
 
     }
 
