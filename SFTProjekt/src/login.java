@@ -238,8 +238,35 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtpasswortActionPerformed
 
     private void AnmeldeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnmeldeButtonActionPerformed
+    String username = txtBenutzername.getText();
+    String password = new String(txtpasswort.getPassword());
+
+    // Check if username or password is empty
+    if (username.isEmpty() || password.isEmpty()) {
+        // If either field is empty, show a message and return without further processing
+        System.out.println("Please enter both username and password.");
+        return;
+    }
+
+    // Check if username and password match
+    if (username.equals("Schuler") && password.equals("password1")) {
+        // Provide access for Schuler
+        System.out.println("Schuler logged in successfully!");
+        // You can open a new window or perform any action here for Schuler
         DatenbankFenster datenbankFenster = new DatenbankFenster();
         datenbankFenster.setVisible(true);
+        this.dispose(); // Close the login window after successful login
+    } else if (username.equals("Lehrer") && password.equals("password2")) {
+        // Provide access for Lehrer
+        System.out.println("Lehrer logged in successfully!");
+        // You can open a new window or perform any action here for Lehrer
+        DatenbankFenster datenbankFenster = new DatenbankFenster();
+        datenbankFenster.setVisible(true);
+        this.dispose(); // Close the login window after successful login
+    } else {
+        // Invalid username or password
+        System.out.println("Invalid username or password. Please try again.");
+    }
     }//GEN-LAST:event_AnmeldeButtonActionPerformed
 
     private void PasswortmerkenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswortmerkenActionPerformed
