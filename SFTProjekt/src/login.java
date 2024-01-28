@@ -5,6 +5,7 @@
  */
 
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Mike Tim Nowak
@@ -16,8 +17,8 @@ public class login extends javax.swing.JFrame {
      */
     public login() {
         initComponents();
-txtBenutzername.setBackground(new java.awt.Color(0,0,0,1));
-txtpasswort.setBackground(new java.awt.Color(0,0,0,1));
+        txtBenutzername.setBackground(new java.awt.Color(0, 0, 0, 1));
+        txtpasswort.setBackground(new java.awt.Color(0, 0, 0, 1));
 
     }
 
@@ -201,7 +202,7 @@ txtpasswort.setBackground(new java.awt.Color(0,0,0,1));
     }//GEN-LAST:event_SchließtasteMouseClicked
 
     private void nichtsehenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nichtsehenMouseClicked
-        txtpasswort.setEchoChar((char)0);
+        txtpasswort.setEchoChar((char) 0);
         nichtsehen.setVisible(false);
         nichtsehen.setEnabled(false);
         Sehen.setEnabled(true);
@@ -209,7 +210,7 @@ txtpasswort.setBackground(new java.awt.Color(0,0,0,1));
     }//GEN-LAST:event_nichtsehenMouseClicked
 
     private void SehenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SehenMouseClicked
-        txtpasswort.setEchoChar((char)8226);
+        txtpasswort.setEchoChar((char) 8226);
         nichtsehen.setVisible(true);
         nichtsehen.setEnabled(true);
         Sehen.setEnabled(false);
@@ -217,14 +218,14 @@ txtpasswort.setBackground(new java.awt.Color(0,0,0,1));
     }//GEN-LAST:event_SehenMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        for (double i = 0.0; i <=1.0; i = i+0.1){
-            String val = i+ "";
+        for (double i = 0.0; i <= 1.0; i = i + 0.1) {
+            String val = i + "";
             float f = Float.valueOf(val);
             this.setOpacity(f);
-            try{
+            try {
                 Thread.sleep(50);
-            }catch(Exception e){
-                
+            } catch (Exception e) {
+
             }
         }
     }//GEN-LAST:event_formWindowOpened
@@ -239,31 +240,31 @@ txtpasswort.setBackground(new java.awt.Color(0,0,0,1));
     }//GEN-LAST:event_txtpasswortActionPerformed
 
     private void AnmeldeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnmeldeButtonActionPerformed
-    String username = txtBenutzername.getText();
-    String password = new String(txtpasswort.getPassword());
+        String username = txtBenutzername.getText();
+        String password = new String(txtpasswort.getPassword());
 
-    // Check if username or password is empty
-    if (username.isEmpty() || password.isEmpty()) {
-        // If either field is empty, show a message and return without further processing
-        JOptionPane.showMessageDialog(this, "Falsche Anmelde Daten.");
-        return;
-    }
+        // Check if username or password is empty
+        if (username.isEmpty() || password.isEmpty()) {
+            // If either field is empty, show a message and return without further processing
+            JOptionPane.showMessageDialog(this, "Falsche Anmelde Daten.");
+            return;
+        }
 
-    // Check if username and password match
-    if (username.equals("Schuler") && password.equals("password1")) {
-        //  access fur Schuler
-        DatenbankFenster datenbankFenster = new DatenbankFenster();
-        datenbankFenster.setVisible(true);
-        this.dispose(); // Close the login window 
-    } else if (username.equals("Lehrer") && password.equals("password2")) {
-        // access fur Lehrer
-        DatenbankFenster datenbankFenster = new DatenbankFenster();
-        datenbankFenster.setVisible(true);
-        this.dispose(); // Close the login window 
-    } else {
-        // Invalid username or password
-        JOptionPane.showMessageDialog(this, "Falsche Anmelde Daten.");
-    }
+        // Check if username and password match
+        if (username.equals("Schuler") && password.equals("password1")) {
+            //  access fur Schuler
+            DatenbankFenster datenbankFenster = new DatenbankFenster();
+            datenbankFenster.setVisible(true);
+            this.dispose(); // Close the login window 
+        } else if (username.equals("Lehrer") && password.equals("password2")) {
+            // access fur Lehrer
+            DatenbankFenster datenbankFenster = new DatenbankFenster();
+            datenbankFenster.setVisible(true);
+            this.dispose(); // Close the login window 
+        } else {
+            // Invalid username or password
+            JOptionPane.showMessageDialog(this, "Falsche Anmelde Daten.");
+        }
     }//GEN-LAST:event_AnmeldeButtonActionPerformed
 
     private void PasswortmerkenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswortmerkenActionPerformed
