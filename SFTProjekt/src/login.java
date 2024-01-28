@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-
+import javax.swing.JOptionPane;
 /**
  *
  * @author Mike Tim Nowak
@@ -244,26 +244,24 @@ public class login extends javax.swing.JFrame {
     // Check if username or password is empty
     if (username.isEmpty() || password.isEmpty()) {
         // If either field is empty, show a message and return without further processing
-        System.out.println("Please enter both username and password.");
+        JOptionPane.showMessageDialog(this, "Falsche Anmelde Daten.");
         return;
     }
 
     // Check if username and password match
     if (username.equals("Schuler") && password.equals("password1")) {
         //  access fur Schuler
-        System.out.println("Schuler logged in successfully!");
         DatenbankFenster datenbankFenster = new DatenbankFenster();
         datenbankFenster.setVisible(true);
         this.dispose(); // Close the login window 
     } else if (username.equals("Lehrer") && password.equals("password2")) {
         // access fur Lehrer
-        System.out.println("Lehrer logged in successfully!");
         DatenbankFenster datenbankFenster = new DatenbankFenster();
         datenbankFenster.setVisible(true);
         this.dispose(); // Close the login window 
     } else {
         // Invalid username or password
-        System.out.println("Invalid username or password. Please try again.");
+        JOptionPane.showMessageDialog(this, "Falsche Anmelde Daten.");
     }
     }//GEN-LAST:event_AnmeldeButtonActionPerformed
 
