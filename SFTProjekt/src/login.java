@@ -199,6 +199,7 @@ txtpasswort.setText("");      // Clear the password field
     }//GEN-LAST:event_SchließtasteMouseClicked
 
     private void nichtsehenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nichtsehenMouseClicked
+    //Hier wird es so eingestellt, das man das Passwort nicht sieht
         txtpasswort.setEchoChar((char) 0);
         nichtsehen.setVisible(false);
         nichtsehen.setEnabled(false);
@@ -207,6 +208,7 @@ txtpasswort.setText("");      // Clear the password field
     }//GEN-LAST:event_nichtsehenMouseClicked
 
     private void SehenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SehenMouseClicked
+    //Hier wird es so eingestellt, das man das Passwort sehen kann.
         txtpasswort.setEchoChar((char) 8226);
         nichtsehen.setVisible(true);
         nichtsehen.setEnabled(true);
@@ -215,11 +217,16 @@ txtpasswort.setText("");      // Clear the password field
     }//GEN-LAST:event_SehenMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+     // Dies ist eine Schleife, die die Transparenz stufenweise ändert.
         for (double i = 0.0; i <= 1.0; i = i + 0.1) {
+            //Hier wird der aktuelle Wert in einem String konvertiert
             String val = i + "";
+            //Wird in eiene Gleitkommazahl konvertiert
             float f = Float.valueOf(val);
+            //Wird aufgerufen um die Transparenz des Fesnters auf den neuen Wert f zu setzen
             this.setOpacity(f);
             try {
+                // Hier wird die Zeitverzögerung auf 50 millisekunden gesetzt, bevor die andere Schleife beginnt. 
                 Thread.sleep(50);
             } catch (Exception e) {
 

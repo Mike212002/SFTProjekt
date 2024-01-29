@@ -264,10 +264,14 @@ public class DatenbankFenster extends javax.swing.JFrame {
     }//GEN-LAST:event_StraßeActionPerformed
 
     private void EinfügeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EinfügeActionPerformed
-     BetriebModel betrieb = new BetriebModel(Betriebsname.getText(),Straße.getText(),Ort.getText(), Integer.valueOf(Postleitzahl.getText()), Ansprechpartner.getText(),Website.getText());
+    
+        //Hier wird die Klasse BetriebModel aufgerufen  und mit den Daten gefüllt, die aus der Klasse kommen. Das getText holt den Text aus den entsprechenden Textfeldern
+        BetriebModel betrieb = new BetriebModel(Betriebsname.getText(),Straße.getText(),Ort.getText(), Integer.valueOf(Postleitzahl.getText()), Ansprechpartner.getText(),Website.getText());
      System.out.println(betrieb.Ansprechpartner);
-     Datenbank Alfred = new Datenbank();
-     Alfred.createBetrieb(betrieb);
+     // Hier wird ein neues Objekt erstellt, dass auf die Klasse Datenbank hinweist
+     Datenbank Albert = new Datenbank();
+     //Hier wird die Methode CreateBetrieb aufgerufen
+     Albert.createBetrieb(betrieb);
      
     }//GEN-LAST:event_EinfügeActionPerformed
 
@@ -289,7 +293,9 @@ public class DatenbankFenster extends javax.swing.JFrame {
     }//GEN-LAST:event_SchließtastMouseClicked
 
     private void ZurückActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZurückActionPerformed
-   this.dispose();
+   //Schließt das akutelle Fenster
+        this.dispose();
+    //sobald es  man auf dem Button Zurück klickt, soll er auf dieses Fenster gehen
     login Zurück = new login();
     Zurück.setVisible(true);
     }//GEN-LAST:event_ZurückActionPerformed
