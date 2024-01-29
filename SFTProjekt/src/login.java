@@ -53,7 +53,6 @@ txtpasswort.setText("");      // Clear the password field
         nichtsehen = new javax.swing.JLabel();
         Sehen = new javax.swing.JLabel();
         Passwortmerken = new javax.swing.JCheckBox();
-        PasswortVergessen = new javax.swing.JLabel();
         AnmeldeButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
 
@@ -84,7 +83,7 @@ txtpasswort.setText("");      // Clear the password field
         Schließtaste.setForeground(new java.awt.Color(255, 255, 255));
         Schließtaste.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Schließtaste.setText("X");
-        Schließtaste.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Schließtaste.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Schließtaste.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SchließtasteMouseClicked(evt);
@@ -105,7 +104,7 @@ txtpasswort.setText("");      // Clear the password field
 
         Strich.setForeground(new java.awt.Color(255, 255, 255));
         Strich.setText("_________________________________________");
-        Strich.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Strich.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.add(Strich, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 147, 290, 39));
 
         txtBenutzername.setFont(txtBenutzername.getFont().deriveFont(txtBenutzername.getFont().getSize()+2f));
@@ -131,7 +130,7 @@ txtpasswort.setText("");      // Clear the password field
         txtpasswort.setForeground(new java.awt.Color(255, 255, 255));
         txtpasswort.setBorder(null);
         txtpasswort.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtpasswort.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtpasswort.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtpasswort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtpasswortActionPerformed(evt);
@@ -173,13 +172,6 @@ txtpasswort.setText("");      // Clear the password field
             }
         });
         jPanel2.add(Passwortmerken, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
-
-        PasswortVergessen.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        PasswortVergessen.setForeground(new java.awt.Color(199, 226, 255));
-        PasswortVergessen.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        PasswortVergessen.setText("Passwort Vergessen");
-        PasswortVergessen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(PasswortVergessen, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 121, 27));
 
         AnmeldeButton.setBackground(new java.awt.Color(255, 255, 255));
         AnmeldeButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -316,7 +308,6 @@ txtpasswort.setText("");      // Clear the password field
     private javax.swing.JLabel Anmeldeanzeige;
     private javax.swing.JLabel BenutzernameAnzeige;
     private javax.swing.JLabel PasswortAnzeige;
-    private javax.swing.JLabel PasswortVergessen;
     private javax.swing.JCheckBox Passwortmerken;
     private javax.swing.JLabel Schließtaste;
     private javax.swing.JLabel Sehen;
