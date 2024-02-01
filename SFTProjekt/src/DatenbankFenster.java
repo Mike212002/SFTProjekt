@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -267,7 +270,13 @@ public class DatenbankFenster extends javax.swing.JFrame {
      BetriebModel betrieb = new BetriebModel(Betriebsname.getText(),Straße.getText(),Ort.getText(), Integer.valueOf(Postleitzahl.getText()), Ansprechpartner.getText(),Website.getText());
      System.out.println(betrieb.Ansprechpartner);
      Datenbank Alfred = new Datenbank();
-     Alfred.createBetrieb(betrieb);
+    boolean erfolgreich = Alfred.createBetrieb(betrieb);
+
+if (erfolgreich) {
+    JOptionPane.showMessageDialog(this, "Daten wurden erfolgreich hinzugefügt.", "Erfolg", JOptionPane.INFORMATION_MESSAGE);
+} else {
+    JOptionPane.showMessageDialog(this, "Daten wurden nicht erfolgreich hinzugefügt.", "Fehler", JOptionPane.ERROR_MESSAGE);
+}
      
     }//GEN-LAST:event_EinfügeActionPerformed
 

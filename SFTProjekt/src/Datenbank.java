@@ -24,7 +24,7 @@ public class Datenbank {
 
     }
 
-    public void createBetrieb(BetriebModel betrieb) {
+    public boolean createBetrieb(BetriebModel betrieb) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
             System.out.println("Database connected!");
             String statement = "INSERT INTO Betrieb(Betriebsname, Straße, Ort, PLZ, Ansprechpartner, Website) VALUES (?, ?, ?, ?, ?, ?)";
@@ -36,15 +36,31 @@ public class Datenbank {
                 preparedStatement.setString(5, betrieb.Ansprechpartner);
                 preparedStatement.setString(6, betrieb.Website);
                 preparedStatement.execute();
-            } catch (Exception e) {
+                
+                int affectedRows = preparedStatement.executeUpdate();
+           
+            if (affectedRows > 0) {
+                return true; 
+            } else {
+                return false; 
+       
+            }
+                 
+                } catch (Exception e) {
                 System.out.println(e);
             }
+            
         } catch (SQLException e) {
             System.out.println(e);
+          
         }
-
+        return false;
     }
 }
+
+    
+
+   
 
 //Er stellt die Verbindung mit der Datenbank her.
 //Dort wird ausgegeben das er mit der Datenbank die Verbindung hergestellt wird
