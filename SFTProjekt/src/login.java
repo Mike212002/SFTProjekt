@@ -53,6 +53,7 @@ txtpasswort.setText("");      // Clear the password field
         nichtsehen = new javax.swing.JLabel();
         Sehen = new javax.swing.JLabel();
         Passwortmerken = new javax.swing.JCheckBox();
+        PasswortVergessen = new javax.swing.JLabel();
         AnmeldeButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
 
@@ -83,7 +84,7 @@ txtpasswort.setText("");      // Clear the password field
         Schließtaste.setForeground(new java.awt.Color(255, 255, 255));
         Schließtaste.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Schließtaste.setText("X");
-        Schließtaste.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Schließtaste.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Schließtaste.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SchließtasteMouseClicked(evt);
@@ -104,7 +105,7 @@ txtpasswort.setText("");      // Clear the password field
 
         Strich.setForeground(new java.awt.Color(255, 255, 255));
         Strich.setText("_________________________________________");
-        Strich.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Strich.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(Strich, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 147, 290, 39));
 
         txtBenutzername.setFont(txtBenutzername.getFont().deriveFont(txtBenutzername.getFont().getSize()+2f));
@@ -130,7 +131,7 @@ txtpasswort.setText("");      // Clear the password field
         txtpasswort.setForeground(new java.awt.Color(255, 255, 255));
         txtpasswort.setBorder(null);
         txtpasswort.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtpasswort.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtpasswort.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txtpasswort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtpasswortActionPerformed(evt);
@@ -173,6 +174,13 @@ txtpasswort.setText("");      // Clear the password field
         });
         jPanel2.add(Passwortmerken, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
 
+        PasswortVergessen.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        PasswortVergessen.setForeground(new java.awt.Color(199, 226, 255));
+        PasswortVergessen.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        PasswortVergessen.setText("Passwort Vergessen");
+        PasswortVergessen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(PasswortVergessen, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 121, 27));
+
         AnmeldeButton.setBackground(new java.awt.Color(255, 255, 255));
         AnmeldeButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         AnmeldeButton.setForeground(new java.awt.Color(25, 118, 211));
@@ -199,7 +207,6 @@ txtpasswort.setText("");      // Clear the password field
     }//GEN-LAST:event_SchließtasteMouseClicked
 
     private void nichtsehenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nichtsehenMouseClicked
-    //Hier wird es so eingestellt, das man das Passwort nicht sieht
         txtpasswort.setEchoChar((char) 0);
         nichtsehen.setVisible(false);
         nichtsehen.setEnabled(false);
@@ -208,7 +215,6 @@ txtpasswort.setText("");      // Clear the password field
     }//GEN-LAST:event_nichtsehenMouseClicked
 
     private void SehenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SehenMouseClicked
-    //Hier wird es so eingestellt, das man das Passwort sehen kann.
         txtpasswort.setEchoChar((char) 8226);
         nichtsehen.setVisible(true);
         nichtsehen.setEnabled(true);
@@ -217,16 +223,11 @@ txtpasswort.setText("");      // Clear the password field
     }//GEN-LAST:event_SehenMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-     // Dies ist eine Schleife, die die Transparenz stufenweise ändert.
         for (double i = 0.0; i <= 1.0; i = i + 0.1) {
-            //Hier wird der aktuelle Wert in einem String konvertiert
             String val = i + "";
-            //Wird in eiene Gleitkommazahl konvertiert
             float f = Float.valueOf(val);
-            //Wird aufgerufen um die Transparenz des Fesnters auf den neuen Wert f zu setzen
             this.setOpacity(f);
             try {
-                // Hier wird die Zeitverzögerung auf 50 millisekunden gesetzt, bevor die andere Schleife beginnt. 
                 Thread.sleep(50);
             } catch (Exception e) {
 
@@ -315,6 +316,7 @@ txtpasswort.setText("");      // Clear the password field
     private javax.swing.JLabel Anmeldeanzeige;
     private javax.swing.JLabel BenutzernameAnzeige;
     private javax.swing.JLabel PasswortAnzeige;
+    private javax.swing.JLabel PasswortVergessen;
     private javax.swing.JCheckBox Passwortmerken;
     private javax.swing.JLabel Schließtaste;
     private javax.swing.JLabel Sehen;
