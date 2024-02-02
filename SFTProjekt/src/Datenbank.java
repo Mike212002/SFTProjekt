@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class Datenbank {
 
-    private final String url = "jdbc:mysql://localhost:3306/software_projekt";
-    private final String user = "root";
-    private final String password = "";
+  private final String url = "jdbc:mysql://mike007.lima-db.de:3306/db_427829_1";
+    private final String user = "USER427829";
+    private final String password = "Julianistbehindert007";
 
     public Datenbank() {
     }
@@ -23,6 +23,7 @@ public class Datenbank {
         }
 
     }
+
 
     public boolean createBetrieb(BetriebModel betrieb) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
@@ -56,6 +57,8 @@ public class Datenbank {
         }
         return false;
     }
+
+
 }
 
     

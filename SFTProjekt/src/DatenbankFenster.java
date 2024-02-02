@@ -268,7 +268,7 @@ public class DatenbankFenster extends javax.swing.JFrame {
 
     private void EinfügeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EinfügeActionPerformed
      BetriebModel betrieb = new BetriebModel(Betriebsname.getText(),Straße.getText(),Ort.getText(), Integer.valueOf(Postleitzahl.getText()), Ansprechpartner.getText(),Website.getText());
-     System.out.println(betrieb.Ansprechpartner);
+ 
      Datenbank Alfred = new Datenbank();
     boolean erfolgreich = Alfred.createBetrieb(betrieb);
 

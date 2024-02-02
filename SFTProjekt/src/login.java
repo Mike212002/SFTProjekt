@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 
-import java.awt.Color;
-import javax.swing.BorderFactory;
+//import java.awt.Color;
+//import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.border.Border;
+//import javax.swing.JTextField;
+//import javax.swing.border.Border;
 
 /**
  *
@@ -25,7 +25,7 @@ public class login extends javax.swing.JFrame {
 //          txtBenutzername.setForeground(Color.BLACK);
 //    txtpasswort.setForeground(Color.BLACK);
      txtBenutzername.setOpaque(false); // Stellen Sie sicher, dass das Textfeld nicht deckend ist
-//    txtBenutzername = new TransparentTextField();
+////    txtBenutzername = new TransparentTextField();
         txtpasswort.setOpaque(false);
 
 
