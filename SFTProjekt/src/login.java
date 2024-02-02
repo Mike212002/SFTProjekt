@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */
 
+import java.awt.Color;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 /**
  *
@@ -17,15 +21,27 @@ public class login extends javax.swing.JFrame {
      */
     public login() {
         initComponents();
-        txtBenutzername.setBackground(new java.awt.Color(0, 0, 0, 1));
-        txtpasswort.setBackground(new java.awt.Color(0, 0, 0, 1));
-    
+
+//          txtBenutzername.setForeground(Color.BLACK);
+//    txtpasswort.setForeground(Color.BLACK);
+     txtBenutzername.setOpaque(false); // Stellen Sie sicher, dass das Textfeld nicht deckend ist
+//    txtBenutzername = new TransparentTextField();
+        txtpasswort.setOpaque(false);
+
+
+
+//        txtBenutzername.setBackground(new java.awt.Color(0, 0, 0, 1));
+//        txtpasswort.setBackground(new java.awt.Color(0, 0, 0, 1));
+//    
 jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Logo.png")));
 txtBenutzername.setText(""); // Clear the text field
 txtpasswort.setText("");      // Clear the password field
 
 
+
     }
+           
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -84,7 +100,7 @@ txtpasswort.setText("");      // Clear the password field
         Schließtaste.setForeground(new java.awt.Color(255, 255, 255));
         Schließtaste.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Schließtaste.setText("X");
-        Schließtaste.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Schließtaste.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Schließtaste.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SchließtasteMouseClicked(evt);
@@ -105,7 +121,7 @@ txtpasswort.setText("");      // Clear the password field
 
         Strich.setForeground(new java.awt.Color(255, 255, 255));
         Strich.setText("_________________________________________");
-        Strich.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Strich.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.add(Strich, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 147, 290, 39));
 
         txtBenutzername.setFont(txtBenutzername.getFont().deriveFont(txtBenutzername.getFont().getSize()+2f));
@@ -131,7 +147,7 @@ txtpasswort.setText("");      // Clear the password field
         txtpasswort.setForeground(new java.awt.Color(255, 255, 255));
         txtpasswort.setBorder(null);
         txtpasswort.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtpasswort.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtpasswort.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtpasswort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtpasswortActionPerformed(evt);
@@ -178,7 +194,7 @@ txtpasswort.setText("");      // Clear the password field
         PasswortVergessen.setForeground(new java.awt.Color(199, 226, 255));
         PasswortVergessen.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         PasswortVergessen.setText("Passwort Vergessen");
-        PasswortVergessen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        PasswortVergessen.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.add(PasswortVergessen, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 121, 27));
 
         AnmeldeButton.setBackground(new java.awt.Color(255, 255, 255));
@@ -256,15 +272,15 @@ txtpasswort.setText("");      // Clear the password field
         }
 
         // Check if username and password match
-        if (username.equals("Schuler") && password.equals("password1")) {
+        if (username.equals("Schüler") && password.equals("password1")) {
             //  access fur Schuler
-            DatenbankFenster datenbankFenster = new DatenbankFenster();
-            datenbankFenster.setVisible(true);
+            Navigation navigationsfenster = new Navigation();
+            navigationsfenster.setVisible(true);
             this.dispose(); // Close the login window 
         } else if (username.equals("Lehrer") && password.equals("password2")) {
             // access fur Lehrer
-            DatenbankFenster datenbankFenster = new DatenbankFenster();
-            datenbankFenster.setVisible(true);
+            Navigation navigationsfenster = new Navigation();
+            navigationsfenster.setVisible(true);
             this.dispose(); // Close the login window 
         } else {
             // Invalid username or password
@@ -273,9 +289,17 @@ txtpasswort.setText("");      // Clear the password field
     }//GEN-LAST:event_AnmeldeButtonActionPerformed
 
     private void PasswortmerkenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswortmerkenActionPerformed
-        // TODO add your handling code here:
+        //TODO add your handling code here:
     }//GEN-LAST:event_PasswortmerkenActionPerformed
+//public class TransparentTextField extends JTextField {
+//    public TransparentTextField() {
+//        setOpaque(false); // Stellen Sie sicher, dass das Textfeld nicht deckend ist
+//        Border border = BorderFactory.createEmptyBorder(); // Erstellen Sie einen leeren Rahmen, um den Hintergrund transparent zu halten
+//        setBorder(border); // Setzen Sie den leeren Rahmen als Rahmen für das Textfeld
+//    }
 
+
+//    }
     /**
      * @param args the command line arguments
      */

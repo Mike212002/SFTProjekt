@@ -299,7 +299,7 @@ if (erfolgreich) {
 
     private void ZurückActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZurückActionPerformed
    this.dispose();
-    login Zurück = new login();
+    Navigation Zurück = new Navigation();
     Zurück.setVisible(true);
     }//GEN-LAST:event_ZurückActionPerformed
         

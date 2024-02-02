@@ -5,9 +5,10 @@ public class SFTProjekt {
         // DB.dBConnector();
         // DatenbankFenster fenster = new DatenbankFenster();
         // fenster.setVisible(true);
-        // LoginDaten LD = new LoginDaten();
+      
         
         login fenster = new login();
         fenster.setVisible(true);
+        
     }
 }
