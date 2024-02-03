@@ -38,6 +38,7 @@ public class DatenbankFensterNew extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
+        jPanel2.setBackground(new java.awt.Color(255, 204, 153));
         jPanel2.setLayout(new java.awt.GridBagLayout());
         jPanel1.add(jPanel2, new java.awt.GridBagConstraints());
 

@@ -1,4 +1,5 @@
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /*
@@ -18,269 +19,215 @@ public class DatenbankFenster extends javax.swing.JFrame {
      */
     public DatenbankFenster() {
         initComponents();
+        initCustomComponents();
     }
     
      
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        Zurück = new javax.swing.JButton();
         Panel = new javax.swing.JPanel();
-        Betriebsname = new javax.swing.JTextField();
         BetriebsnameTextfield = new javax.swing.JLabel();
-        Postleitzahl = new javax.swing.JTextField();
+        Betriebsname = new javax.swing.JTextField();
         PLZtextfield = new javax.swing.JLabel();
-        Straße = new javax.swing.JTextField();
+        Postleitzahl = new javax.swing.JTextField();
         Straßetextfield = new javax.swing.JLabel();
+        Straße = new javax.swing.JTextField();
         Websitetextfield = new javax.swing.JLabel();
         Website = new javax.swing.JTextField();
-        Ansprechpartner = new javax.swing.JTextField();
         Ansprechpartnertextfield = new javax.swing.JLabel();
-        Einfüge = new javax.swing.JButton();
-        Ort = new javax.swing.JTextField();
+        Ansprechpartner = new javax.swing.JTextField();
         Orttextfield = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        Ort = new javax.swing.JTextField();
+        Einfüge = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Daten Anlegen");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMinimumSize(new java.awt.Dimension(920, 470));
-        setPreferredSize(new java.awt.Dimension(920, 470));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(797, 0, -1, -1));
+        setIconImages(null);
+        setPreferredSize(new java.awt.Dimension(200, 400));
+        setSize(new java.awt.Dimension(200, 400));
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Logo.png"))); // NOI18N
-
-        Zurück.setText("Zurück");
-        Zurück.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Zurück.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ZurückActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Zurück, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(216, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 337, Short.MAX_VALUE)
-                .addComponent(Zurück, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 490));
+        jPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+        getContentPane().add(jPanel1, new java.awt.GridBagConstraints());
 
         Panel.setBackground(new java.awt.Color(25, 118, 211));
+        java.awt.GridBagLayout PanelLayout = new java.awt.GridBagLayout();
+        PanelLayout.columnWidths = new int[] {0, 5, 0, 5, 0};
+        PanelLayout.rowHeights = new int[] {0, 7, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7, 0};
+        PanelLayout.columnWeights = new double[] {5.0};
+        PanelLayout.rowWeights = new double[] {5.0};
+        Panel.setLayout(PanelLayout);
 
-        Betriebsname.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BetriebsnameTextfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        BetriebsnameTextfield.setForeground(new java.awt.Color(255, 255, 255));
+        BetriebsnameTextfield.setText("Betriebsname");
+        Panel.add(BetriebsnameTextfield, new java.awt.GridBagConstraints());
+
+        Betriebsname.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        Betriebsname.setMinimumSize(new java.awt.Dimension(100, 200));
         Betriebsname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BetriebsnameActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        Panel.add(Betriebsname, gridBagConstraints);
 
-        BetriebsnameTextfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        BetriebsnameTextfield.setForeground(new java.awt.Color(255, 255, 255));
-        BetriebsnameTextfield.setText("Betriebsname");
+        PLZtextfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        PLZtextfield.setForeground(new java.awt.Color(255, 255, 255));
+        PLZtextfield.setText("PLZ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        Panel.add(PLZtextfield, gridBagConstraints);
 
         Postleitzahl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PostleitzahlActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 2;
+        Panel.add(Postleitzahl, gridBagConstraints);
 
-        PLZtextfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        PLZtextfield.setForeground(new java.awt.Color(255, 255, 255));
-        PLZtextfield.setText("PLZ");
+        Straßetextfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Straßetextfield.setForeground(new java.awt.Color(255, 255, 255));
+        Straßetextfield.setText("Straße");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        Panel.add(Straßetextfield, gridBagConstraints);
 
-        Straße.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Straße.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         Straße.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 StraßeActionPerformed(evt);
             }
         });
-
-        Straßetextfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Straßetextfield.setForeground(new java.awt.Color(255, 255, 255));
-        Straßetextfield.setText("Straße");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 4;
+        Panel.add(Straße, gridBagConstraints);
 
         Websitetextfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Websitetextfield.setForeground(new java.awt.Color(255, 255, 255));
         Websitetextfield.setText("Website");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        Panel.add(Websitetextfield, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 6;
+        Panel.add(Website, gridBagConstraints);
+
+        Ansprechpartnertextfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Ansprechpartnertextfield.setForeground(new java.awt.Color(255, 255, 255));
+        Ansprechpartnertextfield.setText("Ansprechpartner");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        Panel.add(Ansprechpartnertextfield, gridBagConstraints);
 
         Ansprechpartner.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AnsprechpartnerActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 8;
+        Panel.add(Ansprechpartner, gridBagConstraints);
 
-        Ansprechpartnertextfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Ansprechpartnertextfield.setForeground(new java.awt.Color(255, 255, 255));
-        Ansprechpartnertextfield.setText("Ansprechpartner");
+        Orttextfield.setForeground(new java.awt.Color(255, 255, 255));
+        Orttextfield.setText("Ort");
+        Orttextfield.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        Panel.add(Orttextfield, gridBagConstraints);
 
-        Einfüge.setBackground(new java.awt.Color(255, 255, 255));
-        Einfüge.setForeground(new java.awt.Color(51, 51, 255));
-        Einfüge.setText("Einfügen");
-        Einfüge.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Einfüge.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EinfügeActionPerformed(evt);
-            }
-        });
-
-        Ort.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Ort.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         Ort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OrtActionPerformed(evt);
             }
         });
-
-        Orttextfield.setForeground(new java.awt.Color(255, 255, 255));
-        Orttextfield.setText("Ort");
-        Orttextfield.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Daten einüfgen");
-
-        javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(Panel);
-        Panel.setLayout(PanelLayout);
-        PanelLayout.setHorizontalGroup(
-            PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(PanelLayout.createSequentialGroup()
-                        .addComponent(Websitetextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Website, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelLayout.createSequentialGroup()
-                        .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PLZtextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Orttextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Straßetextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Ansprechpartnertextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Straße, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                            .addComponent(Ort, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Postleitzahl, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Ansprechpartner, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelLayout.createSequentialGroup()
-                        .addComponent(BetriebsnameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Betriebsname, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLayout.createSequentialGroup()
-                .addContainerGap(101, Short.MAX_VALUE)
-                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLayout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(129, 129, 129))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLayout.createSequentialGroup()
-                        .addComponent(Einfüge, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(133, 133, 133))))
-        );
-        PanelLayout.setVerticalGroup(
-            PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BetriebsnameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Betriebsname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Straßetextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Straße, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Ort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Orttextfield))
-                .addGap(28, 28, 28)
-                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Postleitzahl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PLZtextfield))
-                .addGap(25, 25, 25)
-                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Ansprechpartner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Ansprechpartnertextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Website, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Websitetextfield))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addComponent(Einfüge, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
-        );
-
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 10;
+        Panel.add(Ort, gridBagConstraints);
         Ort.getAccessibleContext().setAccessibleName("");
 
-        getContentPane().add(Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 470, 470));
+        Einfüge.setBackground(new java.awt.Color(255, 255, 255));
+        Einfüge.setForeground(new java.awt.Color(51, 51, 255));
+        Einfüge.setText("Einfügen");
+        Einfüge.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Einfüge.setMinimumSize(new java.awt.Dimension(0, 0));
+        Einfüge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EinfügeActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 12;
+        Panel.add(Einfüge, gridBagConstraints);
 
-        setSize(new java.awt.Dimension(936, 509));
+        getContentPane().add(Panel, new java.awt.GridBagConstraints());
+
+        setSize(new java.awt.Dimension(634, 551));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BetriebsnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BetriebsnameActionPerformed
-        // TODO add your handling code here:
-        
-        
-    }//GEN-LAST:event_BetriebsnameActionPerformed
-
-    private void StraßeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StraßeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_StraßeActionPerformed
-
+    private void initCustomComponents(){
+        ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
+        this.setIconImage(icon.getImage());
+    }
+    
     private void EinfügeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EinfügeActionPerformed
-     BetriebModel betrieb = new BetriebModel(Betriebsname.getText(),Straße.getText(),Ort.getText(), Integer.valueOf(Postleitzahl.getText()), Ansprechpartner.getText(),Website.getText());
- 
-     Datenbank Alfred = new Datenbank();
-    boolean erfolgreich = Alfred.createBetrieb(betrieb);
+        BetriebModel betrieb = new BetriebModel(Betriebsname.getText(),Straße.getText(),Ort.getText(), Integer.valueOf(Postleitzahl.getText()), Ansprechpartner.getText(),Website.getText());
 
-if (erfolgreich) {
-    JOptionPane.showMessageDialog(this, "Daten wurden erfolgreich hinzugefügt.", "Erfolg", JOptionPane.INFORMATION_MESSAGE);
-} else {
-    JOptionPane.showMessageDialog(this, "Daten wurden nicht erfolgreich hinzugefügt.", "Fehler", JOptionPane.ERROR_MESSAGE);
-}
-     
+        Datenbank Alfred = new Datenbank();
+        boolean erfolgreich = Alfred.createBetrieb(betrieb);
+
+        if (erfolgreich) {
+            JOptionPane.showMessageDialog(this, "Daten wurden erfolgreich hinzugefügt.", "Erfolg", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Daten wurden nicht erfolgreich hinzugefügt.", "Fehler", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_EinfügeActionPerformed
-
-    private void AnsprechpartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnsprechpartnerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AnsprechpartnerActionPerformed
 
     private void OrtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_OrtActionPerformed
 
+    private void AnsprechpartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnsprechpartnerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AnsprechpartnerActionPerformed
+
+    private void StraßeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StraßeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StraßeActionPerformed
+
     private void PostleitzahlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PostleitzahlActionPerformed
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_PostleitzahlActionPerformed
 
-    private void ZurückActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZurückActionPerformed
-   this.dispose();
-    Navigation Zurück = new Navigation();
-    Zurück.setVisible(true);
-    }//GEN-LAST:event_ZurückActionPerformed
+    private void BetriebsnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BetriebsnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BetriebsnameActionPerformed
         
     /**
      * @param args the command line arguments
@@ -301,10 +248,6 @@ if (erfolgreich) {
     private javax.swing.JLabel Straßetextfield;
     private javax.swing.JTextField Website;
     private javax.swing.JLabel Websitetextfield;
-    private javax.swing.JButton Zurück;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
