@@ -32,6 +32,7 @@ public class DatenbankFenster extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -42,7 +43,7 @@ public class DatenbankFenster extends javax.swing.JFrame {
         Postleitzahl = new javax.swing.JTextField();
         Ort = new javax.swing.JTextField();
         Ansprechpartner = new javax.swing.JTextField();
-        Webseite = new javax.swing.JTextField();
+        EMail = new javax.swing.JTextField();
         Orttextfield = new javax.swing.JLabel();
         Ansprechpartnertextfield = new javax.swing.JLabel();
         Websitetextfield = new javax.swing.JLabel();
@@ -55,22 +56,27 @@ public class DatenbankFenster extends javax.swing.JFrame {
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20));
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20));
         filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20));
-        EMail = new javax.swing.JTextField();
+        Website = new javax.swing.JTextField();
         EMailTextfield = new javax.swing.JLabel();
         filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20));
         filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20));
         jPanel2 = new javax.swing.JPanel();
-        Einfüge1 = new javax.swing.JButton();
         Zurück = new javax.swing.JButton();
+        Einfügen = new javax.swing.JButton();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Daten Anlegen");
+        setBackground(new java.awt.Color(255, 255, 255));
         setLocationByPlatform(true);
-        setMinimumSize(new java.awt.Dimension(200, 400));
+        setMinimumSize(new java.awt.Dimension(400, 480));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new java.awt.GridBagLayout());
+
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setForeground(new java.awt.Color(25, 118, 211));
         jPanel3.setMaximumSize(new java.awt.Dimension(32767, 100));
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
@@ -99,7 +105,7 @@ public class DatenbankFenster extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        getContentPane().add(jPanel3, gridBagConstraints);
+        jPanel4.add(jPanel3, gridBagConstraints);
 
         jScrollPane1.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         jScrollPane1.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -169,15 +175,15 @@ public class DatenbankFenster extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
         jPanel1.add(Ansprechpartner, gridBagConstraints);
 
-        Webseite.setMaximumSize(new java.awt.Dimension(100, 20));
-        Webseite.setMinimumSize(new java.awt.Dimension(20, 20));
-        Webseite.setPreferredSize(new java.awt.Dimension(100, 20));
+        EMail.setMaximumSize(new java.awt.Dimension(100, 20));
+        EMail.setMinimumSize(new java.awt.Dimension(20, 20));
+        EMail.setPreferredSize(new java.awt.Dimension(100, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
-        jPanel1.add(Webseite, gridBagConstraints);
+        jPanel1.add(EMail, gridBagConstraints);
 
         Orttextfield.setForeground(new java.awt.Color(255, 255, 255));
         Orttextfield.setText("Ort");
@@ -287,15 +293,15 @@ public class DatenbankFenster extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         jPanel1.add(filler7, gridBagConstraints);
 
-        EMail.setMaximumSize(new java.awt.Dimension(100, 20));
-        EMail.setMinimumSize(new java.awt.Dimension(20, 20));
-        EMail.setPreferredSize(new java.awt.Dimension(100, 20));
+        Website.setMaximumSize(new java.awt.Dimension(100, 20));
+        Website.setMinimumSize(new java.awt.Dimension(20, 20));
+        Website.setPreferredSize(new java.awt.Dimension(100, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
-        jPanel1.add(EMail, gridBagConstraints);
+        jPanel1.add(Website, gridBagConstraints);
 
         EMailTextfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         EMailTextfield.setForeground(new java.awt.Color(255, 255, 255));
@@ -326,20 +332,11 @@ public class DatenbankFenster extends javax.swing.JFrame {
         jPanel1.add(filler9, gridBagConstraints);
 
         jPanel2.setBackground(new java.awt.Color(25, 118, 211));
-
-        Einfüge1.setBackground(new java.awt.Color(255, 255, 255));
-        Einfüge1.setText("Zurück");
-        Einfüge1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Einfüge1.setMinimumSize(new java.awt.Dimension(0, 0));
-        Einfüge1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Einfüge1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(Einfüge1);
+        jPanel2.setMinimumSize(new java.awt.Dimension(100, 60));
+        jPanel2.setLayout(new java.awt.GridBagLayout());
 
         Zurück.setBackground(new java.awt.Color(255, 255, 255));
-        Zurück.setText("Einfügen");
+        Zurück.setText("Zurück");
         Zurück.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Zurück.setMinimumSize(new java.awt.Dimension(0, 0));
         Zurück.addActionListener(new java.awt.event.ActionListener() {
@@ -347,11 +344,29 @@ public class DatenbankFenster extends javax.swing.JFrame {
                 ZurückActionPerformed(evt);
             }
         });
-        jPanel2.add(Zurück);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 5);
+        jPanel2.add(Zurück, gridBagConstraints);
+
+        Einfügen.setBackground(new java.awt.Color(255, 255, 255));
+        Einfügen.setText("Einfügen");
+        Einfügen.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Einfügen.setMinimumSize(new java.awt.Dimension(0, 0));
+        Einfügen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EinfügenActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 50);
+        jPanel2.add(Einfügen, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         jPanel1.add(jPanel2, gridBagConstraints);
 
         jScrollPane1.setViewportView(jPanel1);
@@ -362,28 +377,44 @@ public class DatenbankFenster extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
         gridBagConstraints.weighty = 0.15;
-        getContentPane().add(jScrollPane1, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(0, 40, 10, 40);
+        jPanel4.add(jScrollPane1, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        getContentPane().add(filler2, gridBagConstraints);
+        jPanel4.add(filler2, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(jPanel4, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Einfüge1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Einfüge1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Einfüge1ActionPerformed
-
     private void ZurückActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZurückActionPerformed
-        // TODO add your handling code here:
+        Navigation navigation = new Navigation();
+        navigation.setVisible(true);
     }//GEN-LAST:event_ZurückActionPerformed
+
+    private void EinfügenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EinfügenActionPerformed
+        BetriebModel betrieb = new BetriebModel(Betriebsname.getText(),Straße.getText(),Ort.getText(), Integer.valueOf(Postleitzahl.getText()), Ansprechpartner.getText(), EMail.getText());
+
+        Datenbank Alfred = new Datenbank();
+        boolean erfolgreich = Alfred.createBetrieb(betrieb);
+
+        if (erfolgreich) {
+            JOptionPane.showMessageDialog(this, "Daten wurden erfolgreich hinzugefügt.", "Erfolg", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Daten wurden nicht erfolgreich hinzugefügt.", "Fehler", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_EinfügenActionPerformed
 
     private void initCustomComponents(){
         ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
         this.setIconImage(icon.getImage());
     }
-    
     
     /**
      * @param args the command line arguments
@@ -428,14 +459,14 @@ public class DatenbankFenster extends javax.swing.JFrame {
     private javax.swing.JLabel BetriebsnameTextfield;
     private javax.swing.JTextField EMail;
     private javax.swing.JLabel EMailTextfield;
-    private javax.swing.JButton Einfüge1;
+    private javax.swing.JButton Einfügen;
     private javax.swing.JTextField Ort;
     private javax.swing.JLabel Orttextfield;
     private javax.swing.JLabel PLZtextfield;
     private javax.swing.JTextField Postleitzahl;
     private javax.swing.JTextField Straße;
     private javax.swing.JLabel Straßetextfield;
-    private javax.swing.JTextField Webseite;
+    private javax.swing.JTextField Website;
     private javax.swing.JLabel Websitetextfield;
     private javax.swing.JButton Zurück;
     private javax.swing.Box.Filler filler1;
@@ -452,6 +483,7 @@ public class DatenbankFenster extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

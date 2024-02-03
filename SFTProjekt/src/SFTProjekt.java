@@ -1,10 +1,13 @@
 public class SFTProjekt {
  
     public static void main(String[] args) {
-         Datenbank DB = new Datenbank();
-         DB.dBConnector();
-         DatenbankFenster fenster = new DatenbankFenster();
-         fenster.setVisible(true);
+//         Datenbank DB = new Datenbank();
+//         DB.dBConnector();
+//         DatenbankFenster fenster = new DatenbankFenster();
+//         fenster.setVisible(true);
+
+DatenbankAnzeigen f = new DatenbankAnzeigen();
+f.setVisible(true);
       
 //        
 //        login fenster = new login();
