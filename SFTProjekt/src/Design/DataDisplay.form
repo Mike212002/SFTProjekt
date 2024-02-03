@@ -93,7 +93,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel3_Schublade" max="32767" attributes="0"/>
+              <Component id="jPanel3_Schublade" pref="1565" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -102,7 +102,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel3_Schublade" pref="558" max="32767" attributes="0"/>
+              <Component id="jPanel3_Schublade" pref="637" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -249,7 +249,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="251" max="-2" attributes="0"/>
-                      <Component id="jLabel1" pref="350" max="32767" attributes="0"/>
+                      <Component id="jLabel1" pref="1068" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -353,7 +353,7 @@
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" pref="272" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" pref="351" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>

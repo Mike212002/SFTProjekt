@@ -6,12 +6,12 @@ public class SFTProjekt {
 //         DatenbankFenster fenster = new DatenbankFenster();
 //         fenster.setVisible(true);
 
-DatenbankAnzeigen f = new DatenbankAnzeigen();
-f.setVisible(true);
+//DatenbankAnzeigen f = new DatenbankAnzeigen();
+//f.setVisible(true);
       
 //        
-//        login fenster = new login();
-//        fenster.setVisible(true);
+        login fenster = new login();
+        fenster.setVisible(true);
         
     }
 }

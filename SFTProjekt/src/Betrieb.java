@@ -3,7 +3,7 @@
  *
  * @author miket
  */
-public class BetriebModel {
+public class Betrieb {
 
     private int BetriebsID;
     String Betriebsname;
@@ -13,7 +13,7 @@ public class BetriebModel {
     String Ansprechpartner;
     String Website;
 
-    public BetriebModel(String Betriebsname, String Straße, String Ort, int PLZ, String Ansprechpartner, String Website) {
+    public Betrieb(String Betriebsname, String Straße, String Ort, int PLZ, String Ansprechpartner, String Website) {
         this.Betriebsname = Betriebsname;
         this.Straße = Straße;
         this.Ort = Ort;

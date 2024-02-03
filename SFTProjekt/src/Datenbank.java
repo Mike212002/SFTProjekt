@@ -27,7 +27,7 @@ private final String url = "jdbc:mysql://mike007.lima-db.de:3306/db_427829_1";
     }
 
 
-    public boolean createBetrieb(BetriebModel betrieb) {
+    public boolean createBetrieb(Betrieb betrieb) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
             System.out.println("Database connected!");
             String statement = "INSERT INTO Betrieb(Betriebsname, Straße, Ort, PLZ, Ansprechpartner, Website) VALUES (?, ?, ?, ?, ?, ?)";

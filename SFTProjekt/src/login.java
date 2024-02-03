@@ -6,6 +6,7 @@
 
 //import java.awt.Color;
 //import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 //import javax.swing.JTextField;
 //import javax.swing.border.Border;
@@ -21,6 +22,7 @@ public class login extends javax.swing.JFrame {
      */
     public login() {
         initComponents();
+        initCustomComponents();
 
 //          txtBenutzername.setForeground(Color.BLACK);
 //    txtpasswort.setForeground(Color.BLACK);
@@ -57,7 +59,6 @@ txtpasswort.setText("");      // Clear the password field
         jLabel1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        Schließtaste = new javax.swing.JLabel();
         Anmeldeanzeige = new javax.swing.JLabel();
         BenutzernameAnzeige = new javax.swing.JLabel();
         Strich = new javax.swing.JLabel();
@@ -74,7 +75,6 @@ txtpasswort.setText("");      // Clear the password field
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -95,18 +95,6 @@ txtpasswort.setText("");      // Clear the password field
 
         jPanel2.setBackground(new java.awt.Color(25, 118, 211));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Schließtaste.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Schließtaste.setForeground(new java.awt.Color(255, 255, 255));
-        Schließtaste.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Schließtaste.setText("X");
-        Schließtaste.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Schließtaste.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SchließtasteMouseClicked(evt);
-            }
-        });
-        jPanel2.add(Schließtaste, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 40, 29));
 
         Anmeldeanzeige.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
         Anmeldeanzeige.setForeground(new java.awt.Color(255, 255, 255));
@@ -214,13 +202,9 @@ txtpasswort.setText("");      // Clear the password field
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 420, 470));
 
-        setSize(new java.awt.Dimension(916, 469));
+        setSize(new java.awt.Dimension(932, 508));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void SchließtasteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SchließtasteMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_SchließtasteMouseClicked
 
     private void nichtsehenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nichtsehenMouseClicked
         txtpasswort.setEchoChar((char) 0);
@@ -298,8 +282,11 @@ txtpasswort.setText("");      // Clear the password field
 //        setBorder(border); // Setzen Sie den leeren Rahmen als Rahmen für das Textfeld
 //    }
 
+    private void initCustomComponents(){
+        ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
+        this.setIconImage(icon.getImage());
 
-//    }
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -309,7 +296,6 @@ txtpasswort.setText("");      // Clear the password field
     private javax.swing.JLabel PasswortAnzeige;
     private javax.swing.JLabel PasswortVergessen;
     private javax.swing.JCheckBox Passwortmerken;
-    private javax.swing.JLabel Schließtaste;
     private javax.swing.JLabel Sehen;
     private javax.swing.JLabel Strich;
     private javax.swing.JLabel Strich2;

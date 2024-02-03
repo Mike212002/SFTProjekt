@@ -1,5 +1,6 @@
 
 import java.awt.Dimension;
+import javax.swing.ImageIcon;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,6 +19,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
      */
     public DatenbankAnzeigen() {
         initComponents();
+         initCustomComponents();
     }
 
     /**
@@ -40,38 +42,38 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         jPanel4 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        DatenAnlegenbttn = new javax.swing.JButton();
+        DatenAktualisierenbttn = new javax.swing.JButton();
+        Drukenbttn = new javax.swing.JButton();
+        DatenZurücksetztenbttn = new javax.swing.JButton();
+        DatenLöschenbttn = new javax.swing.JButton();
+        Zurückbttn = new javax.swing.JButton();
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         jPanel5 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        Betriebsname1 = new javax.swing.JTextField();
-        Straße1 = new javax.swing.JTextField();
-        Postleitzahl1 = new javax.swing.JTextField();
-        Ort1 = new javax.swing.JTextField();
-        Ansprechpartner1 = new javax.swing.JTextField();
-        EMail1 = new javax.swing.JTextField();
-        Orttextfield1 = new javax.swing.JLabel();
-        Ansprechpartnertextfield1 = new javax.swing.JLabel();
-        Websitetextfield1 = new javax.swing.JLabel();
-        Straßetextfield1 = new javax.swing.JLabel();
-        PLZtextfield1 = new javax.swing.JLabel();
-        BetriebsnameTextfield1 = new javax.swing.JLabel();
+        Betriebsname = new javax.swing.JTextField();
+        Straße = new javax.swing.JTextField();
+        Postleitzahl = new javax.swing.JTextField();
+        Ort = new javax.swing.JTextField();
+        Ansprechpartner = new javax.swing.JTextField();
+        EMail = new javax.swing.JTextField();
+        Orttxtfield = new javax.swing.JLabel();
+        Ansprechpartnertxtfield = new javax.swing.JLabel();
+        Websitetxtfield = new javax.swing.JLabel();
+        Straßetxtfield = new javax.swing.JLabel();
+        PLZtxtfield = new javax.swing.JLabel();
+        Betriebsnametxtfield = new javax.swing.JLabel();
         filler14 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20));
         filler15 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20));
         filler16 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20));
         filler17 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20));
         filler18 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20));
         filler19 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20));
-        Website1 = new javax.swing.JTextField();
-        EMailTextfield1 = new javax.swing.JLabel();
+        Website = new javax.swing.JTextField();
+        EMailtxtfield = new javax.swing.JLabel();
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
-        jLabel3 = new javax.swing.JLabel();
+        BetriebeÜbersicht = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -227,14 +229,14 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(25, 118, 211), 4));
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Daten anlegen");
-        jButton1.setMaximumSize(new java.awt.Dimension(0, 0));
-        jButton1.setMinimumSize(new java.awt.Dimension(0, 0));
-        jButton1.setPreferredSize(new java.awt.Dimension(2, 2));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        DatenAnlegenbttn.setBackground(new java.awt.Color(255, 255, 255));
+        DatenAnlegenbttn.setText("Daten anlegen");
+        DatenAnlegenbttn.setMaximumSize(new java.awt.Dimension(0, 0));
+        DatenAnlegenbttn.setMinimumSize(new java.awt.Dimension(0, 0));
+        DatenAnlegenbttn.setPreferredSize(new java.awt.Dimension(2, 2));
+        DatenAnlegenbttn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                DatenAnlegenbttnActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -244,13 +246,13 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel4.add(jButton1, gridBagConstraints);
+        jPanel4.add(DatenAnlegenbttn, gridBagConstraints);
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Daten Aktualisieren");
-        jButton2.setMaximumSize(new java.awt.Dimension(0, 0));
-        jButton2.setMinimumSize(new java.awt.Dimension(0, 0));
-        jButton2.setPreferredSize(new java.awt.Dimension(2, 2));
+        DatenAktualisierenbttn.setBackground(new java.awt.Color(255, 255, 255));
+        DatenAktualisierenbttn.setText("Daten Aktualisieren");
+        DatenAktualisierenbttn.setMaximumSize(new java.awt.Dimension(0, 0));
+        DatenAktualisierenbttn.setMinimumSize(new java.awt.Dimension(0, 0));
+        DatenAktualisierenbttn.setPreferredSize(new java.awt.Dimension(2, 2));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -258,13 +260,13 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel4.add(jButton2, gridBagConstraints);
+        jPanel4.add(DatenAktualisierenbttn, gridBagConstraints);
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Drucken");
-        jButton3.setMaximumSize(new java.awt.Dimension(0, 0));
-        jButton3.setMinimumSize(new java.awt.Dimension(0, 0));
-        jButton3.setPreferredSize(new java.awt.Dimension(2, 2));
+        Drukenbttn.setBackground(new java.awt.Color(255, 255, 255));
+        Drukenbttn.setText("Drucken");
+        Drukenbttn.setMaximumSize(new java.awt.Dimension(0, 0));
+        Drukenbttn.setMinimumSize(new java.awt.Dimension(0, 0));
+        Drukenbttn.setPreferredSize(new java.awt.Dimension(2, 2));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -272,16 +274,16 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel4.add(jButton3, gridBagConstraints);
+        jPanel4.add(Drukenbttn, gridBagConstraints);
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Zurücksetzen");
-        jButton4.setMaximumSize(new java.awt.Dimension(0, 0));
-        jButton4.setMinimumSize(new java.awt.Dimension(0, 0));
-        jButton4.setPreferredSize(new java.awt.Dimension(2, 2));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        DatenZurücksetztenbttn.setBackground(new java.awt.Color(255, 255, 255));
+        DatenZurücksetztenbttn.setText("Zurücksetzen");
+        DatenZurücksetztenbttn.setMaximumSize(new java.awt.Dimension(0, 0));
+        DatenZurücksetztenbttn.setMinimumSize(new java.awt.Dimension(0, 0));
+        DatenZurücksetztenbttn.setPreferredSize(new java.awt.Dimension(2, 2));
+        DatenZurücksetztenbttn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                DatenZurücksetztenbttnActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -291,13 +293,13 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel4.add(jButton4, gridBagConstraints);
+        jPanel4.add(DatenZurücksetztenbttn, gridBagConstraints);
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Eintrag Löschen");
-        jButton5.setMaximumSize(new java.awt.Dimension(0, 0));
-        jButton5.setMinimumSize(new java.awt.Dimension(0, 0));
-        jButton5.setPreferredSize(new java.awt.Dimension(2, 2));
+        DatenLöschenbttn.setBackground(new java.awt.Color(255, 255, 255));
+        DatenLöschenbttn.setText("Eintrag Löschen");
+        DatenLöschenbttn.setMaximumSize(new java.awt.Dimension(0, 0));
+        DatenLöschenbttn.setMinimumSize(new java.awt.Dimension(0, 0));
+        DatenLöschenbttn.setPreferredSize(new java.awt.Dimension(2, 2));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -305,13 +307,18 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel4.add(jButton5, gridBagConstraints);
+        jPanel4.add(DatenLöschenbttn, gridBagConstraints);
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Zurück");
-        jButton6.setMaximumSize(new java.awt.Dimension(0, 0));
-        jButton6.setMinimumSize(new java.awt.Dimension(0, 0));
-        jButton6.setPreferredSize(new java.awt.Dimension(2, 2));
+        Zurückbttn.setBackground(new java.awt.Color(255, 255, 255));
+        Zurückbttn.setText("Zurück");
+        Zurückbttn.setMaximumSize(new java.awt.Dimension(0, 0));
+        Zurückbttn.setMinimumSize(new java.awt.Dimension(0, 0));
+        Zurückbttn.setPreferredSize(new java.awt.Dimension(2, 2));
+        Zurückbttn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ZurückbttnActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
@@ -319,7 +326,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel4.add(jButton6, gridBagConstraints);
+        jPanel4.add(Zurückbttn, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -345,75 +352,76 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(25, 118, 211), 4));
         jPanel7.setLayout(new java.awt.GridBagLayout());
 
-        Betriebsname1.setMaximumSize(new java.awt.Dimension(100, 20));
-        Betriebsname1.setMinimumSize(new java.awt.Dimension(20, 20));
-        Betriebsname1.setPreferredSize(new java.awt.Dimension(100, 20));
+        Betriebsname.setMaximumSize(new java.awt.Dimension(100, 20));
+        Betriebsname.setMinimumSize(new java.awt.Dimension(20, 20));
+        Betriebsname.setPreferredSize(new java.awt.Dimension(100, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.5;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
-        jPanel7.add(Betriebsname1, gridBagConstraints);
+        jPanel7.add(Betriebsname, gridBagConstraints);
 
-        Straße1.setMaximumSize(new java.awt.Dimension(100, 20));
-        Straße1.setMinimumSize(new java.awt.Dimension(20, 20));
-        Straße1.setPreferredSize(new java.awt.Dimension(100, 20));
+        Straße.setMaximumSize(new java.awt.Dimension(100, 20));
+        Straße.setMinimumSize(new java.awt.Dimension(20, 20));
+        Straße.setPreferredSize(new java.awt.Dimension(100, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
-        jPanel7.add(Straße1, gridBagConstraints);
+        jPanel7.add(Straße, gridBagConstraints);
 
-        Postleitzahl1.setMaximumSize(new java.awt.Dimension(100, 20));
-        Postleitzahl1.setMinimumSize(new java.awt.Dimension(20, 20));
-        Postleitzahl1.setPreferredSize(new java.awt.Dimension(100, 20));
+        Postleitzahl.setMaximumSize(new java.awt.Dimension(100, 20));
+        Postleitzahl.setMinimumSize(new java.awt.Dimension(20, 20));
+        Postleitzahl.setPreferredSize(new java.awt.Dimension(100, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
-        jPanel7.add(Postleitzahl1, gridBagConstraints);
+        jPanel7.add(Postleitzahl, gridBagConstraints);
 
-        Ort1.setMaximumSize(new java.awt.Dimension(100, 20));
-        Ort1.setMinimumSize(new java.awt.Dimension(20, 20));
-        Ort1.setPreferredSize(new java.awt.Dimension(100, 20));
+        Ort.setMaximumSize(new java.awt.Dimension(100, 20));
+        Ort.setMinimumSize(new java.awt.Dimension(20, 20));
+        Ort.setPreferredSize(new java.awt.Dimension(100, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
-        jPanel7.add(Ort1, gridBagConstraints);
+        jPanel7.add(Ort, gridBagConstraints);
 
-        Ansprechpartner1.setMaximumSize(new java.awt.Dimension(100, 20));
-        Ansprechpartner1.setMinimumSize(new java.awt.Dimension(20, 20));
-        Ansprechpartner1.setPreferredSize(new java.awt.Dimension(100, 20));
+        Ansprechpartner.setMaximumSize(new java.awt.Dimension(100, 20));
+        Ansprechpartner.setMinimumSize(new java.awt.Dimension(20, 20));
+        Ansprechpartner.setPreferredSize(new java.awt.Dimension(100, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
-        jPanel7.add(Ansprechpartner1, gridBagConstraints);
+        jPanel7.add(Ansprechpartner, gridBagConstraints);
 
-        EMail1.setMaximumSize(new java.awt.Dimension(100, 20));
-        EMail1.setMinimumSize(new java.awt.Dimension(20, 20));
-        EMail1.setPreferredSize(new java.awt.Dimension(100, 20));
+        EMail.setMaximumSize(new java.awt.Dimension(100, 20));
+        EMail.setMinimumSize(new java.awt.Dimension(20, 20));
+        EMail.setPreferredSize(new java.awt.Dimension(100, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
-        jPanel7.add(EMail1, gridBagConstraints);
+        jPanel7.add(EMail, gridBagConstraints);
 
-        Orttextfield1.setText("Ort");
-        Orttextfield1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Orttextfield1.setMinimumSize(new java.awt.Dimension(20, 20));
-        Orttextfield1.setPreferredSize(new java.awt.Dimension(20, 20));
+        Orttxtfield.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Orttxtfield.setText("Ort");
+        Orttxtfield.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Orttxtfield.setMinimumSize(new java.awt.Dimension(20, 20));
+        Orttxtfield.setPreferredSize(new java.awt.Dimension(20, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -421,12 +429,12 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel7.add(Orttextfield1, gridBagConstraints);
+        jPanel7.add(Orttxtfield, gridBagConstraints);
 
-        Ansprechpartnertextfield1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Ansprechpartnertextfield1.setText("Ansprechpartner");
-        Ansprechpartnertextfield1.setMinimumSize(new java.awt.Dimension(20, 20));
-        Ansprechpartnertextfield1.setPreferredSize(new java.awt.Dimension(20, 20));
+        Ansprechpartnertxtfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Ansprechpartnertxtfield.setText("Ansprechpartner");
+        Ansprechpartnertxtfield.setMinimumSize(new java.awt.Dimension(20, 20));
+        Ansprechpartnertxtfield.setPreferredSize(new java.awt.Dimension(20, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -434,12 +442,12 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel7.add(Ansprechpartnertextfield1, gridBagConstraints);
+        jPanel7.add(Ansprechpartnertxtfield, gridBagConstraints);
 
-        Websitetextfield1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Websitetextfield1.setText("E-Mail");
-        Websitetextfield1.setMinimumSize(new java.awt.Dimension(20, 20));
-        Websitetextfield1.setPreferredSize(new java.awt.Dimension(20, 20));
+        Websitetxtfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Websitetxtfield.setText("E-Mail");
+        Websitetxtfield.setMinimumSize(new java.awt.Dimension(20, 20));
+        Websitetxtfield.setPreferredSize(new java.awt.Dimension(20, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -447,12 +455,12 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel7.add(Websitetextfield1, gridBagConstraints);
+        jPanel7.add(Websitetxtfield, gridBagConstraints);
 
-        Straßetextfield1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Straßetextfield1.setText("Straße");
-        Straßetextfield1.setMinimumSize(new java.awt.Dimension(20, 20));
-        Straßetextfield1.setPreferredSize(new java.awt.Dimension(20, 20));
+        Straßetxtfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Straßetxtfield.setText("Straße");
+        Straßetxtfield.setMinimumSize(new java.awt.Dimension(20, 20));
+        Straßetxtfield.setPreferredSize(new java.awt.Dimension(20, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -460,12 +468,12 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel7.add(Straßetextfield1, gridBagConstraints);
+        jPanel7.add(Straßetxtfield, gridBagConstraints);
 
-        PLZtextfield1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        PLZtextfield1.setText("PLZ");
-        PLZtextfield1.setMinimumSize(new java.awt.Dimension(20, 20));
-        PLZtextfield1.setPreferredSize(new java.awt.Dimension(20, 20));
+        PLZtxtfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        PLZtxtfield.setText("PLZ");
+        PLZtxtfield.setMinimumSize(new java.awt.Dimension(20, 20));
+        PLZtxtfield.setPreferredSize(new java.awt.Dimension(20, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -473,12 +481,12 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel7.add(PLZtextfield1, gridBagConstraints);
+        jPanel7.add(PLZtxtfield, gridBagConstraints);
 
-        BetriebsnameTextfield1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        BetriebsnameTextfield1.setText("Betriebsname");
-        BetriebsnameTextfield1.setMinimumSize(new java.awt.Dimension(20, 20));
-        BetriebsnameTextfield1.setPreferredSize(new java.awt.Dimension(20, 20));
+        Betriebsnametxtfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Betriebsnametxtfield.setText("Betriebsname");
+        Betriebsnametxtfield.setMinimumSize(new java.awt.Dimension(20, 20));
+        Betriebsnametxtfield.setPreferredSize(new java.awt.Dimension(20, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -486,7 +494,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel7.add(BetriebsnameTextfield1, gridBagConstraints);
+        jPanel7.add(Betriebsnametxtfield, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -512,20 +520,20 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         jPanel7.add(filler19, gridBagConstraints);
 
-        Website1.setMaximumSize(new java.awt.Dimension(100, 20));
-        Website1.setMinimumSize(new java.awt.Dimension(20, 20));
-        Website1.setPreferredSize(new java.awt.Dimension(100, 20));
+        Website.setMaximumSize(new java.awt.Dimension(100, 20));
+        Website.setMinimumSize(new java.awt.Dimension(20, 20));
+        Website.setPreferredSize(new java.awt.Dimension(100, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
-        jPanel7.add(Website1, gridBagConstraints);
+        jPanel7.add(Website, gridBagConstraints);
 
-        EMailTextfield1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        EMailTextfield1.setText("Website");
-        EMailTextfield1.setMinimumSize(new java.awt.Dimension(20, 20));
-        EMailTextfield1.setPreferredSize(new java.awt.Dimension(20, 20));
+        EMailtxtfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EMailtxtfield.setText("Website");
+        EMailtxtfield.setMinimumSize(new java.awt.Dimension(20, 20));
+        EMailtxtfield.setPreferredSize(new java.awt.Dimension(20, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
@@ -533,7 +541,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel7.add(EMailTextfield1, gridBagConstraints);
+        jPanel7.add(EMailtxtfield, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -556,15 +564,15 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         jPanel2.add(jPanel5, gridBagConstraints);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
-        jLabel3.setText("Betriebe Übersicht");
+        BetriebeÜbersicht.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
+        BetriebeÜbersicht.setText("Betriebe Übersicht");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 15, 0);
-        jPanel2.add(jLabel3, gridBagConstraints);
+        jPanel2.add(BetriebeÜbersicht, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -585,14 +593,25 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_jTable1MouseClicked
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void DatenZurücksetztenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenZurücksetztenbttnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_DatenZurücksetztenbttnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void DatenAnlegenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenAnlegenbttnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_DatenAnlegenbttnActionPerformed
 
+    private void ZurückbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZurückbttnActionPerformed
+        this.dispose();
+        Navigation navigation = new Navigation();
+        navigation.setVisible(true);
+    }//GEN-LAST:event_ZurückbttnActionPerformed
+
+    private void initCustomComponents(){
+        ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
+        this.setIconImage(icon.getImage());
+
+    }
     /**
      * @param args the command line arguments
      */
@@ -632,20 +651,27 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Ansprechpartner1;
-    private javax.swing.JLabel Ansprechpartnertextfield1;
-    private javax.swing.JTextField Betriebsname1;
-    private javax.swing.JLabel BetriebsnameTextfield1;
-    private javax.swing.JTextField EMail1;
-    private javax.swing.JLabel EMailTextfield1;
-    private javax.swing.JTextField Ort1;
-    private javax.swing.JLabel Orttextfield1;
-    private javax.swing.JLabel PLZtextfield1;
-    private javax.swing.JTextField Postleitzahl1;
-    private javax.swing.JTextField Straße1;
-    private javax.swing.JLabel Straßetextfield1;
-    private javax.swing.JTextField Website1;
-    private javax.swing.JLabel Websitetextfield1;
+    private javax.swing.JTextField Ansprechpartner;
+    private javax.swing.JLabel Ansprechpartnertxtfield;
+    private javax.swing.JLabel BetriebeÜbersicht;
+    private javax.swing.JTextField Betriebsname;
+    private javax.swing.JLabel Betriebsnametxtfield;
+    private javax.swing.JButton DatenAktualisierenbttn;
+    private javax.swing.JButton DatenAnlegenbttn;
+    private javax.swing.JButton DatenLöschenbttn;
+    private javax.swing.JButton DatenZurücksetztenbttn;
+    private javax.swing.JButton Drukenbttn;
+    private javax.swing.JTextField EMail;
+    private javax.swing.JLabel EMailtxtfield;
+    private javax.swing.JTextField Ort;
+    private javax.swing.JLabel Orttxtfield;
+    private javax.swing.JLabel PLZtxtfield;
+    private javax.swing.JTextField Postleitzahl;
+    private javax.swing.JTextField Straße;
+    private javax.swing.JLabel Straßetxtfield;
+    private javax.swing.JTextField Website;
+    private javax.swing.JLabel Websitetxtfield;
+    private javax.swing.JButton Zurückbttn;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler14;
     private javax.swing.Box.Filler filler15;
@@ -658,14 +684,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler4;
     private javax.swing.Box.Filler filler6;
     private javax.swing.Box.Filler filler7;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
