@@ -27,7 +27,7 @@ public class login extends javax.swing.JFrame {
      txtBenutzername.setOpaque(false); // Stellen Sie sicher, dass das Textfeld nicht deckend ist
 ////    txtBenutzername = new TransparentTextField();
         txtpasswort.setOpaque(false);
-
+        this.
 
 
 //        txtBenutzername.setBackground(new java.awt.Color(0, 0, 0, 1));
