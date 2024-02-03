@@ -6,9 +6,11 @@ import java.sql.SQLException;
 
 public class Datenbank {
 
-  private final String url = "jdbc:mysql://mike007.lima-db.de:3306/db_427829_1";
+private final String url = "jdbc:mysql://mike007.lima-db.de:3306/db_427829_1";
     private final String user = "USER427829";
-    private final String password = "Julianistbehindert007";
+    private final String password = "Milka123mo";
+
+
 
     public Datenbank() {
     }
@@ -65,7 +67,5 @@ public class Datenbank {
 
    
 
-//Er stellt die Verbindung mit der Datenbank her.
-//Dort wird ausgegeben das er mit der Datenbank die Verbindung hergestellt wird
-// Hier wird der Fehler ausgegeben
+
 
