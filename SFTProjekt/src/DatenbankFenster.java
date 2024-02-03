@@ -43,13 +43,11 @@ public class DatenbankFenster extends javax.swing.JFrame {
         Einfüge = new javax.swing.JButton();
         Ort = new javax.swing.JTextField();
         Orttextfield = new javax.swing.JLabel();
-        Schließtast = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(920, 470));
-        setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(920, 470));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(797, 0, -1, -1));
@@ -157,17 +155,6 @@ public class DatenbankFenster extends javax.swing.JFrame {
         Orttextfield.setText("Ort");
         Orttextfield.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        Schließtast.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        Schließtast.setForeground(new java.awt.Color(255, 255, 255));
-        Schließtast.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Schließtast.setText("X");
-        Schließtast.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Schließtast.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SchließtastMouseClicked(evt);
-            }
-        });
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Daten einüfgen");
@@ -205,9 +192,7 @@ public class DatenbankFenster extends javax.swing.JFrame {
                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87)
-                        .addComponent(Schließtast, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addGap(129, 129, 129))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLayout.createSequentialGroup()
                         .addComponent(Einfüge, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(133, 133, 133))))
@@ -216,9 +201,7 @@ public class DatenbankFenster extends javax.swing.JFrame {
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Schließtast, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BetriebsnameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -252,7 +235,7 @@ public class DatenbankFenster extends javax.swing.JFrame {
 
         getContentPane().add(Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 470, 470));
 
-        setSize(new java.awt.Dimension(920, 470));
+        setSize(new java.awt.Dimension(936, 509));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -293,10 +276,6 @@ if (erfolgreich) {
         
     }//GEN-LAST:event_PostleitzahlActionPerformed
 
-    private void SchließtastMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SchließtastMouseClicked
-         System.exit(0);
-    }//GEN-LAST:event_SchließtastMouseClicked
-
     private void ZurückActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZurückActionPerformed
    this.dispose();
     Navigation Zurück = new Navigation();
@@ -318,7 +297,6 @@ if (erfolgreich) {
     private javax.swing.JLabel PLZtextfield;
     private javax.swing.JPanel Panel;
     private javax.swing.JTextField Postleitzahl;
-    private javax.swing.JLabel Schließtast;
     private javax.swing.JTextField Straße;
     private javax.swing.JLabel Straßetextfield;
     private javax.swing.JTextField Website;
