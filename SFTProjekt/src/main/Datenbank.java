@@ -1,3 +1,5 @@
+package main;
+
 // @author Mike Tim Nowak
 import java.sql.Connection;
 import java.sql.DriverManager;

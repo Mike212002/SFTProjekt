@@ -1,3 +1,5 @@
+package main;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,6 +8,8 @@
 
 //import java.awt.Color;
 //import javax.swing.BorderFactory;
+import com.password4j.Hash;
+import com.password4j.Password;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 //import javax.swing.JTextField;
@@ -15,12 +19,12 @@ import javax.swing.JOptionPane;
  *
  * @author Mike Tim Nowak
  */
-public class login extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame {
 
     /**
      * Creates new form login
      */
-    public login() {
+    public Login() {
         initComponents();
         initCustomComponents();
 
@@ -254,10 +258,13 @@ txtpasswort.setText("");      // Clear the password field
             JOptionPane.showMessageDialog(this, "Falsche Anmelde Daten.");
             return;
         }
-
-        // Check if username and password match
-        if (username.equals("Schüler") && password.equals("password1")) {
-            //  access fur Schuler
+        
+        //todo: Zu Test-Zwecken hier eingefügt
+        Hash hashedPasswort = Password.hash("password").addPepper().withBcrypt();
+        String gespeichertesPasswort = hashedPasswort.getResult();
+        boolean validiert = Password.check(password, gespeichertesPasswort).addPepper().withBcrypt();
+        
+        if(username.equals("schüler") && validiert){
             Navigation navigationsfenster = new Navigation();
             navigationsfenster.setVisible(true);
             this.dispose(); // Close the login window 

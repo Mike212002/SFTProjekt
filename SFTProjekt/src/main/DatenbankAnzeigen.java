@@ -1,3 +1,5 @@
+package main;
+
 
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
@@ -78,7 +80,6 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(650, 600));
-        setPreferredSize(new java.awt.Dimension(1200, 402));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -610,7 +611,6 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
     private void initCustomComponents(){
         ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
         this.setIconImage(icon.getImage());
-
     }
     /**
      * @param args the command line arguments
