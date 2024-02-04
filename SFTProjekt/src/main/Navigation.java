@@ -1,6 +1,5 @@
 package main;
 
-
 import javax.swing.ImageIcon;
 
 /*
@@ -128,13 +127,13 @@ public class Navigation extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void AusloggenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AusloggenbttnActionPerformed
-       this.dispose();
-        
+        this.dispose();
+
     }//GEN-LAST:event_AusloggenbttnActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        DatenbankAnzeigen datenbankanzeigen = new DatenbankAnzeigen();
-        datenbankanzeigen.setVisible(true);
+        PasswortAbfrage passwortAbfrage = new PasswortAbfrage(null, true);
+        passwortAbfrage.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
