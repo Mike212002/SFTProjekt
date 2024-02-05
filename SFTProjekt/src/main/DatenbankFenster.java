@@ -398,7 +398,7 @@ public class DatenbankFenster extends javax.swing.JFrame {
     }//GEN-LAST:event_ZurückbttnActionPerformed
 
     private void EinfügenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EinfügenbttnActionPerformed
-        Betrieb betrieb = new Betrieb(Betriebsname.getText(),Straße.getText(),Ort.getText(), Integer.valueOf(Postleitzahl.getText(), Ansprechpartner.getText(), EMail.getText());
+        Betrieb betrieb = new Betrieb(Betriebsname.getText(),Straße.getText(),Ort.getText(), Integer.valueOf(Postleitzahl.getText()), Ansprechpartner.getText(), Website.getText(), EMail.getText());
 
         Datenbank Alfred = new Datenbank();
         boolean erfolgreich = Alfred.createBetrieb(betrieb);
