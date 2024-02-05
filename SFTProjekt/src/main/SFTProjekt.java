@@ -13,7 +13,7 @@ public class SFTProjekt {
 DatenbankAnzeigen f = new DatenbankAnzeigen();
 f.setVisible(true);
 //     
-//        Login fenster = new Login();
+//        Loginnew fenster = new Loginnew();
 //        fenster.setVisible(true);
     }
 }
