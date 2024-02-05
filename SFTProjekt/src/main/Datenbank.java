@@ -32,7 +32,7 @@ private final String url = "jdbc:mysql://mike007.lima-db.de:3306/db_427829_1";
     public boolean createBetrieb(Betrieb betrieb) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
             System.out.println("Database connected!");
-            String statement = "INSERT INTO Betrieb(Betriebsname, Straße, Ort, PLZ, Ansprechpartner, Website) VALUES (?, ?, ?, ?, ?, ?)";
+            String statement = "INSERT INTO Betrieb(Betriebsname, Straße, Ort, PLZ, Ansprechpartner, Website, EMail) VALUES (?, ?, ?, ?, ?, ?,?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
                 preparedStatement.setString(1, betrieb.Betriebsname);
                 preparedStatement.setString(2, betrieb.Straße);
@@ -40,6 +40,7 @@ private final String url = "jdbc:mysql://mike007.lima-db.de:3306/db_427829_1";
                 preparedStatement.setInt(4, betrieb.PLZ);
                 preparedStatement.setString(5, betrieb.Ansprechpartner);
                 preparedStatement.setString(6, betrieb.Website);
+                preparedStatement.setString(7, betrieb.EMail);
                 preparedStatement.execute();
                 
                 int affectedRows = preparedStatement.executeUpdate();
