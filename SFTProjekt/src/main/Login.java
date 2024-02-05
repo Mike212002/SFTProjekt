@@ -206,7 +206,7 @@ txtpasswort.setText("");      // Clear the password field
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 420, 470));
 
-        setSize(new java.awt.Dimension(932, 508));
+        setSize(new java.awt.Dimension(940, 512));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
