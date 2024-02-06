@@ -78,7 +78,7 @@ public class Navigation extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(25, 118, 211));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Datensätze hinzufügen(Schüler)");
+        jButton1.setText("Betriebsbewertungen");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -86,7 +86,7 @@ public class Navigation extends javax.swing.JFrame {
         });
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Daten löschen/aktualisieren");
+        jButton3.setText("Danten hinzufügen (Leher)");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -121,8 +121,8 @@ public class Navigation extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        DatenbankFenster datenbankfenster = new DatenbankFenster();
-        datenbankfenster.setVisible(true);
+        DatenbankBewertung datenbankBewertung = new DatenbankBewertung();
+        datenbankBewertung.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

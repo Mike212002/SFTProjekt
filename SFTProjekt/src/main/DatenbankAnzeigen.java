@@ -313,6 +313,11 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         Betriebsname.setMaximumSize(new java.awt.Dimension(100, 20));
         Betriebsname.setMinimumSize(new java.awt.Dimension(20, 20));
         Betriebsname.setPreferredSize(new java.awt.Dimension(100, 20));
+        Betriebsname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BetriebsnameActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
@@ -586,6 +591,10 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         Navigation navigation = new Navigation();
         navigation.setVisible(true);
     }//GEN-LAST:event_ZurückbttnActionPerformed
+
+    private void BetriebsnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BetriebsnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BetriebsnameActionPerformed
 
     private void initCustomComponents() {
         ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));

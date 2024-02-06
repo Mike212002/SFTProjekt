@@ -70,7 +70,7 @@ public class Datenbank {
                 preparedStatement.setString(5, betrieb.getAnsprechpartner());
                 preparedStatement.setString(6, betrieb.getWebsite());
                 preparedStatement.setString(7, betrieb.getEMail());
-                preparedStatement.execute();
+             
 
                 int affectedRows = preparedStatement.executeUpdate();
 
