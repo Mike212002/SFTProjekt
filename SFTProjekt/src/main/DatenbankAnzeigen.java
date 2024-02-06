@@ -119,6 +119,16 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(4).setResizable(false);
+            jTable1.getColumnModel().getColumn(5).setResizable(false);
+            jTable1.getColumnModel().getColumn(6).setResizable(false);
+            jTable1.getColumnModel().getColumn(7).setResizable(false);
+        }
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -566,7 +576,9 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
     }//GEN-LAST:event_DatenZurücksetztenbttnActionPerformed
 
     private void DatenAnlegenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenAnlegenbttnActionPerformed
-        // TODO add your handling code here:
+       DatenbankFenster datenbankFenster = new DatenbankFenster();
+       datenbankFenster.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_DatenAnlegenbttnActionPerformed
 
     private void ZurückbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZurückbttnActionPerformed

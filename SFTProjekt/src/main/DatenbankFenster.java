@@ -393,8 +393,8 @@ public class DatenbankFenster extends javax.swing.JFrame {
 
     private void ZurückbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZurückbttnActionPerformed
         this.dispose();
-        Navigation navigation = new Navigation();
-        navigation.setVisible(true);
+        DatenbankAnzeigen datenbankAnzeigen = new DatenbankAnzeigen();
+        datenbankAnzeigen.setVisible(true);
     }//GEN-LAST:event_ZurückbttnActionPerformed
 
     private void EinfügenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EinfügenbttnActionPerformed
