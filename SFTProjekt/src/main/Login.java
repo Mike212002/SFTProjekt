@@ -26,7 +26,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
-           initCustomComponents();
+        initCustomComponents();
     }
 
     /**
@@ -338,50 +338,49 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtpasswortActionPerformed
 
     private void AnmeldeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnmeldeButtonActionPerformed
-    String username = jTextField1.getText();
-    String password = new String(txtpasswort.getPassword());
+        String username = jTextField1.getText();
+        String password = new String(txtpasswort.getPassword());
 
-    // Check if username or password is empty
-    if (username.isEmpty() || password.isEmpty()) {
-        // If either field is empty, show a message and return without further processing
-        JOptionPane.showMessageDialog(this, "Falsche Anmelde Daten.");
-        return;
-    }
+        // Check if username or password is empty
+        if (username.isEmpty() || password.isEmpty()) {
+            // If either field is empty, show a message and return without further processing
+            JOptionPane.showMessageDialog(this, "Falsche Anmelde Daten.");
+            return;
+        }
 
-    // Database connection parameters
-    String url = "jdbc:mysql://mike007.lima-db.de:3306/db_427829_1";
-    String user = "USER427829";
-    String dbPassword = "Milka123mo";
+        // Database connection parameters
+        String url = "jdbc:mysql://mike007.lima-db.de:3306/db_427829_1";
+        String user = "USER427829";
+        String dbPassword = "Milka123mo";
 
-    try (Connection connection = DriverManager.getConnection(url, user, dbPassword)) {
-        // Prepare SQL statement to retrieve password from the database
-        String sql = "SELECT Password FROM LoginDaten WHERE Benutzername = ?";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, username);
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    String storedPassword = resultSet.getString("Password");
-                    // Check if the entered password matches the stored password
-                    if (Password.check(password, storedPassword).addPepper().withBcrypt()) {
-                        // Passwords match, open the navigation window
-                        Navigation navigationsfenster = new Navigation();
-                        navigationsfenster.setVisible(true);
-                        this.dispose(); // Close the login window
+        try (Connection connection = DriverManager.getConnection(url, user, dbPassword)) {
+            String sql = "SELECT Password FROM LoginDaten WHERE Benutzername = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1, username);
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    if (resultSet.next()) {
+                        String storedPassword = resultSet.getString("Password");
+                        if (password.equals(storedPassword)) {
+                            // Passwords match, open the navigation window
+                            Navigation navigationsfenster = new Navigation();
+                            navigationsfenster.setVisible(true);
+                            this.dispose(); // Close the login window
+                        } else {
+                            // Invalid password
+                            JOptionPane.showMessageDialog(this, "Falsches Passwort.");
+                        }
                     } else {
-                        // Invalid password
-                        JOptionPane.showMessageDialog(this, "Falsches Passwort.");
+                        // Username not found
+                        JOptionPane.showMessageDialog(this, "Benutzername nicht gefunden.");
                     }
-                } else {
-                    // Username not found
-                    JOptionPane.showMessageDialog(this, "Benutzername nicht gefunden.");
                 }
             }
+        } catch (SQLException ex) {
+            ex.printStackTrace(); // This will print the stack trace to the console
+            JOptionPane.showMessageDialog(this, "Fehler bei der Datenbankverbindung.");
         }
-    } catch (SQLException ex) {
-        ex.printStackTrace();
-        // Handle database connection errors
-        JOptionPane.showMessageDialog(this, "Fehler bei der Datenbankverbindung.");
-    }
+
+
     }//GEN-LAST:event_AnmeldeButtonActionPerformed
 
     private void PasswortmerkenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswortmerkenActionPerformed
@@ -397,22 +396,19 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_nichtsehenMouseClicked
 
     private void sehenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sehenMouseClicked
-      txtpasswort.setEchoChar((char) 8226);
+        txtpasswort.setEchoChar((char) 8226);
         nichtsehen.setVisible(true);
         nichtsehen.setEnabled(true);
         sehen.setEnabled(false);
         sehen.setEnabled(false);
     }//GEN-LAST:event_sehenMouseClicked
 
-   
-private void initCustomComponents() {
-    ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
-    if (icon != null) {
+   private void initCustomComponents() {
+        ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
         this.setIconImage(icon.getImage());
-    } else {
-        System.err.println("Icon image not found");
     }
-}
+
+
 
 
 
