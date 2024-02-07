@@ -27,6 +27,51 @@ public class Datenbank {
         }
 
     }
+public boolean updateBetrieb(Betrieb betrieb) {
+    try (Connection connection = DriverManager.getConnection(url, user, password)) {
+        System.out.println("Database connected!");
+        String statement = "UPDATE Betrieb SET Betriebsname = ?, Straße = ?, Ort = ?, Ansprechpartner = ?, Website = ?, EMail = ? WHERE BetriebsID = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
+            preparedStatement.setString(1, betrieb.getBetriebsname());
+            preparedStatement.setString(2, betrieb.getStraße());
+            preparedStatement.setString(3, betrieb.getOrt());
+            preparedStatement.setString(4, betrieb.getAnsprechpartner());
+            preparedStatement.setString(5, betrieb.getWebsite());
+            preparedStatement.setString(6, betrieb.getEMail());
+            preparedStatement.setInt(7, betrieb.getBetriebsID());
+
+            int affectedRows = preparedStatement.executeUpdate();
+
+            return affectedRows > 0;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    } catch (SQLException e) {
+        System.out.println(e);
+        return false;
+    }
+}
+
+public boolean deleteBetrieb(int betriebsID) {
+    try (Connection connection = DriverManager.getConnection(url, user, password)) {
+        System.out.println("Database connected!");
+        String statement = "DELETE FROM Betrieb WHERE BetriebsID = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
+            preparedStatement.setInt(1, betriebsID);
+
+            int affectedRows = preparedStatement.executeUpdate();
+
+            return affectedRows > 0;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    } catch (SQLException e) {
+        System.out.println(e);
+        return false;
+    }
+}
 
     public ArrayList<Betrieb> holeAlleBetriebe() {
         ArrayList<Betrieb> alleBetriebe = new ArrayList<>();
@@ -58,6 +103,8 @@ public class Datenbank {
         return alleBetriebe;
     }
 
+  
+
     public boolean createBetrieb(Betrieb betrieb) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
             System.out.println("Database connected!");
@@ -70,7 +117,6 @@ public class Datenbank {
                 preparedStatement.setString(5, betrieb.getAnsprechpartner());
                 preparedStatement.setString(6, betrieb.getWebsite());
                 preparedStatement.setString(7, betrieb.getEMail());
-             
 
                 int affectedRows = preparedStatement.executeUpdate();
 

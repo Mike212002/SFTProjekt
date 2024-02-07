@@ -23,9 +23,12 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         initComponents();
         initCustomComponents();
         setTableContents();
+
     }
 
     @SuppressWarnings("unchecked")
+
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
@@ -58,7 +61,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         EMail = new javax.swing.JTextField();
         Orttxtfield = new javax.swing.JLabel();
         Ansprechpartnertxtfield = new javax.swing.JLabel();
-        Websitetxtfield = new javax.swing.JLabel();
+        EMailtxtfield = new javax.swing.JLabel();
         Straßetxtfield = new javax.swing.JLabel();
         PLZtxtfield = new javax.swing.JLabel();
         Betriebsnametxtfield = new javax.swing.JLabel();
@@ -69,7 +72,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         filler18 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20));
         filler19 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20), new java.awt.Dimension(20, 20));
         Website = new javax.swing.JTextField();
-        EMailtxtfield = new javax.swing.JLabel();
+        Websitetxtfield = new javax.swing.JLabel();
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         BetriebeÜbersicht = new javax.swing.JLabel();
 
@@ -100,16 +103,9 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
         });
         jTable1.setMinimumSize(new java.awt.Dimension(105, 200));
@@ -126,7 +122,6 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(3).setResizable(false);
             jTable1.getColumnModel().getColumn(4).setResizable(false);
             jTable1.getColumnModel().getColumn(5).setResizable(false);
-            jTable1.getColumnModel().getColumn(6).setResizable(false);
             jTable1.getColumnModel().getColumn(7).setResizable(false);
         }
 
@@ -211,6 +206,11 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         DatenAktualisierenbttn.setMaximumSize(new java.awt.Dimension(0, 0));
         DatenAktualisierenbttn.setMinimumSize(new java.awt.Dimension(0, 0));
         DatenAktualisierenbttn.setPreferredSize(new java.awt.Dimension(2, 2));
+        DatenAktualisierenbttn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DatenAktualisierenbttnActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -258,6 +258,11 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         DatenLöschenbttn.setMaximumSize(new java.awt.Dimension(0, 0));
         DatenLöschenbttn.setMinimumSize(new java.awt.Dimension(0, 0));
         DatenLöschenbttn.setPreferredSize(new java.awt.Dimension(2, 2));
+        DatenLöschenbttn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DatenLöschenbttnActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -342,7 +347,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         Postleitzahl.setPreferredSize(new java.awt.Dimension(100, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
@@ -353,7 +358,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         Ort.setPreferredSize(new java.awt.Dimension(100, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
@@ -387,7 +392,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         Orttxtfield.setPreferredSize(new java.awt.Dimension(20, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
@@ -407,10 +412,10 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jPanel7.add(Ansprechpartnertxtfield, gridBagConstraints);
 
-        Websitetxtfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Websitetxtfield.setText("E-Mail");
-        Websitetxtfield.setMinimumSize(new java.awt.Dimension(20, 20));
-        Websitetxtfield.setPreferredSize(new java.awt.Dimension(20, 20));
+        EMailtxtfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EMailtxtfield.setText("E-Mail");
+        EMailtxtfield.setMinimumSize(new java.awt.Dimension(20, 20));
+        EMailtxtfield.setPreferredSize(new java.awt.Dimension(20, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -418,7 +423,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel7.add(Websitetxtfield, gridBagConstraints);
+        jPanel7.add(EMailtxtfield, gridBagConstraints);
 
         Straßetxtfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Straßetxtfield.setText("Straße");
@@ -439,7 +444,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         PLZtxtfield.setPreferredSize(new java.awt.Dimension(20, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
@@ -493,10 +498,10 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
         jPanel7.add(Website, gridBagConstraints);
 
-        EMailtxtfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        EMailtxtfield.setText("Website");
-        EMailtxtfield.setMinimumSize(new java.awt.Dimension(20, 20));
-        EMailtxtfield.setPreferredSize(new java.awt.Dimension(20, 20));
+        Websitetxtfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Websitetxtfield.setText("Website");
+        Websitetxtfield.setMinimumSize(new java.awt.Dimension(20, 20));
+        Websitetxtfield.setPreferredSize(new java.awt.Dimension(20, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
@@ -504,7 +509,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel7.add(EMailtxtfield, gridBagConstraints);
+        jPanel7.add(Websitetxtfield, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -549,41 +554,123 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void setTableContents() {
-    Datenbank datenbank = new Datenbank();
-    ArrayList<Betrieb> alleBetriebe = datenbank.holeAlleBetriebe();
+        Datenbank datenbank = new Datenbank();
+        ArrayList<Betrieb> alleBetriebe = datenbank.holeAlleBetriebe();
 
-    DefaultTableModel tableModel = new DefaultTableModel(new Object []{"BetriebsID", "Betriebsname", "Straße", "Ort", "PLZ", "Ansprechpartner", "Website", "EMail"}, 0);
+        DefaultTableModel tableModel = new DefaultTableModel(new Object[]{"BetriebsID", "Betriebsname", "Straße", "Ort", "PLZ", "Ansprechpartner", "Website", "EMail"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
 
-    for (Betrieb betrieb : alleBetriebe) {
-        Object[] rowData = {
-            betrieb.getBetriebsID(),
-            betrieb.getBetriebsname(),
-            betrieb.getStraße(),
-            betrieb.getOrt(),
-            betrieb.getPLZ(),
-            betrieb.getAnsprechpartner(),
-            betrieb.getWebsite(),
-            betrieb.getEMail()
+                return false;
+            }
         };
 
-        tableModel.addRow(rowData);
+        for (Betrieb betrieb : alleBetriebe) {
+            Object[] rowData = {
+                betrieb.getBetriebsID(),
+                betrieb.getBetriebsname(),
+                betrieb.getStraße(),
+                betrieb.getOrt(),
+                betrieb.getPLZ(),
+                betrieb.getAnsprechpartner(),
+                betrieb.getWebsite(),
+                betrieb.getEMail()
+            };
+
+            tableModel.addRow(rowData);
+        }
+
+        jTable1.setModel(tableModel);
     }
 
-    jTable1.setModel(tableModel);
-}
-    
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int selectedRow = jTable1.getSelectedRow();
 
-    }//GEN-LAST:event_jTable1MouseClicked
+        if (selectedRow != -1) {
+            try {
+                String betriebsname = "";
+                String straße = "";
+                String postleitzahl = ""; // Postleitzahl als String behalten
+                String ort = "";
+                String ansprechpartner = "";
+                String website = "";
+                String email = "";
+
+                Object value;
+
+                // Betriebsname
+                value = jTable1.getValueAt(selectedRow, 1);
+                if (value != null) {
+                    betriebsname = value.toString();
+                }
+
+                // Straße
+                value = jTable1.getValueAt(selectedRow, 2);
+                if (value != null) {
+                    straße = value.toString();
+                }
+
+                // Postleitzahl (als String behandeln, da aus der Tabelle abgerufen)
+                value = jTable1.getValueAt(selectedRow, 4);
+                if (value != null) {
+                    postleitzahl = value.toString();
+                }
+
+                // Ort
+                value = jTable1.getValueAt(selectedRow, 3);
+                if (value != null) {
+                    ort = value.toString();
+                }
+
+                // Ansprechpartner
+                value = jTable1.getValueAt(selectedRow, 5);
+                if (value != null) {
+                    ansprechpartner = value.toString();
+                }
+
+                // Website
+                value = jTable1.getValueAt(selectedRow, 6);
+                if (value != null) {
+                    website = value.toString();
+                }
+
+                // E-Mail
+                value = jTable1.getValueAt(selectedRow, 7);
+                if (value != null) {
+                    email = value.toString();
+                }
+
+                // Setzen der Werte in die entsprechenden Textfelder
+                Betriebsname.setText(betriebsname);
+                Straße.setText(straße);
+                Postleitzahl.setText(postleitzahl); // Postleitzahl als String setzen
+                Ort.setText(ort);
+                Ansprechpartner.setText(ansprechpartner);
+                Website.setText(website);
+                EMail.setText(email);
+            } catch (ArrayIndexOutOfBoundsException ex) {
+                System.out.println("Fehler beim Abrufen der Daten aus der Tabelle: " + ex.getMessage());
+            }
+        } else {
+            System.out.println("Es wurde keine Zeile ausgewählt.");
+}    }//GEN-LAST:event_jTable1MouseClicked
 
     private void DatenZurücksetztenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenZurücksetztenbttnActionPerformed
-        // TODO add your handling code here:
+        Betriebsname.setText("");
+        Straße.setText("");
+        Postleitzahl.setText("");
+        Ort.setText("");
+        Ansprechpartner.setText("");
+        Website.setText("");
+        EMail.setText("");
+
+
     }//GEN-LAST:event_DatenZurücksetztenbttnActionPerformed
 
     private void DatenAnlegenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenAnlegenbttnActionPerformed
-       DatenbankFenster datenbankFenster = new DatenbankFenster();
-       datenbankFenster.setVisible(true);
-       this.dispose();
+        DatenbankFenster datenbankFenster = new DatenbankFenster();
+        datenbankFenster.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_DatenAnlegenbttnActionPerformed
 
     private void ZurückbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZurückbttnActionPerformed
@@ -596,9 +683,98 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BetriebsnameActionPerformed
 
+    private void DatenAktualisierenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenAktualisierenbttnActionPerformed
+int selectedRow = jTable1.getSelectedRow();
+
+if (selectedRow != -1) {
+    try {
+        // BetriebsID aus der ausgewählten Zeile holen
+        int betriebsID = (int) jTable1.getValueAt(selectedRow, 0);
+
+        // Betriebsdaten aus den GUI-Komponenten abrufen
+        String betriebsname = Betriebsname.getText();
+        String straße = Straße.getText();
+        String ort = Ort.getText();
+        String ansprechpartner = Ansprechpartner.getText();
+        String website = Website.getText();
+        String email = EMail.getText();
+
+        // Ein Betrieb-Objekt erstellen und die abgerufenen Daten setzen
+        Betrieb betrieb = new Betrieb();
+        betrieb.setBetriebsID(betriebsID);
+        betrieb.setBetriebsname(betriebsname);
+        betrieb.setStraße(straße);
+        betrieb.setOrt(ort);
+        betrieb.setAnsprechpartner(ansprechpartner);
+        betrieb.setWebsite(website);
+        betrieb.setEMail(email);
+
+        // Datenbankverbindung herstellen und Betrieb aktualisieren
+        Datenbank datenbank = new Datenbank();
+        boolean updateErfolgreich = datenbank.updateBetrieb(betrieb);
+
+        if (updateErfolgreich) {
+            // Wenn die Aktualisierung erfolgreich war, die Tabelle aktualisieren
+            updateTable();
+        } else {
+            // Fehlermeldung ausgeben, wenn die Aktualisierung fehlgeschlagen ist
+            JOptionPane.showMessageDialog(this, "Fehler beim Aktualisieren des Betriebs.", "Fehler", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (Exception ex) {
+        // Fehler behandeln, z.B. Datenkonvertierungsfehler oder SQL-Fehler
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Fehler beim Aktualisieren des Betriebs: " + ex.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
+    }
+} else {
+    // Benutzer hat keine Zeile ausgewählt
+    JOptionPane.showMessageDialog(this, "Bitte wählen Sie eine Zeile in der Tabelle aus.", "Fehler", JOptionPane.ERROR_MESSAGE);
+}
+    }//GEN-LAST:event_DatenAktualisierenbttnActionPerformed
+
+    private void DatenLöschenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenLöschenbttnActionPerformed
+   int selectedRow = jTable1.getSelectedRow();
+
+    if (selectedRow != -1) {
+        try {
+            // Holen Sie sich die BetriebsID aus der ausgewählten Zeile
+            int betriebsID = (int) jTable1.getValueAt(selectedRow, 0);
+
+            // Löschen Sie den Betrieb aus der Datenbank
+            Datenbank datenbank = new Datenbank();
+            if (datenbank.deleteBetrieb(betriebsID)) {
+                // Wenn das Löschen erfolgreich war, aktualisieren Sie die Tabelle
+                updateTable();
+            } else {
+                // Fehlerbehandlung, wenn das Löschen fehlschlägt
+                JOptionPane.showMessageDialog(this, "Fehler beim Löschen des Betriebs.", "Fehler", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NullPointerException ex) {
+            System.out.println("Fehler beim Abrufen der BetriebsID aus der Tabelle: " + ex.getMessage());
+        }
+    } else {
+        // Fehlerbehandlung, wenn keine Zeile ausgewählt wurde
+        JOptionPane.showMessageDialog(this, "Bitte wählen Sie eine Zeile in der Tabelle aus.", "Fehler", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_DatenLöschenbttnActionPerformed
+
     private void initCustomComponents() {
         ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
         this.setIconImage(icon.getImage());
+
+    }
+
+    private void updateTable() {
+        // Stellen Sie sicher, dass Ihre Tabelle ein DefaultTableModel verwendet
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0); // Löschen Sie alle vorhandenen Daten in der Tabelle
+
+        // Holen Sie sich alle Betriebe erneut aus der Datenbank und fügen Sie sie zur Tabelle hinzu
+        Datenbank datenbank = new Datenbank(); // Instanziierung der Datenbankklasse
+        ArrayList<Betrieb> betriebe = datenbank.holeAlleBetriebe();
+        for (Betrieb betrieb : betriebe) {
+            Object[] row = {betrieb.getBetriebsID(), betrieb.getBetriebsname(), betrieb.getStraße(), betrieb.getOrt(), betrieb.getPLZ(), betrieb.getAnsprechpartner(), betrieb.getWebsite(), betrieb.getEMail()};
+            model.addRow(row);
+        }
     }
 
 
