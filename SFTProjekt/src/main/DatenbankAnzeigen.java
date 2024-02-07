@@ -714,7 +714,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
 
                 // Datenbankverbindung herstellen und Betrieb aktualisieren
                 Datenbank datenbank = new Datenbank();
-                boolean updateErfolgreich = datenbank.updateBetrieb(betrieb);
+                boolean updateErfolgreich = datenbank.aktualisiereBetrieb(betrieb);
 
                 if (updateErfolgreich) {
                     // Wenn die Aktualisierung erfolgreich war, die Tabelle aktualisieren
@@ -744,7 +744,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
 
                 // Löschen Sie den Betrieb aus der Datenbank
                 Datenbank datenbank = new Datenbank();
-                if (datenbank.deleteBetrieb(betriebsID)) {
+                if (datenbank.löscheBetrieb(betriebsID)) {
                     // Wenn das Löschen erfolgreich war, aktualisieren Sie die Tabelle
                     updateTable();
                 } else {

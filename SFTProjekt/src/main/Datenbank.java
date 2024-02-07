@@ -28,7 +28,7 @@ public class Datenbank {
 
     }
 
-    public boolean updateBetrieb(Betrieb betrieb) {
+    public boolean aktualisiereBetrieb(Betrieb betrieb) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
             System.out.println("Database connected!");
             String statement = "UPDATE Betrieb SET Betriebsname = ?, Straße = ?, Ort = ?, PLZ = ?, Ansprechpartner = ?, Website = ?, EMail = ? WHERE BetriebsID = ?";
@@ -55,7 +55,7 @@ public class Datenbank {
         }
     }
 
-    public boolean deleteBetrieb(int betriebsID) {
+    public boolean löscheBetrieb(int betriebsID) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
             System.out.println("Database connected!");
             String statement = "DELETE FROM Betrieb WHERE BetriebsID = ?";
