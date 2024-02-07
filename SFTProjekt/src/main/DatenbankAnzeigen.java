@@ -55,7 +55,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         Betriebsname = new javax.swing.JTextField();
         Straße = new javax.swing.JTextField();
-        Postleitzahl = new javax.swing.JTextField();
+        PLZ = new javax.swing.JTextField();
         Ort = new javax.swing.JTextField();
         Ansprechpartner = new javax.swing.JTextField();
         EMail = new javax.swing.JTextField();
@@ -342,16 +342,16 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
         jPanel7.add(Straße, gridBagConstraints);
 
-        Postleitzahl.setMaximumSize(new java.awt.Dimension(100, 20));
-        Postleitzahl.setMinimumSize(new java.awt.Dimension(20, 20));
-        Postleitzahl.setPreferredSize(new java.awt.Dimension(100, 20));
+        PLZ.setMaximumSize(new java.awt.Dimension(100, 20));
+        PLZ.setMinimumSize(new java.awt.Dimension(20, 20));
+        PLZ.setPreferredSize(new java.awt.Dimension(100, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
-        jPanel7.add(Postleitzahl, gridBagConstraints);
+        jPanel7.add(PLZ, gridBagConstraints);
 
         Ort.setMaximumSize(new java.awt.Dimension(100, 20));
         Ort.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -643,7 +643,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
                 // Setzen der Werte in die entsprechenden Textfelder
                 Betriebsname.setText(betriebsname);
                 Straße.setText(straße);
-                Postleitzahl.setText(postleitzahl); // Postleitzahl als String setzen
+                PLZ.setText(postleitzahl); // Postleitzahl als String setzen
                 Ort.setText(ort);
                 Ansprechpartner.setText(ansprechpartner);
                 Website.setText(website);
@@ -658,7 +658,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
     private void DatenZurücksetztenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenZurücksetztenbttnActionPerformed
         Betriebsname.setText("");
         Straße.setText("");
-        Postleitzahl.setText("");
+        PLZ.setText("");
         Ort.setText("");
         Ansprechpartner.setText("");
         Website.setText("");
@@ -684,77 +684,80 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
     }//GEN-LAST:event_BetriebsnameActionPerformed
 
     private void DatenAktualisierenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenAktualisierenbttnActionPerformed
-int selectedRow = jTable1.getSelectedRow();
+        int selectedRow = jTable1.getSelectedRow();
 
-if (selectedRow != -1) {
-    try {
-        // BetriebsID aus der ausgewählten Zeile holen
-        int betriebsID = (int) jTable1.getValueAt(selectedRow, 0);
+        if (selectedRow != -1) {
+            try {
+                // BetriebsID aus der ausgewählten Zeile holen
+                int betriebsID = (int) jTable1.getValueAt(selectedRow, 0);
 
-        // Betriebsdaten aus den GUI-Komponenten abrufen
-        String betriebsname = Betriebsname.getText();
-        String straße = Straße.getText();
-        String ort = Ort.getText();
-        String ansprechpartner = Ansprechpartner.getText();
-        String website = Website.getText();
-        String email = EMail.getText();
+                // Betriebsdaten aus den GUI-Komponenten abrufen
+                String betriebsname = Betriebsname.getText();
+                String straße = Straße.getText();
+                String ort = Ort.getText();
+                String postleitzahlString = PLZ.getText();
+                int postleitzahl = Integer.parseInt(postleitzahlString);
+                String ansprechpartner = Ansprechpartner.getText();
+                String website = Website.getText();
+                String email = EMail.getText();
 
-        // Ein Betrieb-Objekt erstellen und die abgerufenen Daten setzen
-        Betrieb betrieb = new Betrieb();
-        betrieb.setBetriebsID(betriebsID);
-        betrieb.setBetriebsname(betriebsname);
-        betrieb.setStraße(straße);
-        betrieb.setOrt(ort);
-        betrieb.setAnsprechpartner(ansprechpartner);
-        betrieb.setWebsite(website);
-        betrieb.setEMail(email);
+                // Ein Betrieb-Objekt erstellen und die abgerufenen Daten setzen
+                Betrieb betrieb = new Betrieb();
+                betrieb.setBetriebsID(betriebsID);
+                betrieb.setBetriebsname(betriebsname);
+                betrieb.setStraße(straße);
+                betrieb.setOrt(ort);
+                betrieb.setPLZ(postleitzahl);
+                betrieb.setAnsprechpartner(ansprechpartner);
+                betrieb.setWebsite(website);
+                betrieb.setEMail(email);
 
-        // Datenbankverbindung herstellen und Betrieb aktualisieren
-        Datenbank datenbank = new Datenbank();
-        boolean updateErfolgreich = datenbank.updateBetrieb(betrieb);
+                // Datenbankverbindung herstellen und Betrieb aktualisieren
+                Datenbank datenbank = new Datenbank();
+                boolean updateErfolgreich = datenbank.updateBetrieb(betrieb);
 
-        if (updateErfolgreich) {
-            // Wenn die Aktualisierung erfolgreich war, die Tabelle aktualisieren
-            updateTable();
+                if (updateErfolgreich) {
+                    // Wenn die Aktualisierung erfolgreich war, die Tabelle aktualisieren
+                    updateTable();
+                } else {
+                    // Fehlermeldung ausgeben, wenn die Aktualisierung fehlgeschlagen ist
+                    JOptionPane.showMessageDialog(this, "Fehler beim Aktualisieren des Betriebs.", "Fehler", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (Exception ex) {
+                // Fehler behandeln, z.B. Datenkonvertierungsfehler oder SQL-Fehler
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Fehler beim Aktualisieren des Betriebs: " + ex.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
-            // Fehlermeldung ausgeben, wenn die Aktualisierung fehlgeschlagen ist
-            JOptionPane.showMessageDialog(this, "Fehler beim Aktualisieren des Betriebs.", "Fehler", JOptionPane.ERROR_MESSAGE);
+            // Benutzer hat keine Zeile ausgewählt
+            JOptionPane.showMessageDialog(this, "Bitte wählen Sie eine Zeile in der Tabelle aus.", "Fehler", JOptionPane.ERROR_MESSAGE);
         }
-    } catch (Exception ex) {
-        // Fehler behandeln, z.B. Datenkonvertierungsfehler oder SQL-Fehler
-        ex.printStackTrace();
-        JOptionPane.showMessageDialog(this, "Fehler beim Aktualisieren des Betriebs: " + ex.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
-    }
-} else {
-    // Benutzer hat keine Zeile ausgewählt
-    JOptionPane.showMessageDialog(this, "Bitte wählen Sie eine Zeile in der Tabelle aus.", "Fehler", JOptionPane.ERROR_MESSAGE);
-}
     }//GEN-LAST:event_DatenAktualisierenbttnActionPerformed
 
     private void DatenLöschenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenLöschenbttnActionPerformed
-   int selectedRow = jTable1.getSelectedRow();
+        int selectedRow = jTable1.getSelectedRow();
 
-    if (selectedRow != -1) {
-        try {
-            // Holen Sie sich die BetriebsID aus der ausgewählten Zeile
-            int betriebsID = (int) jTable1.getValueAt(selectedRow, 0);
+        if (selectedRow != -1) {
+            try {
+                // Holen Sie sich die BetriebsID aus der ausgewählten Zeile
+                int betriebsID = (int) jTable1.getValueAt(selectedRow, 0);
 
-            // Löschen Sie den Betrieb aus der Datenbank
-            Datenbank datenbank = new Datenbank();
-            if (datenbank.deleteBetrieb(betriebsID)) {
-                // Wenn das Löschen erfolgreich war, aktualisieren Sie die Tabelle
-                updateTable();
-            } else {
-                // Fehlerbehandlung, wenn das Löschen fehlschlägt
-                JOptionPane.showMessageDialog(this, "Fehler beim Löschen des Betriebs.", "Fehler", JOptionPane.ERROR_MESSAGE);
+                // Löschen Sie den Betrieb aus der Datenbank
+                Datenbank datenbank = new Datenbank();
+                if (datenbank.deleteBetrieb(betriebsID)) {
+                    // Wenn das Löschen erfolgreich war, aktualisieren Sie die Tabelle
+                    updateTable();
+                } else {
+                    // Fehlerbehandlung, wenn das Löschen fehlschlägt
+                    JOptionPane.showMessageDialog(this, "Fehler beim Löschen des Betriebs.", "Fehler", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (NullPointerException ex) {
+                System.out.println("Fehler beim Abrufen der BetriebsID aus der Tabelle: " + ex.getMessage());
             }
-        } catch (NullPointerException ex) {
-            System.out.println("Fehler beim Abrufen der BetriebsID aus der Tabelle: " + ex.getMessage());
+        } else {
+            // Fehlerbehandlung, wenn keine Zeile ausgewählt wurde
+            JOptionPane.showMessageDialog(this, "Bitte wählen Sie eine Zeile in der Tabelle aus.", "Fehler", JOptionPane.ERROR_MESSAGE);
         }
-    } else {
-        // Fehlerbehandlung, wenn keine Zeile ausgewählt wurde
-        JOptionPane.showMessageDialog(this, "Bitte wählen Sie eine Zeile in der Tabelle aus.", "Fehler", JOptionPane.ERROR_MESSAGE);
-    }
     }//GEN-LAST:event_DatenLöschenbttnActionPerformed
 
     private void initCustomComponents() {
@@ -793,8 +796,8 @@ if (selectedRow != -1) {
     private javax.swing.JLabel EMailtxtfield;
     private javax.swing.JTextField Ort;
     private javax.swing.JLabel Orttxtfield;
+    private javax.swing.JTextField PLZ;
     private javax.swing.JLabel PLZtxtfield;
-    private javax.swing.JTextField Postleitzahl;
     private javax.swing.JTextField Straße;
     private javax.swing.JLabel Straßetxtfield;
     private javax.swing.JTextField Website;
