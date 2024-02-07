@@ -405,10 +405,15 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_sehenMouseClicked
 
    
-    private void initCustomComponents() {
-        ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
+private void initCustomComponents() {
+    ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
+    if (icon != null) {
         this.setIconImage(icon.getImage());
+    } else {
+        System.err.println("Icon image not found");
     }
+}
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
