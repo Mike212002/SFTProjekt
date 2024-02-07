@@ -9,6 +9,11 @@ import com.password4j.Hash;
 import com.password4j.Password;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -333,34 +338,50 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtpasswortActionPerformed
 
     private void AnmeldeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnmeldeButtonActionPerformed
-        String username = jTextField1.getText();
-        String password = new String(txtpasswort.getPassword());
+    String username = jTextField1.getText();
+    String password = new String(txtpasswort.getPassword());
 
-        // Check if username or password is empty
-        if (username.isEmpty() || password.isEmpty()) {
-            // If either field is empty, show a message and return without further processing
-            JOptionPane.showMessageDialog(this, "Falsche Anmelde Daten.");
-            return;
+    // Check if username or password is empty
+    if (username.isEmpty() || password.isEmpty()) {
+        // If either field is empty, show a message and return without further processing
+        JOptionPane.showMessageDialog(this, "Falsche Anmelde Daten.");
+        return;
+    }
+
+    // Database connection parameters
+    String url = "jdbc:mysql://mike007.lima-db.de:3306/db_427829_1";
+    String user = "USER427829";
+    String dbPassword = "Milka123mo";
+
+    try (Connection connection = DriverManager.getConnection(url, user, dbPassword)) {
+        // Prepare SQL statement to retrieve password from the database
+        String sql = "SELECT Password FROM LoginDaten WHERE Benutzername = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, username);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    String storedPassword = resultSet.getString("Password");
+                    // Check if the entered password matches the stored password
+                    if (Password.check(password, storedPassword).addPepper().withBcrypt()) {
+                        // Passwords match, open the navigation window
+                        Navigation navigationsfenster = new Navigation();
+                        navigationsfenster.setVisible(true);
+                        this.dispose(); // Close the login window
+                    } else {
+                        // Invalid password
+                        JOptionPane.showMessageDialog(this, "Falsches Passwort.");
+                    }
+                } else {
+                    // Username not found
+                    JOptionPane.showMessageDialog(this, "Benutzername nicht gefunden.");
+                }
+            }
         }
-
-        //todo: Zu Test-Zwecken hier eingefügt
-        Hash hashedPasswort = Password.hash("password").addPepper().withBcrypt();
-        String gespeichertesPasswort = hashedPasswort.getResult();
-        boolean validiert = Password.check(password, gespeichertesPasswort).addPepper().withBcrypt();
-
-        if(username.equals("schüler") && validiert){
-            Navigation navigationsfenster = new Navigation();
-            navigationsfenster.setVisible(true);
-            this.dispose(); // Close the login window
-        } else if (username.equals("Lehrer") && password.equals("password2")) {
-            // access fur Lehrer
-            Navigation navigationsfenster = new Navigation();
-            navigationsfenster.setVisible(true);
-            this.dispose(); // Close the login window
-        } else {
-            // Invalid username or password
-            JOptionPane.showMessageDialog(this, "Falsche Anmelde Daten.");
-        }
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+        // Handle database connection errors
+        JOptionPane.showMessageDialog(this, "Fehler bei der Datenbankverbindung.");
+    }
     }//GEN-LAST:event_AnmeldeButtonActionPerformed
 
     private void PasswortmerkenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswortmerkenActionPerformed
