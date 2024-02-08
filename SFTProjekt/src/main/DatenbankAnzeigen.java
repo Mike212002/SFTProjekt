@@ -550,7 +550,8 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(jPanel2, gridBagConstraints);
 
-        setBounds(0, 0, 649, 626);
+        setSize(new java.awt.Dimension(649, 626));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void setTableContents() {
@@ -688,10 +689,10 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
 
         if (selectedRow != -1) {
             try {
-                // BetriebsID aus der ausgewählten Zeile holen
+       
                 int betriebsID = (int) jTable1.getValueAt(selectedRow, 0);
 
-                // Betriebsdaten aus den GUI-Komponenten abrufen
+          
                 String betriebsname = Betriebsname.getText();
                 String straße = Straße.getText();
                 String ort = Ort.getText();
@@ -701,7 +702,6 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
                 String website = Website.getText();
                 String email = EMail.getText();
 
-                // Ein Betrieb-Objekt erstellen und die abgerufenen Daten setzen
                 Betrieb betrieb = new Betrieb();
                 betrieb.setBetriebsID(betriebsID);
                 betrieb.setBetriebsname(betriebsname);
@@ -712,24 +712,24 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
                 betrieb.setWebsite(website);
                 betrieb.setEMail(email);
 
-                // Datenbankverbindung herstellen und Betrieb aktualisieren
+            
                 Datenbank datenbank = new Datenbank();
                 boolean updateErfolgreich = datenbank.aktualisiereBetrieb(betrieb);
 
                 if (updateErfolgreich) {
-                    // Wenn die Aktualisierung erfolgreich war, die Tabelle aktualisieren
+                   
                     updateTable();
                 } else {
-                    // Fehlermeldung ausgeben, wenn die Aktualisierung fehlgeschlagen ist
+             
                     JOptionPane.showMessageDialog(this, "Fehler beim Aktualisieren des Betriebs.", "Fehler", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (Exception ex) {
-                // Fehler behandeln, z.B. Datenkonvertierungsfehler oder SQL-Fehler
+               
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(this, "Fehler beim Aktualisieren des Betriebs: " + ex.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            // Benutzer hat keine Zeile ausgewählt
+           
             JOptionPane.showMessageDialog(this, "Bitte wählen Sie eine Zeile in der Tabelle aus.", "Fehler", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_DatenAktualisierenbttnActionPerformed
@@ -739,23 +739,23 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
 
         if (selectedRow != -1) {
             try {
-                // Holen Sie sich die BetriebsID aus der ausgewählten Zeile
+              
                 int betriebsID = (int) jTable1.getValueAt(selectedRow, 0);
 
-                // Löschen Sie den Betrieb aus der Datenbank
+                
                 Datenbank datenbank = new Datenbank();
                 if (datenbank.löscheBetrieb(betriebsID)) {
-                    // Wenn das Löschen erfolgreich war, aktualisieren Sie die Tabelle
+                    
                     updateTable();
                 } else {
-                    // Fehlerbehandlung, wenn das Löschen fehlschlägt
+                    
                     JOptionPane.showMessageDialog(this, "Fehler beim Löschen des Betriebs.", "Fehler", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (NullPointerException ex) {
                 System.out.println("Fehler beim Abrufen der BetriebsID aus der Tabelle: " + ex.getMessage());
             }
         } else {
-            // Fehlerbehandlung, wenn keine Zeile ausgewählt wurde
+          
             JOptionPane.showMessageDialog(this, "Bitte wählen Sie eine Zeile in der Tabelle aus.", "Fehler", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_DatenLöschenbttnActionPerformed
@@ -767,12 +767,12 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
     }
 
     private void updateTable() {
-        // Stellen Sie sicher, dass Ihre Tabelle ein DefaultTableModel verwendet
+   
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(0); // Löschen Sie alle vorhandenen Daten in der Tabelle
+        model.setRowCount(0); 
 
-        // Holen Sie sich alle Betriebe erneut aus der Datenbank und fügen Sie sie zur Tabelle hinzu
-        Datenbank datenbank = new Datenbank(); // Instanziierung der Datenbankklasse
+       
+        Datenbank datenbank = new Datenbank(); 
         ArrayList<Betrieb> betriebe = datenbank.holeAlleBetriebe();
         for (Betrieb betrieb : betriebe) {
             Object[] row = {betrieb.getBetriebsID(), betrieb.getBetriebsname(), betrieb.getStraße(), betrieb.getOrt(), betrieb.getPLZ(), betrieb.getAnsprechpartner(), betrieb.getWebsite(), betrieb.getEMail()};

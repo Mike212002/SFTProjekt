@@ -330,7 +330,8 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(jPanel2, gridBagConstraints);
 
-        pack();
+        setSize(new java.awt.Dimension(1046, 609));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtpasswortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswortActionPerformed
