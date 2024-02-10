@@ -20,7 +20,7 @@ public class Datenbank {
     public void dBConnector() {
 
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
-            System.out.println("Database connected!");
+            System.out.println("Datenbank Verbunden");
 
         } catch (SQLException e) {
             System.out.println(e);
@@ -30,7 +30,7 @@ public class Datenbank {
 
     public boolean aktualisiereBetrieb(Betrieb betrieb) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
-            System.out.println("Database connected!");
+            System.out.println("Datenbank Verbunden");
             String statement = "UPDATE Betrieb SET Betriebsname = ?, Straße = ?, Ort = ?, PLZ = ?, Ansprechpartner = ?, Website = ?, EMail = ? WHERE BetriebsID = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
                 preparedStatement.setString(1, betrieb.getBetriebsname());
@@ -57,7 +57,7 @@ public class Datenbank {
 
     public boolean löscheBetrieb(int betriebsID) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
-            System.out.println("Database connected!");
+            System.out.println("Datenbank Verbunden");
             String statement = "DELETE FROM Betrieb WHERE BetriebsID = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
                 preparedStatement.setInt(1, betriebsID);
@@ -78,7 +78,7 @@ public class Datenbank {
     public ArrayList<Betrieb> holeAlleBetriebe() {
         ArrayList<Betrieb> alleBetriebe = new ArrayList<>();
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
-            System.out.println("Database connected!");
+            System.out.println("Datenbank Verbunden");
             String statement = "SELECT * FROM Betrieb";
             try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
                 ResultSet result = preparedStatement.executeQuery();
@@ -107,7 +107,7 @@ public class Datenbank {
 
     public boolean createBetrieb(Betrieb betrieb) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
-            System.out.println("Database connected!");
+            System.out.println("Datenbank Verbunden");
             String statement = "INSERT INTO Betrieb(Betriebsname, Straße, Ort, PLZ, Ansprechpartner, Website, EMail) VALUES (?, ?, ?, ?, ?, ?,?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
                 preparedStatement.setString(1, betrieb.getBetriebsname());
