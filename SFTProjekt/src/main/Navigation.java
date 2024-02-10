@@ -2,7 +2,9 @@ package main;
 
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.UIManager;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -160,6 +162,11 @@ public class Navigation extends javax.swing.JFrame {
         
        
     }//GEN-LAST:event_TabelleAnzeigenActionPerformed
+    private void resetButtonColors() {
+        TabelleAnzeigen.setBackground(UIManager.getColor("Button.background"));
+        TabelleAnzeigen.setForeground(UIManager.getColor("Button.foreground"));
+    }
+
 
     private void initCustomComponents() {
         ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
