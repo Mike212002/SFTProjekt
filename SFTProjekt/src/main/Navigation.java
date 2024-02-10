@@ -156,16 +156,13 @@ public class Navigation extends javax.swing.JFrame {
     }//GEN-LAST:event_DatenHinzufügenActionPerformed
 
     private void TabelleAnzeigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TabelleAnzeigenActionPerformed
-     DatenbankTabelleAnzeigen datenbanktablleanzeigen = new DatenbankTabelleAnzeigen();
+ DatenbankTabelleAnzeigen datenbanktablleanzeigen = new DatenbankTabelleAnzeigen();
        datenbanktablleanzeigen.setVisible(true);
         this.dispose();
         
        
     }//GEN-LAST:event_TabelleAnzeigenActionPerformed
-    private void resetButtonColors() {
-        TabelleAnzeigen.setBackground(UIManager.getColor("Button.background"));
-        TabelleAnzeigen.setForeground(UIManager.getColor("Button.foreground"));
-    }
+
 
 
     private void initCustomComponents() {

@@ -29,8 +29,11 @@ import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 public class DatenbankTabelleAnzeigen extends javax.swing.JFrame {
+      
 
     public DatenbankTabelleAnzeigen() {
+
+
 
         FlatLaf.registerCustomDefaultsSource("main.DatenbankTabelleAnzeigen");
         FlatMacDarkLaf.setup();
@@ -52,6 +55,8 @@ public class DatenbankTabelleAnzeigen extends javax.swing.JFrame {
         scroll.getVerticalScrollBar().putClientProperty(FlatClientProperties.STYLE, "" + "hoverTrackColor:null");
         jLabel2.setForeground(Color.BLACK);
     }
+
+   
 
     private void setTableRenderer() {
         jTable2.setDefaultRenderer(Object.class, new TableGradientCell());
@@ -260,19 +265,18 @@ public class DatenbankTabelleAnzeigen extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1582, 917));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
- 
-  
-    private void ZurückActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZurückActionPerformed
-        this.dispose();
-    Navigation navigation = new Navigation();
-    navigation.setVisible(true);
-    try {
-        // Hier setzen wir das Look and Feel auf das System-Look and Feel zurück
-        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-    } catch (Exception ex) {
-        ex.printStackTrace();
-    }
 
+
+    private void ZurückActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZurückActionPerformed
+      
+        
+        this.dispose();
+        Navigation navigation = new Navigation();
+        navigation.setVisible(true);
+       
+        
+        
+ 
         
     }//GEN-LAST:event_ZurückActionPerformed
 
