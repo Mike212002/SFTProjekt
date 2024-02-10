@@ -1,4 +1,4 @@
-package main;
+package test;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -10,7 +10,10 @@ import java.awt.geom.Rectangle2D;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
-
+/**
+ *
+ * @author RAVEN
+ */
 public class TableGradientCell extends DefaultTableCellRenderer {
 
     public TableGradientCell() {

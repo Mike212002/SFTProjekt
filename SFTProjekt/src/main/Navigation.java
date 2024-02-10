@@ -1,5 +1,7 @@
 package main;
 
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import javax.swing.ImageIcon;
 
 /*
@@ -36,6 +38,7 @@ public class Navigation extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         DatenHinzufügen = new javax.swing.JButton();
+        TabelleAnzeigen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -93,6 +96,13 @@ public class Navigation extends javax.swing.JFrame {
             }
         });
 
+        TabelleAnzeigen.setText("Tabelle Anzegien");
+        TabelleAnzeigen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TabelleAnzeigenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -103,6 +113,10 @@ public class Navigation extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DatenHinzufügen, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(74, 74, 74))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(TabelleAnzeigen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(32, 32, 32))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,7 +125,9 @@ public class Navigation extends javax.swing.JFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(DatenHinzufügen, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(245, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(TabelleAnzeigen, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(477, 0, 440, 470));
@@ -137,6 +153,14 @@ public class Navigation extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_DatenHinzufügenActionPerformed
 
+    private void TabelleAnzeigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TabelleAnzeigenActionPerformed
+     DatenbankTabelleAnzeigen datenbanktablleanzeigen = new DatenbankTabelleAnzeigen();
+       datenbanktablleanzeigen.setVisible(true);
+        this.dispose();
+        
+       
+    }//GEN-LAST:event_TabelleAnzeigenActionPerformed
+
     private void initCustomComponents() {
         ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
         this.setIconImage(icon.getImage());
@@ -146,6 +170,7 @@ public class Navigation extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Ausloggenbttn;
     private javax.swing.JButton DatenHinzufügen;
+    private javax.swing.JButton TabelleAnzeigen;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

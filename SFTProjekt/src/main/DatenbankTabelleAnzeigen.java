@@ -9,7 +9,10 @@ package main;
  *
  * @author miket
  */
+import test.TableGradientCell;
 import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -23,17 +26,17 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+
 public class DatenbankTabelleAnzeigen extends javax.swing.JFrame {
 
  
 
-    /**
-     * Creates new form DatenbankTabelleAnzeigen
-     */
+   
     public DatenbankTabelleAnzeigen() {
         initComponents();
          setTableContents();
            initCustomComponents();
+           TableGradientCell cell = new TableGradientCell();
            
              jTable2.setDefaultRenderer(Object.class, new TableGradientCell());
         jTable2.putClientProperty(FlatClientProperties.STYLE, ""
@@ -46,10 +49,11 @@ public class DatenbankTabelleAnzeigen extends javax.swing.JFrame {
                 + "border:3,0,3,0,$Table.background,10,10");
         scroll.getVerticalScrollBar().putClientProperty(FlatClientProperties.STYLE, ""  + "hoverTrackColor:null");
 
-
     }
 
-    
+     private void setTableRenderer() {
+        jTable2.setDefaultRenderer(Object.class, new TableGradientCell());
+    }
     
      private void setTableContents() {
         Datenbank datenbank = new Datenbank();
