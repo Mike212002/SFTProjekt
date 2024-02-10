@@ -44,7 +44,7 @@ public class DatenbankZuTxt {
             System.out.println("Daten wurden erfolgreich in die Textdatei exportiert.");                       // Wenn ihr nicht wisst, wie ihr anfangen müsst, oder was die Voraaussetzungen sind, wie das hier überhaupt funktioniert, wieso fragt ihr nicht einfach??
        
                                                                                                             // Ihr wisst nicht einmal wie unsere Datenbank überhautp aussieht. Hört auf alles 1 zu 1 aus Chatgpt zu nehmen ohne es zu hinterfragen, obs 
-        } catch (SQLException | IOException e) {                q                                           //Überhaupt sinn macht, was ihr da klaut. Fangt endlich an zu arbeiten und zu fragen, wenn ihr was nicht wisst, oder wollt ihr eine 6 kassieren?
+        } catch (SQLException | IOException e) {                                                           //Überhaupt sinn macht, was ihr da klaut. Fangt endlich an zu arbeiten und zu fragen, wenn ihr was nicht wisst, oder wollt ihr eine 6 kassieren?
             e.printStackTrace();    
         }
     }

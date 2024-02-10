@@ -11,26 +11,25 @@ public class PasswortAbfrage extends javax.swing.JDialog {
         initComponents();
     }
 
-    // Method to validate the entered password
+   
     private boolean isPasswortKorrekt(String passwort) {
         return passwort.equals(korrektesPasswort);
     }
 
-    // This method will be called when the "OK" button is clicked
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
         String passwort = passwortField.getText();
         if (isPasswortKorrekt(passwort)) {
-            // Passwort ist korrekt, also die nächste GUI anzeigen
+           
             DatenbankAnzeigen datenbankanzeigen = new DatenbankAnzeigen();
             datenbankanzeigen.setVisible(true);
-            this.dispose(); // Schließen Sie das Passwortabfragefenster
+            this.dispose();
         } else {
-            // Passwort ist falsch, also eine Fehlermeldung anzeigen
+            
             JOptionPane.showMessageDialog(this, "Falsches Passwort. Bitte versuchen Sie es erneut.", "Fehler", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    // Auto-generated code by GUI builder
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
@@ -78,9 +77,8 @@ public class PasswortAbfrage extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>
 
-    // Variables declaration - do not modify
     private javax.swing.JButton okButton;
     private javax.swing.JPasswordField passwortField;
     private javax.swing.JLabel passwortLabel;
-    // End of variables declaration
+    
 }

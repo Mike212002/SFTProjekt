@@ -11,9 +11,6 @@ import javax.swing.JOptionPane;
  */
 public class DatenbankFenster extends javax.swing.JFrame {
 
-    /**
-     * Creates new form DatenbankFensterNew
-     */
     public DatenbankFenster() {
         initComponents();
         initCustomComponents();
@@ -411,7 +408,7 @@ public class DatenbankFenster extends javax.swing.JFrame {
     }//GEN-LAST:event_EinfügenbttnActionPerformed
 
     private void EMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMailActionPerformed
-        // TODO add your handling code here:
+     
     }//GEN-LAST:event_EMailActionPerformed
 
     private void initCustomComponents(){

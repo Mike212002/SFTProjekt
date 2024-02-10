@@ -591,7 +591,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
             try {
                 String betriebsname = "";
                 String straße = "";
-                String postleitzahl = ""; // Postleitzahl als String behalten
+                String postleitzahl = ""; 
                 String ort = "";
                 String ansprechpartner = "";
                 String website = "";
