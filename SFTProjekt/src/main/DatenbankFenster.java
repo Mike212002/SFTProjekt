@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author gstei
+ * @author miket
  */
 public class DatenbankFenster extends javax.swing.JFrame {
 
