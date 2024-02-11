@@ -8,7 +8,7 @@ package main;
 import de.fhpotsdam.unfolding.UnfoldingMap;
 import de.fhpotsdam.unfolding.geo.Location;
 import de.fhpotsdam.unfolding.providers.*;
-import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 import processing.core.PApplet;
 
 /**
@@ -30,8 +30,8 @@ public class MapFenster extends PApplet {
     @Override
     public void setup() {
         map = new UnfoldingMap(this, new Microsoft.RoadProvider());
-        Location berlin = new Location(52.5, 13.4);
-        map.zoomAndPanTo(berlin, 10);
+        Location hamm = new Location(51.67, 7.81);
+        map.zoomAndPanTo(hamm, 10);
     }
 
     @Override
@@ -56,10 +56,14 @@ public class MapFenster extends PApplet {
         println("Mouse released at: (" + mouseX + ", " + mouseY + ")");
     }
 
-    public void mouseWheel(MouseEvent event) {
-        int e = event.getClickCount();
-        int zoomLevel = map.getZoomLevel();
-        int newZoomLevel = zoomLevel + e;
-        map.zoomToLevel(newZoomLevel);
+    public void mouseWheel() {
+        float scrollAction = mouseEvent.getCount();
+        float zoom = 1.0f + -scrollAction * 0.1f;
+        map.zoom(zoom);
+    }
+
+    @Override
+    public void exit() {
+        super.dispose();
     }
 }
