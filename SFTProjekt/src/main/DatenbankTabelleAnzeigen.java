@@ -18,26 +18,26 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 
 public class DatenbankTabelleAnzeigen extends javax.swing.JFrame {
       
 
     public DatenbankTabelleAnzeigen() {
-
-
-
         FlatLaf.registerCustomDefaultsSource("main.DatenbankTabelleAnzeigen");
         FlatMacDarkLaf.setup();
 
         initComponents();
         setTableContents();
         initCustomComponents();
-        TableGradientCell cell = new TableGradientCell();
+        //TableGradientCell cell = new TableGradientCell();
 
         jTable2.setDefaultRenderer(Object.class, new TableGradientCell());
         jTable2.putClientProperty(FlatClientProperties.STYLE, ""
@@ -49,7 +49,7 @@ public class DatenbankTabelleAnzeigen extends javax.swing.JFrame {
         scroll.putClientProperty(FlatClientProperties.STYLE, ""
                 + "border:3,0,3,0,$Table.background,10,10");
         scroll.getVerticalScrollBar().putClientProperty(FlatClientProperties.STYLE, "" + "hoverTrackColor:null");
-        jLabel2.setForeground(Color.BLACK);
+        jLabel2.setForeground(Color.BLACK); 
     }
 
    
@@ -264,16 +264,14 @@ public class DatenbankTabelleAnzeigen extends javax.swing.JFrame {
 
 
     private void ZurückActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZurückActionPerformed
-      
-        
-        this.dispose();
-        Navigation navigation = new Navigation();
-        navigation.setVisible(true);
-       
-        
-        
- 
-        
+            this.dispose();
+             try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException| UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
+            Navigation navigation = new Navigation();
+            navigation.setVisible(true);
     }//GEN-LAST:event_ZurückActionPerformed
 
 
