@@ -10,15 +10,20 @@ public class SFTProjekt {
     public static void main(String[] args) {
         //         Datenbank DB = new Datenbank();
 //         DB.dBConnec tor();
-
-         Login fenster = new Login();
-        fenster.setVisible(true);
-        
+////
+//         Login fenster = new Login();
+//        fenster.setVisible(true);
+//        
 //MapFenster map = new MapFenster();
 //map.runSketch(new String[]{"Map"}, map);
-     
+//     
 //        DatenbankTabelleAnzeigen f = new DatenbankTabelleAnzeigen();
 //        f.setVisible(true);
+
+
+DatenbankAnzeigen f = new DatenbankAnzeigen();
+f.setVisible(true);
     }
+    
 }
 
