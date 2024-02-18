@@ -29,10 +29,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
-import org.apache.poi.xwpf.usermodel.XWPFParagraph;
-import org.apache.poi.xwpf.usermodel.XWPFRun;
-import org.apache.poi.xwpf.usermodel.*;
+
 
 import javax.swing.*;
 import java.io.*;
@@ -43,8 +40,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -231,7 +227,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(25, 118, 211), 4));
         jPanel6.setLayout(new java.awt.GridBagLayout());
 
-        Eingabe.setText("Daten suchen");
+        Eingabe.setText("Betriebe Durchsuchen");
         Eingabe.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 EingabeFocusLost(evt);
@@ -961,7 +957,7 @@ if (selectedRow != -1) {
 
     private void EingabeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EingabeFocusLost
     if (Eingabe.getText().isEmpty()) {
-        Eingabe.setText("Daten suchen");
+        Eingabe.setText("Betriebe Durchsuchen");
         alleDatenAnzeigen(); 
     }
     

@@ -1,9 +1,15 @@
 package main;
 
-
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GraphicsEnvironment;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
+import javax.swing.JTextField;
 
 /**
  *
@@ -11,9 +17,14 @@ import javax.swing.JOptionPane;
  */
 public class DatenbankFenster extends javax.swing.JFrame {
 
+    private JComboBox<String> schriftGroesseComboBox;
+    private Font standardFont;
+    private Font groesserFont;
+
     public DatenbankFenster() {
         initComponents();
         initCustomComponents();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -52,6 +63,7 @@ public class DatenbankFenster extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         Zurückbttn = new javax.swing.JButton();
         Einfügenbttn = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -364,6 +376,25 @@ public class DatenbankFenster extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         jPanel1.add(jPanel2, gridBagConstraints);
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Textgröße kleiner", "Textgröße größer" }));
+        jComboBox1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox1MouseClicked(evt);
+            }
+        });
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel1.add(jComboBox1, gridBagConstraints);
+
         jScrollPane1.setViewportView(jPanel1);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -395,27 +426,124 @@ public class DatenbankFenster extends javax.swing.JFrame {
     }//GEN-LAST:event_ZurückbttnActionPerformed
 
     private void EinfügenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EinfügenbttnActionPerformed
-        Betrieb betrieb = new Betrieb(Betriebsname.getText(),Straße.getText(),Ort.getText(), Integer.valueOf(Postleitzahl.getText()), Ansprechpartner.getText(), Website.getText(), EMail.getText());
+        try {
+            // Überprüfen, ob das Feld für die Postleitzahl leer ist
+            String plzText = Postleitzahl.getText();
+            if (plzText.isEmpty()) {
+                throw new IllegalArgumentException("Fehler: Postleitzahl ist leer.");
+            }
 
-        Datenbank Alfred = new Datenbank();
-        boolean erfolgreich = Alfred.createBetrieb(betrieb);
+            // Versuch, die Postleitzahl in eine Zahl umzuwandeln
+            int plz = Integer.parseInt(plzText);
 
-        if (erfolgreich) {
-            JOptionPane.showMessageDialog(this, "Daten wurden erfolgreich hinzugefügt.", "Erfolg", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "Daten wurden nicht erfolgreich hinzugefügt.", "Fehler", JOptionPane.ERROR_MESSAGE);
+            // Hier wird der Rest des Codes ausgeführt, wenn die Postleitzahl erfolgreich in eine Zahl umgewandelt wurde
+            Betrieb betrieb = new Betrieb(Betriebsname.getText(), Straße.getText(), Ort.getText(), plz, Ansprechpartner.getText(), Website.getText(), EMail.getText());
+
+            Datenbank Alfred = new Datenbank();
+            boolean erfolgreich = Alfred.createBetrieb(betrieb);
+
+            if (erfolgreich) {
+                JOptionPane.showMessageDialog(this, "Daten wurden erfolgreich hinzugefügt.", "Erfolg", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Daten wurden nicht erfolgreich hinzugefügt.", "Fehler", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Fehler: Postleitzahl muss eine Zahl sein.", "Fehler", JOptionPane.ERROR_MESSAGE);
+        } catch (IllegalArgumentException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Ein Fehler ist aufgetreten: " + ex.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace(); // Hier wird der Fehler in der Konsole ausgegeben, um ihn zu identifizieren
         }
     }//GEN-LAST:event_EinfügenbttnActionPerformed
 
     private void EMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMailActionPerformed
-     
+
     }//GEN-LAST:event_EMailActionPerformed
 
-    private void initCustomComponents(){
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+         int selectedIndex = jComboBox1.getSelectedIndex();
+
+    // Je nach ausgewähltem Index die Schriftgröße anpassen
+    switch (selectedIndex) {
+        case 0:
+            // Kleinere Schriftgröße setzen
+            setzeSchriftgröße(10); // Beispiel: Schriftgröße 10
+            break;
+        case 1:
+            // Größere Schriftgröße setzen
+            setzeSchriftgröße(16); // Beispiel: Schriftgröße 16
+            break;
+        default:
+            // Standardaktion, falls kein passender Fall gefunden wird
+            break;
+    }
+    
+    // Überprüfen Sie, ob ein Repaint oder eine Neuzusammensetzung der GUI erforderlich ist
+    revalidate();
+    repaint();
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox1MouseClicked
+                 int selectedIndex = jComboBox1.getSelectedIndex();
+
+    // Je nach ausgewähltem Index die Schriftgröße anpassen
+    switch (selectedIndex) {
+        case 0:
+            // Kleinere Schriftgröße setzen
+            setzeSchriftgröße(10); // Beispiel: Schriftgröße 10
+            break;
+        case 1:
+            // Größere Schriftgröße setzen
+            setzeSchriftgröße(16); // Beispiel: Schriftgröße 16
+            break;
+        default:
+            // Standardaktion, falls kein passender Fall gefunden wird
+            break;
+    }
+    
+    
+    }//GEN-LAST:event_jComboBox1MouseClicked
+  private void setzeSchriftgröße(int schriftgröße) {
+    // Neue Schriftart mit der angegebenen Schriftgröße erstellen
+    Font neueSchriftart = new Font("Arial", Font.PLAIN, schriftgröße);
+
+    // Schriftgröße für alle relevanten Komponenten setzen
+    Betriebsname.setFont(neueSchriftart);
+    Straße.setFont(neueSchriftart);
+    Postleitzahl.setFont(neueSchriftart);
+    Ort.setFont(neueSchriftart);
+    Ansprechpartner.setFont(neueSchriftart);
+    Website.setFont(neueSchriftart);
+     Zurückbttn.setFont(neueSchriftart); 
+    Einfügenbttn.setFont(neueSchriftart);
+    
+    
+      Dimension neueTextfeldGröße = new Dimension(150, schriftgröße + 8); // Breite bleibt gleich, Höhe ändert sich
+
+    // Größe für alle relevanten Textfelder setzen
+    Betriebsname.setPreferredSize(neueTextfeldGröße);
+    Straße.setPreferredSize(neueTextfeldGröße);
+    Postleitzahl.setPreferredSize(neueTextfeldGröße);
+    Ort.setPreferredSize(neueTextfeldGröße);
+    Ansprechpartner.setPreferredSize(neueTextfeldGröße);
+    Website.setPreferredSize(neueTextfeldGröße);
+       Betriebsname.repaint();
+    Straße.repaint();
+    Postleitzahl.repaint();
+    Ort.repaint();
+    Ansprechpartner.repaint();
+    Website.repaint();
+      Zurückbttn.repaint();
+    Einfügenbttn.repaint();
+     System.out.println("Schriftgröße aktualisiert: " + schriftgröße);
+}
+
+    private void initCustomComponents() {
         ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
         this.setIconImage(icon.getImage());
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Ansprechpartner;
@@ -443,6 +571,7 @@ public class DatenbankFenster extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler7;
     private javax.swing.Box.Filler filler8;
     private javax.swing.Box.Filler filler9;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

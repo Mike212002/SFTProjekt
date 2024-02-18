@@ -207,7 +207,7 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="Eingabe">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Daten suchen"/>
+                    <Property name="text" type="java.lang.String" value="Betriebe Durchsuchen"/>
                   </Properties>
                   <Events>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="EingabeFocusLost"/>
