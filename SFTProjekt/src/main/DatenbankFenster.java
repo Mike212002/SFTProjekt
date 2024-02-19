@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
@@ -427,16 +428,15 @@ public class DatenbankFenster extends javax.swing.JFrame {
 
     private void EinfügenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EinfügenbttnActionPerformed
         try {
-            // Überprüfen, ob das Feld für die Postleitzahl leer ist
+            
             String plzText = Postleitzahl.getText();
             if (plzText.isEmpty()) {
                 throw new IllegalArgumentException("Fehler: Postleitzahl ist leer.");
             }
 
-            // Versuch, die Postleitzahl in eine Zahl umzuwandeln
             int plz = Integer.parseInt(plzText);
 
-            // Hier wird der Rest des Codes ausgeführt, wenn die Postleitzahl erfolgreich in eine Zahl umgewandelt wurde
+            
             Betrieb betrieb = new Betrieb(Betriebsname.getText(), Straße.getText(), Ort.getText(), plz, Ansprechpartner.getText(), Website.getText(), EMail.getText());
 
             Datenbank Alfred = new Datenbank();
@@ -464,44 +464,26 @@ public class DatenbankFenster extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
          int selectedIndex = jComboBox1.getSelectedIndex();
 
-    // Je nach ausgewähltem Index die Schriftgröße anpassen
     switch (selectedIndex) {
         case 0:
-            // Kleinere Schriftgröße setzen
-            setzeSchriftgröße(10); // Beispiel: Schriftgröße 10
+          
+            setzeSchriftgröße(16); 
             break;
         case 1:
-            // Größere Schriftgröße setzen
-            setzeSchriftgröße(16); // Beispiel: Schriftgröße 16
+            
+            setzeSchriftgröße(18); 
             break;
         default:
-            // Standardaktion, falls kein passender Fall gefunden wird
+        
             break;
     }
     
-    // Überprüfen Sie, ob ein Repaint oder eine Neuzusammensetzung der GUI erforderlich ist
-    revalidate();
-    repaint();
+    
+
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jComboBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox1MouseClicked
-                 int selectedIndex = jComboBox1.getSelectedIndex();
-
-    // Je nach ausgewähltem Index die Schriftgröße anpassen
-    switch (selectedIndex) {
-        case 0:
-            // Kleinere Schriftgröße setzen
-            setzeSchriftgröße(10); // Beispiel: Schriftgröße 10
-            break;
-        case 1:
-            // Größere Schriftgröße setzen
-            setzeSchriftgröße(16); // Beispiel: Schriftgröße 16
-            break;
-        default:
-            // Standardaktion, falls kein passender Fall gefunden wird
-            break;
-    }
-    
+  
     
     }//GEN-LAST:event_jComboBox1MouseClicked
   private void setzeSchriftgröße(int schriftgröße) {
@@ -517,31 +499,27 @@ public class DatenbankFenster extends javax.swing.JFrame {
     Website.setFont(neueSchriftart);
      Zurückbttn.setFont(neueSchriftart); 
     Einfügenbttn.setFont(neueSchriftart);
+    Betriebsnametxtfield.setFont(neueSchriftart);
+    Straßetxtfield.setFont(neueSchriftart);
+    Straßetxtfield.setFont(neueSchriftart);
+    Orttxtfield.setFont(neueSchriftart);
+    Ansprechpartnertxtfield.setFont(neueSchriftart);
+    EMailtxtfield.setFont(neueSchriftart);
+    Websitetxtfield.setFont(neueSchriftart);
+    jLabel1.setFont(neueSchriftart);
     
     
       Dimension neueTextfeldGröße = new Dimension(150, schriftgröße + 8); // Breite bleibt gleich, Höhe ändert sich
 
-    // Größe für alle relevanten Textfelder setzen
-    Betriebsname.setPreferredSize(neueTextfeldGröße);
-    Straße.setPreferredSize(neueTextfeldGröße);
-    Postleitzahl.setPreferredSize(neueTextfeldGröße);
-    Ort.setPreferredSize(neueTextfeldGröße);
-    Ansprechpartner.setPreferredSize(neueTextfeldGröße);
-    Website.setPreferredSize(neueTextfeldGröße);
-       Betriebsname.repaint();
-    Straße.repaint();
-    Postleitzahl.repaint();
-    Ort.repaint();
-    Ansprechpartner.repaint();
-    Website.repaint();
-      Zurückbttn.repaint();
-    Einfügenbttn.repaint();
+  
      System.out.println("Schriftgröße aktualisiert: " + schriftgröße);
 }
 
     private void initCustomComponents() {
         ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
         this.setIconImage(icon.getImage());
+        jComboBox1.setBackground(Color.WHITE);
+        jComboBox1.setForeground(Color.BLACK);
     }
 
 
