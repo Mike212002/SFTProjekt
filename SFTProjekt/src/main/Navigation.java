@@ -1,4 +1,3 @@
-
 package main;
 
 import javax.swing.ImageIcon;
@@ -9,7 +8,6 @@ import javax.swing.ImageIcon;
  */
 public class Navigation extends javax.swing.JFrame {
 
-    
     public Navigation() {
         initComponents();
         initCustomComponents();
@@ -165,24 +163,26 @@ public class Navigation extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ZurückActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZurückActionPerformed
-       this.dispose();
+             Login fenster = new Login();
+        fenster.setVisible(true);
+        this.dispose();
 
     }//GEN-LAST:event_ZurückActionPerformed
 
     private void DatenHinzufügenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenHinzufügenActionPerformed
-            PasswortAbfrage passwortAbfrage = new PasswortAbfrage(null, true);
+        PasswortAbfrage passwortAbfrage = new PasswortAbfrage(null, true);
         passwortAbfrage.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_DatenHinzufügenActionPerformed
 
     private void BewertungssystemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BewertungssystemActionPerformed
-          DatenbankBewertung datenbankBewertung = new DatenbankBewertung();
+        DatenbankBewertung datenbankBewertung = new DatenbankBewertung();
         datenbankBewertung.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BewertungssystemActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         DatenbankTabelleAnzeigen datenbanktablleanzeigen = new DatenbankTabelleAnzeigen();
+        DatenbankTabelleAnzeigen datenbanktablleanzeigen = new DatenbankTabelleAnzeigen();
         datenbanktablleanzeigen.setVisible(true);
         this.dispose();
 
@@ -190,11 +190,11 @@ public class Navigation extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-           MapFenster map = new MapFenster();
+        MapFenster map = new MapFenster();
         map.runSketch(new String[]{"Map"}, map);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-   private void initCustomComponents() {
+    private void initCustomComponents() {
         ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
         this.setIconImage(icon.getImage());
 
