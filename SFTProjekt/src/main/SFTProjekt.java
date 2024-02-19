@@ -11,8 +11,8 @@ public class SFTProjekt {
         //         Datenbank DB = new Datenbank();
 //         DB.dBConnec tor();
 ////
-//         Login fenster = new Login();
-//        fenster.setVisible(true);
+         Login fenster = new Login();
+        fenster.setVisible(true);
 //        
 //MapFenster map = new MapFenster();
 //map.runSketch(new String[]{"Map"}, map);
@@ -21,8 +21,8 @@ public class SFTProjekt {
 //        f.setVisible(true);
 
 
-DatenbankAnzeigen f = new DatenbankAnzeigen();
-f.setVisible(true);
+//DatenbankAnzeigen f = new DatenbankAnzeigen();
+//f.setVisible(true);
     }
     
 }
