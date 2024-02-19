@@ -1,6 +1,9 @@
 package main;
 
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -163,16 +166,19 @@ public class Navigation extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ZurückActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZurückActionPerformed
-             Login fenster = new Login();
+        Login fenster = new Login();
         fenster.setVisible(true);
+
         this.dispose();
 
     }//GEN-LAST:event_ZurückActionPerformed
 
     private void DatenHinzufügenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenHinzufügenActionPerformed
+
         PasswortAbfrage passwortAbfrage = new PasswortAbfrage(null, true);
         passwortAbfrage.setVisible(true);
-        this.dispose();
+        super.dispose();
+
     }//GEN-LAST:event_DatenHinzufügenActionPerformed
 
     private void BewertungssystemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BewertungssystemActionPerformed

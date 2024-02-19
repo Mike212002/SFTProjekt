@@ -2,6 +2,7 @@ package main;
 
 import com.password4j.Hash;
 import com.password4j.Password;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
@@ -12,16 +13,20 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Airajaxx also nur den Code, der rest Mike Tim Nowak, außer nicht sehen und sehen und init CustomComponents, das war auch Mike Tim Nowak
+ * @author Airajaxx also nur den Code, der rest Mike Tim Nowak, außer nicht
+ * sehen und sehen und init CustomComponents, das war auch Mike Tim Nowak
  */
 public class Login extends javax.swing.JFrame {
+
+    private final Datenbank datenbank;
 
     public Login() {
         initComponents();
         initCustomComponents();
+        datenbank = new Datenbank();
+        datenbank.dBConnector();
     }
 
- 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -36,7 +41,7 @@ public class Login extends javax.swing.JFrame {
         BenutzerPanel = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         BenutzerAnzeige = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        Benutzername = new javax.swing.JTextField();
         UserBild = new javax.swing.JLabel();
         PasswordPanel = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -130,12 +135,12 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         jPanel7.add(BenutzerAnzeige, gridBagConstraints);
 
-        jTextField1.setBackground(new java.awt.Color(25, 118, 211));
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setToolTipText("");
-        jTextField1.setBorder(null);
-        jTextField1.setPreferredSize(new java.awt.Dimension(170, 16));
+        Benutzername.setBackground(new java.awt.Color(25, 118, 211));
+        Benutzername.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        Benutzername.setForeground(new java.awt.Color(255, 255, 255));
+        Benutzername.setToolTipText("");
+        Benutzername.setBorder(null);
+        Benutzername.setPreferredSize(new java.awt.Dimension(170, 16));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -145,7 +150,7 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
-        jPanel7.add(jTextField1, gridBagConstraints);
+        jPanel7.add(Benutzername, gridBagConstraints);
 
         BenutzerPanel.add(jPanel7, new java.awt.GridBagConstraints());
 
@@ -249,6 +254,11 @@ public class Login extends javax.swing.JFrame {
                 AnmeldeButtonActionPerformed(evt);
             }
         });
+        AnmeldeButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AnmeldeButtonKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
@@ -323,52 +333,21 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtpasswortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswortActionPerformed
-       
+
     }//GEN-LAST:event_txtpasswortActionPerformed
 
     private void AnmeldeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnmeldeButtonActionPerformed
-        String username = jTextField1.getText();
+        String username = Benutzername.getText();
         String password = new String(txtpasswort.getPassword());
 
-      
-        if (username.isEmpty() || password.isEmpty()) {
-  
-            JOptionPane.showMessageDialog(this, "Falsche Anmelde Daten.");
-            return;
+        if (datenbank.überprüfeAnmeldung(username, password)) {
+           
+            Navigation navigationsfenster = new Navigation();
+            navigationsfenster.setVisible(true);
+            this.dispose(); 
+        } else {
+            JOptionPane.showMessageDialog(this, "Falsche Anmeldeinformationen", "Fehler", JOptionPane.ERROR_MESSAGE);
         }
-
-       
-        String url = "jdbc:mysql://mike007.lima-db.de:3306/db_427829_1";
-        String user = "USER427829";
-        String dbPassword = "Milka123mo";
-
-        try (Connection connection = DriverManager.getConnection(url, user, dbPassword)) {
-            String sql = "SELECT Password FROM LoginDaten WHERE Benutzername = ?";
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setString(1, username);
-                try (ResultSet resultSet = statement.executeQuery()) {
-                    if (resultSet.next()) {
-                        String storedPassword = resultSet.getString("Password");
-                        if (password.equals(storedPassword)) {
-                         
-                            Navigation navigationsfenster = new Navigation();
-                            navigationsfenster.setVisible(true);
-                            this.dispose(); 
-                        } else {
-                          
-                            JOptionPane.showMessageDialog(this, "Falsches Passwort.");
-                        }
-                    } else {
-                        
-                        JOptionPane.showMessageDialog(this, "Benutzername nicht gefunden.");
-                    }
-                }
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace(); 
-            JOptionPane.showMessageDialog(this, "Fehler bei der Datenbankverbindung.");
-        }
-
 
     }//GEN-LAST:event_AnmeldeButtonActionPerformed
 
@@ -392,9 +371,46 @@ public class Login extends javax.swing.JFrame {
         sehen.setEnabled(false);
     }//GEN-LAST:event_sehenMouseClicked
 
+    private void AnmeldeButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnmeldeButtonKeyPressed
+ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        anmelden();
+    }
+    }//GEN-LAST:event_AnmeldeButtonKeyPressed
+
+    
+    private void anmelden() {
+    String username = Benutzername.getText();
+    String password = new String(txtpasswort.getPassword());
+
+    if (datenbank.überprüfeAnmeldung(username, password)) {
+    
+        Navigation navigationsfenster = new Navigation();
+        navigationsfenster.setVisible(true);
+        this.dispose(); 
+    } else {
+        JOptionPane.showMessageDialog(this, "Falsche Anmeldeinformationen", "Fehler", JOptionPane.ERROR_MESSAGE);
+    }
+}
     private void initCustomComponents() {
         ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
         this.setIconImage(icon.getImage());
+        
+        Benutzername.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                anmelden();
+            }
+        }
+    });
+
+    
+    txtpasswort.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                anmelden();
+            }
+        }
+    });
     }
 
 
@@ -403,6 +419,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel Anmeldeanzeige;
     private javax.swing.JLabel BenutzerAnzeige;
     private javax.swing.JPanel BenutzerPanel;
+    private javax.swing.JTextField Benutzername;
     private javax.swing.JPanel PasswordPanel;
     private javax.swing.JLabel PasswortAnzeige;
     private javax.swing.JPanel PasswortButtons;
@@ -418,7 +435,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel nichtsehen;
     private javax.swing.JLabel sehen;
     private javax.swing.JPasswordField txtpasswort;

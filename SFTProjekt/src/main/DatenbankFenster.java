@@ -366,6 +366,11 @@ public class DatenbankFenster extends javax.swing.JFrame {
                 EinfügenbttnActionPerformed(evt);
             }
         });
+        Einfügenbttn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EinfügenbttnKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 50);
@@ -453,7 +458,7 @@ public class DatenbankFenster extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Ein Fehler ist aufgetreten: " + ex.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace(); // Hier wird der Fehler in der Konsole ausgegeben, um ihn zu identifizieren
+            ex.printStackTrace(); 
         }
     }//GEN-LAST:event_EinfügenbttnActionPerformed
 
@@ -486,6 +491,10 @@ public class DatenbankFenster extends javax.swing.JFrame {
   
     
     }//GEN-LAST:event_jComboBox1MouseClicked
+
+    private void EinfügenbttnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EinfügenbttnKeyPressed
+       
+    }//GEN-LAST:event_EinfügenbttnKeyPressed
   private void setzeSchriftgröße(int schriftgröße) {
     // Neue Schriftart mit der angegebenen Schriftgröße erstellen
     Font neueSchriftart = new Font("Arial", Font.PLAIN, schriftgröße);
@@ -507,6 +516,7 @@ public class DatenbankFenster extends javax.swing.JFrame {
     EMailtxtfield.setFont(neueSchriftart);
     Websitetxtfield.setFont(neueSchriftart);
     jLabel1.setFont(neueSchriftart);
+    PLZtxtfield.setFont(neueSchriftart);
     
     
       Dimension neueTextfeldGröße = new Dimension(150, schriftgröße + 8); // Breite bleibt gleich, Höhe ändert sich
