@@ -39,7 +39,7 @@ public class PasswortAbfrage extends javax.swing.JDialog {
         }
     }
     
-    
+   
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
@@ -101,6 +101,10 @@ public class PasswortAbfrage extends javax.swing.JDialog {
 
     boolean isPasswortKorrekt() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public void exit() {
+        super.dispose();
     }
     
 }

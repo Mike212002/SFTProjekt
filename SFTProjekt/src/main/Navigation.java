@@ -177,8 +177,7 @@ public class Navigation extends javax.swing.JFrame {
 
         PasswortAbfrage passwortAbfrage = new PasswortAbfrage(null, true);
         passwortAbfrage.setVisible(true);
-        super.dispose();
-
+      this.dispose();
     }//GEN-LAST:event_DatenHinzufügenActionPerformed
 
     private void BewertungssystemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BewertungssystemActionPerformed
@@ -200,6 +199,7 @@ public class Navigation extends javax.swing.JFrame {
         map.runSketch(new String[]{"Map"}, map);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    
     private void initCustomComponents() {
         ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
         this.setIconImage(icon.getImage());
