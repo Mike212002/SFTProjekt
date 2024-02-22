@@ -28,9 +28,9 @@ public class Navigation extends javax.swing.JFrame {
         Zurück = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         DatenHinzufügen = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        TabelleAnzeigen = new javax.swing.JButton();
         Bewertungssystem = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        MapsAnzeigen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(917, 470));
@@ -105,26 +105,21 @@ public class Navigation extends javax.swing.JFrame {
                 DatenHinzufügenActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(15, 15, 15, 15);
-        jPanel2.add(DatenHinzufügen, gridBagConstraints);
+        jPanel2.add(DatenHinzufügen, new java.awt.GridBagConstraints());
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton2.setText("Tabelle Anzeigen");
-        jButton2.setMargin(new java.awt.Insets(35, 75, 35, 75));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        TabelleAnzeigen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        TabelleAnzeigen.setText("Tabelle Anzeigen");
+        TabelleAnzeigen.setMargin(new java.awt.Insets(35, 75, 35, 75));
+        TabelleAnzeigen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                TabelleAnzeigenActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 15, 15);
-        jPanel2.add(jButton2, gridBagConstraints);
+        jPanel2.add(TabelleAnzeigen, gridBagConstraints);
 
         Bewertungssystem.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Bewertungssystem.setText("Bewertungssystem");
@@ -141,19 +136,19 @@ public class Navigation extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 15, 15);
         jPanel2.add(Bewertungssystem, gridBagConstraints);
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton4.setText("Maps Anzeigen");
-        jButton4.setMargin(new java.awt.Insets(35, 75, 35, 75));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        MapsAnzeigen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        MapsAnzeigen.setText("Maps Anzeigen");
+        MapsAnzeigen.setMargin(new java.awt.Insets(35, 75, 35, 75));
+        MapsAnzeigen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                MapsAnzeigenActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 15, 15);
-        jPanel2.add(jButton4, gridBagConstraints);
+        jPanel2.add(MapsAnzeigen, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
@@ -177,7 +172,8 @@ public class Navigation extends javax.swing.JFrame {
 
         PasswortAbfrage passwortAbfrage = new PasswortAbfrage(null, true);
         passwortAbfrage.setVisible(true);
-      this.dispose();
+        this.dispose();
+     
     }//GEN-LAST:event_DatenHinzufügenActionPerformed
 
     private void BewertungssystemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BewertungssystemActionPerformed
@@ -186,18 +182,18 @@ public class Navigation extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BewertungssystemActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void TabelleAnzeigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TabelleAnzeigenActionPerformed
         DatenbankTabelleAnzeigen datenbanktablleanzeigen = new DatenbankTabelleAnzeigen();
         datenbanktablleanzeigen.setVisible(true);
         this.dispose();
 
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_TabelleAnzeigenActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void MapsAnzeigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MapsAnzeigenActionPerformed
         MapFenster map = new MapFenster();
         map.runSketch(new String[]{"Map"}, map);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_MapsAnzeigenActionPerformed
 
     
     private void initCustomComponents() {
@@ -210,9 +206,9 @@ public class Navigation extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bewertungssystem;
     private javax.swing.JButton DatenHinzufügen;
+    private javax.swing.JButton MapsAnzeigen;
+    private javax.swing.JButton TabelleAnzeigen;
     private javax.swing.JButton Zurück;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

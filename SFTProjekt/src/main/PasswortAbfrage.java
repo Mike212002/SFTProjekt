@@ -36,10 +36,14 @@ public class PasswortAbfrage extends javax.swing.JDialog {
         } else {
             
             JOptionPane.showMessageDialog(this, "Falsches Passwort. Bitte versuchen Sie es erneut.", "Fehler", JOptionPane.ERROR_MESSAGE);
-        }
+        } 
+    }
+    public void exit() {
+        super.dispose();
     }
     
    
+
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
@@ -103,8 +107,6 @@ public class PasswortAbfrage extends javax.swing.JDialog {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public void exit() {
-        super.dispose();
-    }
+   
     
 }
