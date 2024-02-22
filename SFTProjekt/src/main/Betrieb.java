@@ -23,6 +23,7 @@ public class Betrieb {
         this.Ansprechpartner = Ansprechpartner;
         this.Website = Website;
         this.EMail = EMail;
+        
     }
     
     public Betrieb(String Betriebsname, String Straße, String Ort, int PLZ, String Ansprechpartner, String Website, String EMail) {

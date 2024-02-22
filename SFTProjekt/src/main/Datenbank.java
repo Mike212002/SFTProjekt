@@ -105,7 +105,7 @@ public class Datenbank {
         return alleBetriebe;
     }
 
-    public boolean createBetrieb(Betrieb betrieb) {
+    public boolean DatenHinzufügen(Betrieb betrieb) {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
             System.out.println("Datenbank Verbunden");
             String statement = "INSERT INTO Betrieb(Betriebsname, Straße, Ort, PLZ, Ansprechpartner, Website, EMail) VALUES (?, ?, ?, ?, ?, ?,?)";

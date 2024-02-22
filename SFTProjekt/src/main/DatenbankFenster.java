@@ -459,7 +459,7 @@ public class DatenbankFenster extends javax.swing.JFrame {
             Betrieb betrieb = new Betrieb(Betriebsname.getText(), Straße.getText(), Ort.getText(), plz, Ansprechpartner.getText(), Website.getText(), EMail.getText());
 
             Datenbank Alfred = new Datenbank();
-            boolean erfolgreich = Alfred.createBetrieb(betrieb);
+            boolean erfolgreich = Alfred.DatenHinzufügen(betrieb);
 
             if (erfolgreich) {
                 JOptionPane.showMessageDialog(this, "Daten wurden erfolgreich hinzugefügt.", "Erfolg", JOptionPane.INFORMATION_MESSAGE);
