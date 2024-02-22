@@ -139,6 +139,22 @@ public class Datenbank {
     }
     
     
-  
+  public boolean überprüfeAnmeldung(String username, String password) {
+        try (Connection connection = DriverManager.getConnection(url, user, this.password)) {
+            String sql = "SELECT Password FROM LoginDaten WHERE Benutzername = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1, username);
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    if (resultSet.next()) {
+                        String storedPassword = resultSet.getString("Password");
+                        return password.equals(storedPassword);
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
 
 }

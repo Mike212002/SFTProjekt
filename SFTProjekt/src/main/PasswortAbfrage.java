@@ -1,14 +1,24 @@
 package main;
 
+
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.*;
 
 public class PasswortAbfrage extends javax.swing.JDialog {
 
     private String korrektesPasswort = "geheim";
+      
 
     public PasswortAbfrage(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        
         initComponents();
+         
+    }
+
+    PasswortAbfrage() {
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
    
@@ -26,8 +36,13 @@ public class PasswortAbfrage extends javax.swing.JDialog {
         } else {
             
             JOptionPane.showMessageDialog(this, "Falsches Passwort. Bitte versuchen Sie es erneut.", "Fehler", JOptionPane.ERROR_MESSAGE);
-        }
+        } 
     }
+    public void exit() {
+        super.dispose();
+    }
+    
+   
 
     
     @SuppressWarnings("unchecked")
@@ -75,10 +90,23 @@ public class PasswortAbfrage extends javax.swing.JDialog {
 
         pack();
         setLocationRelativeTo(null);
+        
+        
+         this.getRootPane().setDefaultButton(okButton);
+         
+        
+      
+    
     }// </editor-fold>
 
     private javax.swing.JButton okButton;
     private javax.swing.JPasswordField passwortField;
     private javax.swing.JLabel passwortLabel;
+
+    boolean isPasswortKorrekt() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+   
     
 }

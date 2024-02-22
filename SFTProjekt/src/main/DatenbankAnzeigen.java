@@ -30,7 +30,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-
 import javax.swing.*;
 import java.io.*;
 import java.util.logging.Level;
@@ -60,14 +59,12 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         initComponents();
         initCustomComponents();
         setTableContents();
-        
-        
+
         Eingabe.addFocusListener(new java.awt.event.FocusAdapter() {
-        public void focusLost(java.awt.event.FocusEvent evt) {
-            EingabeFocusLost(evt);
-        }
-    });
-        
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                EingabeFocusLost(evt);
+            }
+        });
 
         Eingabe.getDocument().addDocumentListener(new DocumentListener() {
 
@@ -888,32 +885,65 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
     }//GEN-LAST:event_DatenAktualisierenbttnActionPerformed
 
     private void DatenLöschenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenLöschenbttnActionPerformed
-      int selectedRow = Tabelle.getSelectedRow();
+ int[] selectedRows = Tabelle.getSelectedRows();
 
-if (selectedRow != -1) {
-    int response = JOptionPane.showConfirmDialog(this, "Möchten Sie die Daten wirklich löschen?", "Bestätigung", JOptionPane.YES_NO_OPTION);
-    
+if (selectedRows.length > 0) {
+    StringBuilder messageBuilder = new StringBuilder("Möchten Sie den folgenden Eintrag wirklich löschen?\n");
+    for (int i = 0; i < selectedRows.length; i++) {
+        try {
+            int betriebsID = Integer.parseInt(Tabelle.getValueAt(selectedRows[i], 0).toString());
+            String betriebsName = Tabelle.getValueAt(selectedRows[i], 1).toString();
+            String straße = Tabelle.getValueAt(selectedRows[i], 2).toString();
+            String ort = Tabelle.getValueAt(selectedRows[i], 3).toString();
+            String plz = Tabelle.getValueAt(selectedRows[i], 4).toString();
+            String ansprechpartner = Tabelle.getValueAt(selectedRows[i], 5).toString();
+            String website = Tabelle.getValueAt(selectedRows[i], 6).toString();
+            String email = Tabelle.getValueAt(selectedRows[i], 7).toString();
+
+            messageBuilder.append("\nBetriebsID: ").append(betriebsID)
+                    .append("\nBetriebsname: ").append(betriebsName)
+                    .append("\nStraße: ").append(straße)
+                    .append("\nOrt: ").append(ort)
+                    .append("\nPLZ: ").append(plz)
+                    .append("\nAnsprechpartner: ").append(ansprechpartner)
+                    .append("\nWebsite: ").append(website)
+                    .append("\nE-Mail: ").append(email)
+                    .append("\n----------------------\n");
+        } catch (NumberFormatException | NullPointerException ex) {
+            System.out.println("Fehler beim Abrufen der Einträge aus der Tabelle: " + ex.getMessage());
+            JOptionPane.showMessageDialog(this, "Fehler beim Abrufen der Einträge aus der Tabelle.", "Fehler", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+    }
+
+    int response = JOptionPane.showConfirmDialog(this, messageBuilder.toString(), "Bestätigung - Eintrag löschen", JOptionPane.YES_NO_OPTION);
+
     if (response == JOptionPane.YES_OPTION) {
         try {
-            int betriebsID = (int) Tabelle.getValueAt(selectedRow, 0);
+            for (int i = selectedRows.length - 1; i >= 0; i--) {
+                int betriebsID = Integer.parseInt(Tabelle.getValueAt(selectedRows[i], 0).toString());
+                String betriebsName = Tabelle.getValueAt(selectedRows[i], 1).toString();
 
-            Datenbank datenbank = new Datenbank();
-            if (datenbank.löscheBetrieb(betriebsID)) {
-                updateTable();
-            } else {
-                JOptionPane.showMessageDialog(this, "Fehler beim Löschen des Betriebs.", "Fehler", JOptionPane.ERROR_MESSAGE);
+                Datenbank datenbank = new Datenbank();
+                if (datenbank.löscheBetrieb(betriebsID)) {
+                    updateTable();
+                    JOptionPane.showMessageDialog(this, "Der Eintrag für den Betrieb mit folgender BetriebsID: '" + betriebsID + "' wurde erfolgreich gelöscht.", "Eintrag erfolgreich gelöscht", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Fehler beim Löschen des Betriebs.", "Fehler", JOptionPane.ERROR_MESSAGE);
+                }
             }
-        } catch (NullPointerException ex) {
-            System.out.println("Fehler beim Abrufen der BetriebsID aus der Tabelle: " + ex.getMessage());
+        } catch (NumberFormatException | NullPointerException ex) {
+            System.out.println("Fehler beim Löschen der Einträge: " + ex.getMessage());
+            JOptionPane.showMessageDialog(this, "Fehler beim Löschen der Einträge.", "Fehler", JOptionPane.ERROR_MESSAGE);
         }
     }
 } else {
-    JOptionPane.showMessageDialog(this, "Bitte wählen Sie eine Zeile in der Tabelle aus.", "Fehler", JOptionPane.ERROR_MESSAGE);
+    JOptionPane.showMessageDialog(this, "Bitte wählen Sie mindestens eine Zeile in der Tabelle aus.", "Fehler", JOptionPane.ERROR_MESSAGE);
 }
     }//GEN-LAST:event_DatenLöschenbttnActionPerformed
 
     private void ExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportActionPerformed
-     JFileChooser fileChooser = new JFileChooser();
+        JFileChooser fileChooser = new JFileChooser();
         int userSelection = fileChooser.showSaveDialog(this);
 
         if (userSelection == JFileChooser.APPROVE_OPTION) {
@@ -951,22 +981,22 @@ if (selectedRow != -1) {
     }//GEN-LAST:event_ExportActionPerformed
 
     private void EingabeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EingabeMouseClicked
-       Eingabe.setText("");
+        Eingabe.setText("");
     }//GEN-LAST:event_EingabeMouseClicked
 
     private void EingabeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EingabeFocusLost
-    if (Eingabe.getText().isEmpty()) {
-        Eingabe.setText("Betriebe Durchsuchen");
-        alleDatenAnzeigen(); 
-    }
-    
+        if (Eingabe.getText().isEmpty()) {
+            Eingabe.setText("Betriebe Durchsuchen");
+            alleDatenAnzeigen();
+        }
+
     }//GEN-LAST:event_EingabeFocusLost
-private void alleDatenAnzeigen() {
-    DefaultTableModel model = (DefaultTableModel) Tabelle.getModel();
-    TableRowSorter<TableModel> sorter = new TableRowSorter<>(model);
-    Tabelle.setRowSorter(sorter);
-    sorter.setRowFilter(null); 
-}
+    private void alleDatenAnzeigen() {
+        DefaultTableModel model = (DefaultTableModel) Tabelle.getModel();
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(model);
+        Tabelle.setRowSorter(sorter);
+        sorter.setRowFilter(null);
+    }
     private void EingabeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EingabeMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_EingabeMouseExited
@@ -1031,7 +1061,6 @@ private void alleDatenAnzeigen() {
         }
     }
 
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Ansprechpartner;

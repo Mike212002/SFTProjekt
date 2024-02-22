@@ -8,9 +8,9 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class SFTProjekt {
 
     public static void main(String[] args) {
-        //         Datenbank DB = new Datenbank();
+ //         Datenbank DB = new Datenbank();
 //         DB.dBConnec tor();
-////
+
 //         Login fenster = new Login();
 //        fenster.setVisible(true);
 //        
@@ -20,10 +20,11 @@ public class SFTProjekt {
 //        DatenbankTabelleAnzeigen f = new DatenbankTabelleAnzeigen();
 //        f.setVisible(true);
 
+        Navigation s = new Navigation();
+        s.setVisible(true);
 
-DatenbankAnzeigen f = new DatenbankAnzeigen();
-f.setVisible(true);
+//DatenbankAnzeigen f = new DatenbankAnzeigen();
+//f.setVisible(true);
     }
-    
-}
 
+}
