@@ -21,6 +21,7 @@ public class Navigation extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jScrollBar1 = new javax.swing.JScrollBar();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -31,6 +32,7 @@ public class Navigation extends javax.swing.JFrame {
         TabelleAnzeigen = new javax.swing.JButton();
         Bewertungssystem = new javax.swing.JButton();
         MapsAnzeigen = new javax.swing.JButton();
+        InformationenButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(917, 470));
@@ -150,13 +152,27 @@ public class Navigation extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 15, 15);
         jPanel2.add(MapsAnzeigen, gridBagConstraints);
 
+        InformationenButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        InformationenButton.setText("Informationen");
+        InformationenButton.setMargin(new java.awt.Insets(35, 125, 35, 125));
+        InformationenButton.setMaximumSize(new java.awt.Dimension(363, 99));
+        InformationenButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InformationenButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        jPanel2.add(InformationenButton, gridBagConstraints);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(jPanel2, gridBagConstraints);
 
-        setSize(new java.awt.Dimension(1037, 581));
+        setSize(new java.awt.Dimension(1118, 687));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -177,8 +193,8 @@ public class Navigation extends javax.swing.JFrame {
     }//GEN-LAST:event_DatenHinzufügenActionPerformed
 
     private void BewertungssystemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BewertungssystemActionPerformed
-        DatenbankBewertung datenbankBewertung = new DatenbankBewertung();
-        datenbankBewertung.setVisible(true);
+        DatenbankBewertungBearbeiten datenbankBewertungBearbeiten = new DatenbankBewertungBearbeiten();
+        datenbankBewertungBearbeiten.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BewertungssystemActionPerformed
 
@@ -195,6 +211,12 @@ public class Navigation extends javax.swing.JFrame {
         map.runSketch(new String[]{"Map"}, map);
     }//GEN-LAST:event_MapsAnzeigenActionPerformed
 
+    private void InformationenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InformationenButtonActionPerformed
+        NewJFrame newJFrame = new NewJFrame();
+        newJFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_InformationenButtonActionPerformed
+
     
     private void initCustomComponents() {
         ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
@@ -206,6 +228,7 @@ public class Navigation extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bewertungssystem;
     private javax.swing.JButton DatenHinzufügen;
+    private javax.swing.JButton InformationenButton;
     private javax.swing.JButton MapsAnzeigen;
     private javax.swing.JButton TabelleAnzeigen;
     private javax.swing.JButton Zurück;
@@ -214,5 +237,6 @@ public class Navigation extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollBar jScrollBar1;
     // End of variables declaration//GEN-END:variables
 }
