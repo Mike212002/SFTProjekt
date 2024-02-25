@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.awt.print.PageFormat;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.io.*;
@@ -12,6 +13,14 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
+import javax.print.PrintService;
+import javax.print.PrintServiceLookup;
+import javax.print.attribute.HashPrintRequestAttributeSet;
+import javax.print.attribute.PrintRequestAttributeSet;
+import javax.print.attribute.standard.Copies;
+import javax.print.attribute.standard.DialogTypeSelection;
+import javax.print.attribute.standard.JobName;
+import main.NewJFrame;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.printing.PDFPrintable;
 import org.apache.pdfbox.rendering.PDFRenderer;
@@ -37,8 +46,10 @@ public class PDFViewer extends JFrame {
 
     public PDFViewer() {
         savedPDFs = new ArrayList<>();
-        loadSavedPDFs(); // Load saved PDFs when the application starts
+        loadSavedPDFs();
         initializeUI();
+        centerWindow(this);
+        initCustomComponents();
     }
 
     public void display() {
@@ -81,14 +92,15 @@ public class PDFViewer extends JFrame {
         prevButton.setPreferredSize(new Dimension(120, 40));
         prevButton.addActionListener(e -> prevPage());
 
-        printButton = new JButton("Drucken");
+        JButton printButton = new JButton("Drucken");
         printButton.setBackground(Color.WHITE);
         printButton.setForeground(Color.BLACK);
         printButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         printButton.setPreferredSize(new Dimension(120, 40));
-        printButton.addActionListener(e -> printPage());
 
-        viewSavedPDFsButton = new JButton("Gespeicherte PDFs anzeigen");
+       printButton.addActionListener(e -> printPage());
+
+        viewSavedPDFsButton = new JButton("PDF-Liste");
         viewSavedPDFsButton.setBackground(Color.WHITE);
         viewSavedPDFsButton.setForeground(Color.BLACK);
         viewSavedPDFsButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -126,7 +138,6 @@ public class PDFViewer extends JFrame {
 
         getContentPane().add(buttonPanelSouth, BorderLayout.SOUTH);
 
-        // Erstellen Sie eine JScrollPane und setzen Sie sie um das Panel, das das PDF anzeigt
         JScrollPane scrollPane = new JScrollPane(panel);
 
         getContentPane().add(scrollPane, BorderLayout.CENTER);
@@ -138,14 +149,14 @@ public class PDFViewer extends JFrame {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
             filePath = selectedFile.getAbsolutePath();
-            renderPage(0);
+            renderPDF(selectedFile);
         }
     }
 
     private void nextPage() {
         if (currentPage < totalPages - 1) {
             currentPage++;
-            renderPage(currentPage);
+            renderPDF(new File(filePath)); // Nächste Seite rendern
         } else {
             JOptionPane.showMessageDialog(this, "Sie sind bereits auf der letzten Seite.");
         }
@@ -154,29 +165,52 @@ public class PDFViewer extends JFrame {
     private void prevPage() {
         if (currentPage > 0) {
             currentPage--;
-            renderPage(currentPage);
+            renderPDF(new File(filePath)); // Vorherige Seite rendern
         } else {
             JOptionPane.showMessageDialog(this, "Sie sind bereits auf der ersten Seite.");
         }
     }
 
-    private void printPage() {
-        try (PDDocument document = PDDocument.load(new File(filePath))) {
-            PrinterJob job = PrinterJob.getPrinterJob();
-            job.setPrintable(new PDFPrintable(document));
-            if (job.printDialog()) {
-                job.print();
-            }
-        } catch (IOException | PrinterException e) {
-            e.printStackTrace();
-        }
-    }
+private void printPage() {
+    try (PDDocument document = PDDocument.load(new File(filePath))) {
+        PrinterJob job = PrinterJob.getPrinterJob();
 
+        
+        job.printDialog();
+
+        job.print();
+    } catch (IOException | PrinterException e) {
+        e.printStackTrace();
+    }
+}
+ 
+ 
     private void savePDF() {
         if (filePath != null && !filePath.isEmpty()) {
-            savedPDFs.add(new File(filePath));
-            savePDFListToFile(); // Save the list of saved PDFs to a file
-            JOptionPane.showMessageDialog(this, "PDF erfolgreich gespeichert.");
+            
+            String fileName = JOptionPane.showInputDialog(this, "Bitte geben Sie den Dateinamen ein:");
+
+            if (fileName != null && !fileName.isEmpty()) {
+                
+                if (!fileName.toLowerCase().endsWith(".pdf")) {
+                    fileName += ".pdf";
+                }
+
+                File destinationFile = new File(fileName); 
+                File sourceFile = new File(filePath);
+
+                try {
+                    Files.copy(sourceFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    savedPDFs.add(destinationFile);
+                    renderPDF(destinationFile); 
+                    JOptionPane.showMessageDialog(this, "PDF erfolgreich im Fenster gespeichert als: " + fileName);
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(this, "Fehler beim Speichern der PDF: " + ex.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
+                    ex.printStackTrace();
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Ungültiger Dateiname.");
+            }
         } else {
             JOptionPane.showMessageDialog(this, "Keine PDF-Datei geöffnet.");
         }
@@ -208,17 +242,16 @@ public class PDFViewer extends JFrame {
         }
     }
 
-    private void renderPage(int pageNumber) {
-        try (PDDocument document = PDDocument.load(new File(filePath))) {
+    private void renderPDF(File pdfFile) {
+        try (PDDocument document = PDDocument.load(pdfFile)) {
             totalPages = document.getNumberOfPages();
             PDFRenderer renderer = new PDFRenderer(document);
-            BufferedImage img = renderer.renderImageWithDPI(pageNumber, 100);
+            BufferedImage img = renderer.renderImageWithDPI(currentPage, 100);
             JLabel label = new JLabel(new ImageIcon(img));
             panel.removeAll();
             panel.add(label, BorderLayout.CENTER);
             panel.revalidate();
             panel.repaint();
-            currentPage = pageNumber;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -227,6 +260,7 @@ public class PDFViewer extends JFrame {
     private void showSavedPDFs() {
         JFrame savedPDFsFrame = new JFrame("Gespeicherte PDFs");
         savedPDFsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        initCustomComponents(savedPDFsFrame);
 
         DefaultListModel<String> listModel = new DefaultListModel<>();
         JList<String> pdfList = new JList<>(listModel);
@@ -244,17 +278,18 @@ public class PDFViewer extends JFrame {
                 JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
                 label.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
                 return label;
+
             }
         });
 
         JButton openButton = new JButton("Öffnen");
         JButton deleteButton = new JButton("Löschen");
-        JButton backButton = new JButton("Zurück"); // Zurück-Button hinzugefügt
+        JButton backButton = new JButton("Zurück");
 
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                savedPDFsFrame.dispose(); // Schließen Sie das Fenster, wenn der Zurück-Button geklickt wird
+                savedPDFsFrame.dispose();
             }
         });
 
@@ -281,16 +316,16 @@ public class PDFViewer extends JFrame {
                     File selectedFile = savedPDFs.get(selectedIndex);
                     int option = JOptionPane.showConfirmDialog(savedPDFsFrame, "Möchten Sie die Datei wirklich löschen?", "Datei löschen", JOptionPane.YES_NO_OPTION);
                     if (option == JOptionPane.YES_OPTION) {
-                        // Datei aus dem Modell und der Liste entfernen
+
                         listModel.removeElementAt(selectedIndex);
-                        savedPDFs.remove(selectedIndex);
+                        deletePDFFromList(selectedFile);
                         JOptionPane.showMessageDialog(savedPDFsFrame, "Datei erfolgreich aus der Liste gelöscht.");
                     }
                 }
             }
         });
 
-        JPanel buttonPanel = new JPanel(new GridLayout(1, 3, 5, 5)); // 1 Zeile, 3 Spalten für drei Buttons
+        JPanel buttonPanel = new JPanel(new GridLayout(1, 3, 5, 5));
         buttonPanel.add(backButton);
         buttonPanel.add(openButton);
         buttonPanel.add(deleteButton);
@@ -302,6 +337,17 @@ public class PDFViewer extends JFrame {
         savedPDFsFrame.add(mainPanel);
         savedPDFsFrame.setSize(400, 300);
         savedPDFsFrame.setVisible(true);
+
+        centerWindow(savedPDFsFrame);
+        savedPDFsFrame.setVisible(true);
+    }
+
+    private void deletePDFFromList(File pdfFile) {
+        if (savedPDFs.contains(pdfFile)) {
+            savedPDFs.remove(pdfFile);
+            savePDFListToFile();
+        }
+
     }
 
     private void savePDFListToFile() {
@@ -328,10 +374,30 @@ public class PDFViewer extends JFrame {
         }
     }
 
+    private void initCustomComponents(JFrame frame) {
+        ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
+        frame.setIconImage(icon.getImage());
+        frame.pack(); // Aktualisieren des Frames nach dem Hinzufügen des Icons
+        frame.revalidate();
+        frame.repaint();
+    }
+
     private void openNewJFrame() {
         NewJFrame frame = new NewJFrame();
         frame.setVisible(true);
         this.dispose();
+    }
+
+    private void centerWindow(Window window) {
+    Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+    int x = (int) ((dimension.getWidth() - window.getWidth()) / 2);
+    int y = (int) ((dimension.getHeight() - window.getHeight()) / 2);
+    window.setLocation(x, y);
+}
+
+    private void initCustomComponents() {
+        ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
+        this.setIconImage(icon.getImage());
     }
 
 }
