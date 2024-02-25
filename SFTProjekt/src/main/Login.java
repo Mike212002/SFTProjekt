@@ -18,8 +18,8 @@ import java.sql.SQLException;
  */
 public class Login extends javax.swing.JFrame {
 
-    private String lastEnteredUsername;
-    private String lastEnteredPassword;
+    private String LetzBenutzteBenutzername;
+    private String LetzBenutztePasswort;
     private final Datenbank datenbank;
 
     public Login() {
@@ -386,8 +386,8 @@ public class Login extends javax.swing.JFrame {
         if (datenbank.überprüfeAnmeldung(username, password)) {
 
             if (Passwortmerken.isSelected()) {
-                lastEnteredUsername = username;
-                lastEnteredPassword = password;
+                LetzBenutzteBenutzername = username;
+                LetzBenutztePasswort = password;
             }
 
             Navigation navigationsfenster = new Navigation();
@@ -401,9 +401,9 @@ public class Login extends javax.swing.JFrame {
     private void initCustomComponents() {
         ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
         this.setIconImage(icon.getImage());
-        if (lastEnteredUsername != null && lastEnteredPassword != null) {
-            Benutzername.setText(lastEnteredUsername);
-            txtpasswort.setText(lastEnteredPassword);
+        if (LetzBenutzteBenutzername != null && LetzBenutztePasswort != null) {
+            Benutzername.setText(LetzBenutzteBenutzername);
+            txtpasswort.setText(LetzBenutztePasswort);
             Passwortmerken.setSelected(true); // Check the "Passwort merken" checkbox
         }
         Benutzername.addKeyListener(new java.awt.event.KeyAdapter() {
