@@ -18,6 +18,8 @@ import java.sql.SQLException;
  */
 public class Login extends javax.swing.JFrame {
 
+    private String lastEnteredUsername;
+    private String lastEnteredPassword;
     private final Datenbank datenbank;
 
     public Login() {
@@ -341,10 +343,10 @@ public class Login extends javax.swing.JFrame {
         String password = new String(txtpasswort.getPassword());
 
         if (datenbank.überprüfeAnmeldung(username, password)) {
-           
+
             Navigation navigationsfenster = new Navigation();
             navigationsfenster.setVisible(true);
-            this.dispose(); 
+            this.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Falsche Anmeldeinformationen", "Fehler", JOptionPane.ERROR_MESSAGE);
         }
@@ -372,45 +374,53 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_sehenMouseClicked
 
     private void AnmeldeButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnmeldeButtonKeyPressed
- if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-        anmelden();
-    }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            anmelden();
+        }
     }//GEN-LAST:event_AnmeldeButtonKeyPressed
 
-    
     private void anmelden() {
-    String username = Benutzername.getText();
-    String password = new String(txtpasswort.getPassword());
+        String username = Benutzername.getText();
+        String password = new String(txtpasswort.getPassword());
 
-    if (datenbank.überprüfeAnmeldung(username, password)) {
-    
-        Navigation navigationsfenster = new Navigation();
-        navigationsfenster.setVisible(true);
-        this.dispose(); 
-    } else {
-        JOptionPane.showMessageDialog(this, "Falsche Anmeldeinformationen", "Fehler", JOptionPane.ERROR_MESSAGE);
+        if (datenbank.überprüfeAnmeldung(username, password)) {
+
+            if (Passwortmerken.isSelected()) {
+                lastEnteredUsername = username;
+                lastEnteredPassword = password;
+            }
+
+            Navigation navigationsfenster = new Navigation();
+            navigationsfenster.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Falsche Anmeldeinformationen", "Fehler", JOptionPane.ERROR_MESSAGE);
+        }
     }
-}
+
     private void initCustomComponents() {
         ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
         this.setIconImage(icon.getImage());
-        
+        if (lastEnteredUsername != null && lastEnteredPassword != null) {
+            Benutzername.setText(lastEnteredUsername);
+            txtpasswort.setText(lastEnteredPassword);
+            Passwortmerken.setSelected(true); // Check the "Passwort merken" checkbox
+        }
         Benutzername.addKeyListener(new java.awt.event.KeyAdapter() {
-        public void keyPressed(java.awt.event.KeyEvent evt) {
-            if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-                anmelden();
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                    anmelden();
+                }
             }
-        }
-    });
+        });
 
-    
-    txtpasswort.addKeyListener(new java.awt.event.KeyAdapter() {
-        public void keyPressed(java.awt.event.KeyEvent evt) {
-            if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-                anmelden();
+        txtpasswort.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                    anmelden();
+                }
             }
-        }
-    });
+        });
     }
 
 
