@@ -10,8 +10,11 @@ import javax.swing.SwingUtilities;
  * @author miket
  */
 public class Navigation extends javax.swing.JFrame {
+PasswortAbfrage passwortAbfrage = new PasswortAbfrage(this, true);
 
-    public Navigation() {
+
+
+public Navigation() {
         initComponents();
         initCustomComponents();
     }
@@ -186,9 +189,10 @@ public class Navigation extends javax.swing.JFrame {
 
     private void DatenHinzufügenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenHinzufügenActionPerformed
 
-        PasswortAbfrage passwortAbfrage = new PasswortAbfrage(null, true);
+        
         passwortAbfrage.setVisible(true);
         this.dispose();
+       
      
     }//GEN-LAST:event_DatenHinzufügenActionPerformed
 

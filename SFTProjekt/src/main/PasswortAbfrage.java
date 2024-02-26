@@ -8,20 +8,20 @@ import javax.swing.*;
 public class PasswortAbfrage extends javax.swing.JDialog {
 
     private String korrektesPasswort = "geheim";
-      
 
     public PasswortAbfrage(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        
         initComponents();
-         
+        
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // Schließe nur das Dialogfenster
+                dispose();
+            }
+        });
     }
 
-    PasswortAbfrage() {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-
-   
     private boolean isPasswortKorrekt(String passwort) {
         return passwort.equals(korrektesPasswort);
     }
@@ -29,24 +29,15 @@ public class PasswortAbfrage extends javax.swing.JDialog {
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
         String passwort = passwortField.getText();
         if (isPasswortKorrekt(passwort)) {
-           
             DatenbankAnzeigen datenbankanzeigen = new DatenbankAnzeigen();
             datenbankanzeigen.setVisible(true);
-            this.dispose();
+            dispose(); // Schließe das Dialogfenster
         } else {
-            
             JOptionPane.showMessageDialog(this, "Falsches Passwort. Bitte versuchen Sie es erneut.", "Fehler", JOptionPane.ERROR_MESSAGE);
-        } 
+        }
     }
-    public void exit() {
-        super.dispose();
-    }
-    
-   
 
-    
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
@@ -90,23 +81,10 @@ public class PasswortAbfrage extends javax.swing.JDialog {
 
         pack();
         setLocationRelativeTo(null);
-        
-        
-         this.getRootPane().setDefaultButton(okButton);
-         
-        
-      
-    
-    }// </editor-fold>
+        this.getRootPane().setDefaultButton(okButton);
+    }
 
     private javax.swing.JButton okButton;
     private javax.swing.JPasswordField passwortField;
     private javax.swing.JLabel passwortLabel;
-
-    boolean isPasswortKorrekt() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-   
-    
 }

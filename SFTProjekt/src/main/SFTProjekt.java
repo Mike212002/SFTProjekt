@@ -12,15 +12,15 @@ public class SFTProjekt {
         //         Datenbank DB = new Datenbank();
 //         DB.dBConnec tor();
 
-         Login fenster = new Login();
-        fenster.setVisible(true);
+//         Login fenster = new Login();
+//        fenster.setVisible(true);
 //MapFenster map = new MapFenster();
 //map.runSketch(new String[]{"Map"}, map);
 //        DatenbankTabelleAnzeigen f = new DatenbankTabelleAnzeigen();
 //        f.setVisible(true);
 //
-//        Navigation s = new Navigation();
-//        s.setVisible(true);
+        Navigation s = new Navigation();
+        s.setVisible(true);
 //DatenbankAnzeigen f = new DatenbankAnzeigen();
 //f.setVisible(true);
 //        PDFViewer pdfViewer = new PDFViewer();
