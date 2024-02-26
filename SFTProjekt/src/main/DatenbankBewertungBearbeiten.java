@@ -130,9 +130,7 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
         Straße = new javax.swing.JTextField();
         PLZ = new javax.swing.JTextField();
         Ort = new javax.swing.JTextField();
-        Ansprechpartner = new javax.swing.JTextField();
         Orttxtfield = new javax.swing.JLabel();
-        Ansprechpartnertxtfield = new javax.swing.JLabel();
         Straßetxtfield = new javax.swing.JLabel();
         PLZtxtfield = new javax.swing.JLabel();
         Betriebsnametxtfield = new javax.swing.JLabel();
@@ -169,11 +167,11 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
 
             },
             new String [] {
-                "BetriebsID", "Betriebsname", "Straße", "Ort", "PLZ", "Ansprechpartner", "Website", "E-Mail"
+                "BewertID", "Sterne", "BetriebsID", "Beschreibung"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Long.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -192,9 +190,6 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
             Tabelle.getColumnModel().getColumn(1).setResizable(false);
             Tabelle.getColumnModel().getColumn(2).setResizable(false);
             Tabelle.getColumnModel().getColumn(3).setResizable(false);
-            Tabelle.getColumnModel().getColumn(4).setResizable(false);
-            Tabelle.getColumnModel().getColumn(5).setResizable(false);
-            Tabelle.getColumnModel().getColumn(7).setResizable(false);
         }
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -447,17 +442,6 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
         jPanel7.add(Ort, gridBagConstraints);
 
-        Ansprechpartner.setMaximumSize(new java.awt.Dimension(100, 20));
-        Ansprechpartner.setMinimumSize(new java.awt.Dimension(20, 20));
-        Ansprechpartner.setPreferredSize(new java.awt.Dimension(100, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
-        jPanel7.add(Ansprechpartner, gridBagConstraints);
-
         Orttxtfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Orttxtfield.setText("BetriebsID");
         Orttxtfield.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -471,19 +455,6 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jPanel7.add(Orttxtfield, gridBagConstraints);
-
-        Ansprechpartnertxtfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Ansprechpartnertxtfield.setText("Autor");
-        Ansprechpartnertxtfield.setMinimumSize(new java.awt.Dimension(20, 20));
-        Ansprechpartnertxtfield.setPreferredSize(new java.awt.Dimension(20, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel7.add(Ansprechpartnertxtfield, gridBagConstraints);
 
         Straßetxtfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Straßetxtfield.setText("Sterne");
@@ -627,11 +598,12 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.weightx = 1.0;
         jPanel2.add(jPanel5, gridBagConstraints);
 
         BetriebeÜbersicht.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
-        BetriebeÜbersicht.setText("Bewertung");
+        BetriebeÜbersicht.setText("Bewertung bearbeiten");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -744,7 +716,7 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
                 Straße.setText(straße);
                 PLZ.setText(postleitzahl); // Postleitzahl als String setzen
                 Ort.setText(ort);
-                Ansprechpartner.setText(ansprechpartner);
+//                Ansprechpartner.setText(ansprechpartner);
                 //Website.setText(website);
                 //EMail.setText(email);
             } catch (ArrayIndexOutOfBoundsException ex) {
@@ -832,7 +804,7 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
         Straße.setText("");
         PLZ.setText("");
         Ort.setText("");
-        Ansprechpartner.setText("");
+//        Ansprechpartner.setText("");
         //Website.setText("");
         //EMail.setText("");
 
@@ -851,7 +823,7 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
                 String ort = Ort.getText();
                 String postleitzahlString = PLZ.getText();
                 int postleitzahl = Integer.parseInt(postleitzahlString);
-                String ansprechpartner = Ansprechpartner.getText();
+//                String ansprechpartner = Ansprechpartner.getText();
                 //String website = Website.getText();
                 //String email = EMail.getText();
 
@@ -861,7 +833,7 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
                 betrieb.setStraße(straße);
                 betrieb.setOrt(ort);
                 betrieb.setPLZ(postleitzahl);
-                betrieb.setAnsprechpartner(ansprechpartner);
+//                betrieb.setAnsprechpartner(ansprechpartner);
                 //betrieb.setWebsite(website);
                 //betrieb.setEMail(email);
 
@@ -1008,8 +980,6 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Ansprechpartner;
-    private javax.swing.JLabel Ansprechpartnertxtfield;
     private javax.swing.JLabel BetriebeÜbersicht;
     private javax.swing.JTextField Betriebsname;
     private javax.swing.JLabel Betriebsnametxtfield;
