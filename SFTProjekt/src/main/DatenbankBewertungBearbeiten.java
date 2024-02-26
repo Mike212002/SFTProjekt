@@ -56,46 +56,6 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
     private boolean isSearchTriggered = false;
 
     public DatenbankBewertungBearbeiten() {
-        initComponents();
-        initCustomComponents();
-        setTableContents();
-
-        Eingabe.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                EingabeFocusLost(evt);
-            }
-        });
-
-        Eingabe.getDocument().addDocumentListener(new DocumentListener() {
-
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                filterTable();
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                filterTable();
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                filterTable();
-            }
-        });
-
-    }
-
-    private void filterTable() {
-        String eingabe = Eingabe.getText().trim();
-        TableRowSorter<TableModel> sorter = new TableRowSorter<>(Tabelle.getModel());
-        Tabelle.setRowSorter(sorter);
-        if (eingabe.isEmpty()) {
-            sorter.setRowFilter(null); // Entfernen Sie den Filter, um die gesamte Tabelle anzuzeigen
-        } else {
-            RowFilter<TableModel, Object> filter = RowFilter.regexFilter("(?i)" + eingabe); // Case-insensitive Suche
-            sorter.setRowFilter(filter);
-        }
     }
 
     @SuppressWarnings("unchecked")
@@ -624,35 +584,7 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void setTableContents() {
-        Datenbank datenbank = new Datenbank();
-        ArrayList<Betrieb> alleBetriebe = datenbank.holeAlleBetriebe();
-
-        DefaultTableModel tableModel = new DefaultTableModel(new Object[]{"BetriebsID", "Betriebsname", "Straße", "Ort", "PLZ", "Ansprechpartner", "Website", "EMail"}, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-
-                return false;
-            }
-        };
-
-        for (Betrieb betrieb : alleBetriebe) {
-            Object[] rowData = {
-                betrieb.getBetriebsID(),
-                betrieb.getBetriebsname(),
-                betrieb.getStraße(),
-                betrieb.getOrt(),
-                betrieb.getPLZ(),
-                betrieb.getAnsprechpartner(),
-                betrieb.getWebsite(),
-                betrieb.getEMail()
-            };
-
-            tableModel.addRow(rowData);
-        }
-
-        Tabelle.setModel(tableModel);
-    }
+   
 
     private void TabelleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelleMouseClicked
         int selectedRow = Tabelle.getSelectedRow();
@@ -733,60 +665,17 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
     }//GEN-LAST:event_ZurückbttnActionPerformed
 
     private void ExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        int userSelection = fileChooser.showSaveDialog(this);
-
-        if (userSelection == JFileChooser.APPROVE_OPTION) {
-            File fileToSave = fileChooser.getSelectedFile();
-            String filePath = fileToSave.getAbsolutePath();
-
-            try (FileWriter fw = new FileWriter(new File(filePath));
-                    BufferedWriter bw = new BufferedWriter(fw)) {
-
-                for (int i = 0; i < Tabelle.getRowCount(); i++) {
-                    for (int j = 0; j < Tabelle.getColumnCount(); j++) {
-                        Object value = Tabelle.getValueAt(i, j);
-                        if (value != null) {
-                            bw.write(value.toString() + " ");
-                        } else {
-                            bw.write(" ");
-                        }
-                        // Füge einen Zeilenumbruch hinzu, außer bei der letzten Spalte
-                        if (j < Tabelle.getColumnCount() - 1) {
-                            bw.write(System.getProperty("line.separator"));
-                        }
-                    }
-                    // Füge einen Absatz ein, außer bei der letzten Zeile
-                    if (i < Tabelle.getRowCount() - 1) {
-                        bw.newLine();
-                    }
-                }
-
-                JOptionPane.showMessageDialog(this, "Export erfolgreich.");
-            } catch (IOException ex) {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Beim Export ist ein Fehler aufgetreten.");
-            }
-        }
+  
     }//GEN-LAST:event_ExportActionPerformed
 
     private void EingabeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EingabeMouseClicked
-        Eingabe.setText("");
+      
     }//GEN-LAST:event_EingabeMouseClicked
 
     private void EingabeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EingabeFocusLost
-        if (Eingabe.getText().isEmpty()) {
-            Eingabe.setText("Betriebe Durchsuchen");
-            alleDatenAnzeigen();
-        }
-
+  
     }//GEN-LAST:event_EingabeFocusLost
-    private void alleDatenAnzeigen() {
-        DefaultTableModel model = (DefaultTableModel) Tabelle.getModel();
-        TableRowSorter<TableModel> sorter = new TableRowSorter<>(model);
-        Tabelle.setRowSorter(sorter);
-        sorter.setRowFilter(null);
-    }
+  
     private void EingabeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EingabeMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_EingabeMouseExited
@@ -800,62 +689,12 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
     }//GEN-LAST:event_BetriebsnameActionPerformed
 
     private void DatenZurücksetztenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenZurücksetztenbttnActionPerformed
-        Betriebsname.setText("");
-        Straße.setText("");
-        PLZ.setText("");
-        Ort.setText("");
-//        Ansprechpartner.setText("");
-        //Website.setText("");
-        //EMail.setText("");
+  
 
     }//GEN-LAST:event_DatenZurücksetztenbttnActionPerformed
 
     private void DatenAktualisierenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenAktualisierenbttnActionPerformed
-        int selectedRow = Tabelle.getSelectedRow();
-
-        if (selectedRow != -1) {
-            try {
-
-                int betriebsID = (int) Tabelle.getValueAt(selectedRow, 0);
-
-                String betriebsname = Betriebsname.getText();
-                String straße = Straße.getText();
-                String ort = Ort.getText();
-                String postleitzahlString = PLZ.getText();
-                int postleitzahl = Integer.parseInt(postleitzahlString);
-//                String ansprechpartner = Ansprechpartner.getText();
-                //String website = Website.getText();
-                //String email = EMail.getText();
-
-                Betrieb betrieb = new Betrieb();
-                betrieb.setBetriebsID(betriebsID);
-                betrieb.setBetriebsname(betriebsname);
-                betrieb.setStraße(straße);
-                betrieb.setOrt(ort);
-                betrieb.setPLZ(postleitzahl);
-//                betrieb.setAnsprechpartner(ansprechpartner);
-                //betrieb.setWebsite(website);
-                //betrieb.setEMail(email);
-
-                Datenbank datenbank = new Datenbank();
-                boolean updateErfolgreich = datenbank.aktualisiereBetrieb(betrieb);
-
-                if (updateErfolgreich) {
-
-                    updateTable();
-                } else {
-
-                    JOptionPane.showMessageDialog(this, "Fehler beim Aktualisieren des Betriebs.", "Fehler", JOptionPane.ERROR_MESSAGE);
-                }
-            } catch (Exception ex) {
-
-                ex.printStackTrace();
-                JOptionPane.showMessageDialog(this, "Fehler beim Aktualisieren des Betriebs: " + ex.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-
-            JOptionPane.showMessageDialog(this, "Bitte wählen Sie eine Zeile in der Tabelle aus.", "Fehler", JOptionPane.ERROR_MESSAGE);
-        }
+     
     }//GEN-LAST:event_DatenAktualisierenbttnActionPerformed
 
     private void DatenAnlegenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenAnlegenbttnActionPerformed
@@ -865,118 +704,9 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
     }//GEN-LAST:event_DatenAnlegenbttnActionPerformed
 
     private void DatenLöschenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenLöschenbttnActionPerformed
-        int[] selectedRows = Tabelle.getSelectedRows();
-
-        if (selectedRows.length > 0) {
-            StringBuilder messageBuilder = new StringBuilder("Möchten Sie den folgenden Eintrag wirklich löschen?\n");
-            for (int i = 0; i < selectedRows.length; i++) {
-                try {
-                    int betriebsID = Integer.parseInt(Tabelle.getValueAt(selectedRows[i], 0).toString());
-                    String betriebsName = Tabelle.getValueAt(selectedRows[i], 1).toString();
-                    String straße = Tabelle.getValueAt(selectedRows[i], 2).toString();
-                    String ort = Tabelle.getValueAt(selectedRows[i], 3).toString();
-                    String plz = Tabelle.getValueAt(selectedRows[i], 4).toString();
-                    String ansprechpartner = Tabelle.getValueAt(selectedRows[i], 5).toString();
-                    String website = Tabelle.getValueAt(selectedRows[i], 6).toString();
-                    String email = Tabelle.getValueAt(selectedRows[i], 7).toString();
-
-                    messageBuilder.append("\nBetriebsID: ").append(betriebsID)
-                    .append("\nBetriebsname: ").append(betriebsName)
-                    .append("\nStraße: ").append(straße)
-                    .append("\nOrt: ").append(ort)
-                    .append("\nPLZ: ").append(plz)
-                    .append("\nAnsprechpartner: ").append(ansprechpartner)
-                    .append("\nWebsite: ").append(website)
-                    .append("\nE-Mail: ").append(email)
-                    .append("\n----------------------\n");
-                } catch (NumberFormatException | NullPointerException ex) {
-                    System.out.println("Fehler beim Abrufen der Einträge aus der Tabelle: " + ex.getMessage());
-                    JOptionPane.showMessageDialog(this, "Fehler beim Abrufen der Einträge aus der Tabelle.", "Fehler", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-            }
-
-            int response = JOptionPane.showConfirmDialog(this, messageBuilder.toString(), "Bestätigung - Eintrag löschen", JOptionPane.YES_NO_OPTION);
-
-            if (response == JOptionPane.YES_OPTION) {
-                try {
-                    for (int i = selectedRows.length - 1; i >= 0; i--) {
-                        int betriebsID = Integer.parseInt(Tabelle.getValueAt(selectedRows[i], 0).toString());
-                        String betriebsName = Tabelle.getValueAt(selectedRows[i], 1).toString();
-
-                        Datenbank datenbank = new Datenbank();
-                        if (datenbank.löscheBetrieb(betriebsID)) {
-                            updateTable();
-                            JOptionPane.showMessageDialog(this, "Der Eintrag für den Betrieb mit folgender BetriebsID: '" + betriebsID + "' wurde erfolgreich gelöscht.", "Eintrag erfolgreich gelöscht", JOptionPane.INFORMATION_MESSAGE);
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Fehler beim Löschen des Betriebs.", "Fehler", JOptionPane.ERROR_MESSAGE);
-                        }
-                    }
-                } catch (NumberFormatException | NullPointerException ex) {
-                    System.out.println("Fehler beim Löschen der Einträge: " + ex.getMessage());
-                    JOptionPane.showMessageDialog(this, "Fehler beim Löschen der Einträge.", "Fehler", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Bitte wählen Sie mindestens eine Zeile in der Tabelle aus.", "Fehler", JOptionPane.ERROR_MESSAGE);
-        }
+      
     }//GEN-LAST:event_DatenLöschenbttnActionPerformed
 
-    private void initCustomComponents() {
-        ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
-        this.setIconImage(icon.getImage());
-
-    }
-
-    private void updateTable() {
-
-        DefaultTableModel model = (DefaultTableModel) Tabelle.getModel();
-        model.setRowCount(0);
-
-        Datenbank datenbank = new Datenbank();
-        ArrayList<Betrieb> betriebe = datenbank.holeAlleBetriebe();
-        for (Betrieb betrieb : betriebe) {
-            Object[] row = {betrieb.getBetriebsID(), betrieb.getBetriebsname(), betrieb.getStraße(), betrieb.getOrt(), betrieb.getPLZ(), betrieb.getAnsprechpartner(), betrieb.getWebsite(), betrieb.getEMail()};
-            model.addRow(row);
-        }
-    }
-
-    private void suchenInTabelle() {
-        if (!isSearchTriggered) {
-            return; // Suche nur ausführen, wenn der Such-Button geklickt wurde
-        }
-
-        String eingabe = Eingabe.getText().trim();
-
-        DefaultTableModel model = (DefaultTableModel) Tabelle.getModel();
-        TableRowSorter<TableModel> sorter = new TableRowSorter<>(model);
-        Tabelle.setRowSorter(sorter);
-
-        if (eingabe.isEmpty()) {
-            sorter.setRowFilter(null);
-            return;
-        }
-
-        RowFilter<TableModel, Object> filter = new RowFilter<TableModel, Object>() {
-            public boolean include(RowFilter.Entry<? extends TableModel, ? extends Object> entry) {
-                for (int i = 0; i < entry.getValueCount(); i++) {
-                    if (entry.getStringValue(i).equals(eingabe)) {
-                        return true;
-                    }
-                }
-                return false;
-            }
-        };
-
-        sorter.setRowFilter(filter);
-
-        // Überprüfen, ob Einträge gefunden wurden
-        if (sorter.getViewRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Eintrag '" + eingabe + "' nicht gefunden.");
-            sorter.setRowFilter(null); // Entfernen Sie den Filter, um die gesamte Tabelle anzuzeigen
-            isSearchTriggered = false; // Setzen Sie den Suchauslöser zurück
-        }
-    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

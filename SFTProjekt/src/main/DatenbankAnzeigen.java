@@ -1053,11 +1053,10 @@ if (selectedRows.length > 0) {
 
         sorter.setRowFilter(filter);
 
-        // Überprüfen, ob Einträge gefunden wurden
         if (sorter.getViewRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Eintrag '" + eingabe + "' nicht gefunden.");
-            sorter.setRowFilter(null); // Entfernen Sie den Filter, um die gesamte Tabelle anzuzeigen
-            isSearchTriggered = false; // Setzen Sie den Suchauslöser zurück
+            sorter.setRowFilter(null); 
+            isSearchTriggered = false; 
         }
     }
 
