@@ -19,13 +19,17 @@ public class SFTProjekt {
 //        DatenbankTabelleAnzeigen f = new DatenbankTabelleAnzeigen();
 //        f.setVisible(true);
 //
-        Navigation s = new Navigation();
-        s.setVisible(true);
+//        Navigation s = new Navigation();
+//        s.setVisible(true);
 //DatenbankAnzeigen f = new DatenbankAnzeigen();
 //f.setVisible(true);
 //        PDFViewer pdfViewer = new PDFViewer();
 //        pdfViewer.display();
 //NewJFrame newJFrame = new NewJFrame();
 //newJFrame.setVisible(true);
+
+
+CustomCalendar  f = new CustomCalendar();
+f.setVisible(true);
     }
 }
