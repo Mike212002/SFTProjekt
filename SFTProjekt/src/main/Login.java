@@ -143,6 +143,11 @@ public class Login extends javax.swing.JFrame {
         Benutzername.setToolTipText("");
         Benutzername.setBorder(null);
         Benutzername.setPreferredSize(new java.awt.Dimension(170, 16));
+        Benutzername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BenutzernameActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -378,6 +383,10 @@ public class Login extends javax.swing.JFrame {
             anmelden();
         }
     }//GEN-LAST:event_AnmeldeButtonKeyPressed
+
+    private void BenutzernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BenutzernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BenutzernameActionPerformed
 
     private void anmelden() {
         String username = Benutzername.getText();
