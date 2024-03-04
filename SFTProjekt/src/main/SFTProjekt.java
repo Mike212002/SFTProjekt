@@ -12,8 +12,8 @@ public class SFTProjekt {
         //         Datenbank DB = new Datenbank();
 //         DB.dBConnec tor();
 
-//         Login fenster = new Login();
-//        fenster.setVisible(true);
+         Login fenster = new Login();
+        fenster.setVisible(true);
 //MapFenster map = new MapFenster();
 //map.runSketch(new String[]{"Map"}, map);
 //        DatenbankTabelleAnzeigen f = new DatenbankTabelleAnzeigen();
@@ -32,7 +32,7 @@ public class SFTProjekt {
 //CustomCalendar  f = new CustomCalendar();
 //f.setVisible(true);
 
-EventErtellen t = new EventErtellen();
-t.setVisible(true);
+//EventErtellen t = new EventErtellen();
+//t.setVisible(true);
     }
 }

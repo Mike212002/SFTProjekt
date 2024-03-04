@@ -932,7 +932,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
                             bw.write(" ");
                         }
                         // Füge einen Zeilenumbruch hinzu, außer bei der letzten Spalte
-                        if (j < Tabelle.getColumnCount() - 1) {
+                        if (j < Tabelle.getColumnCount()) {
                             bw.write(System.getProperty("line.separator"));
                         }
                     }
