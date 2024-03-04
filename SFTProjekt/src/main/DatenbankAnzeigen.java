@@ -922,6 +922,11 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
 
             try (FileWriter fw = new FileWriter(new File(filePath));
                     BufferedWriter bw = new BufferedWriter(fw)) {
+                
+                            for (int i = 0; i < Tabelle.getColumnCount(); i++) {
+                bw.write(Tabelle.getColumnName(i) + ",");
+            }
+            bw.newLine();
 
                 for (int i = 0; i < Tabelle.getRowCount(); i++) {
                     for (int j = 0; j < Tabelle.getColumnCount(); j++) {
