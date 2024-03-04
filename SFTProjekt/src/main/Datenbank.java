@@ -157,4 +157,29 @@ public class Datenbank {
         return false;
     }
 
+  public ArrayList<Bewertung> holeAlleBewertungen() {
+        ArrayList<Bewertung> alleBetriebe = new ArrayList<>();
+        try (Connection connection = DriverManager.getConnection(url, user, password)) {
+            System.out.println("Datenbank Verbunden");
+            String statement = "SELECT * FROM Bewertungssystem";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
+                ResultSet result = preparedStatement.executeQuery();
+                while (result.next()) {
+                    Bewertung bewertung = new Bewertung();
+                    bewertung.setBewertID(result.getInt("BewertID"));
+                    bewertung.setSterne(result.getInt("Sterne"));
+                    bewertung.setBeschreibung(result.getString("Beschreibung"));
+                    
+
+                    alleBetriebe.add(bewertung);
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return alleBetriebe;
+    }
 }

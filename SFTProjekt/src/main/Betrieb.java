@@ -14,17 +14,9 @@ public class Betrieb {
     private String Ansprechpartner;
     private String Website;
     private String EMail;
+    
+   
 
-    public Betrieb(int BetriebsId, String Betriebsname, String Straße, String Ort, int PLZ, String Ansprechpartner, String Website, String EMail) {
-        this.Betriebsname = Betriebsname;
-        this.Straße = Straße;
-        this.Ort = Ort;
-        this.PLZ = PLZ;
-        this.Ansprechpartner = Ansprechpartner;
-        this.Website = Website;
-        this.EMail = EMail;
-        
-    }
     
     public Betrieb(String Betriebsname, String Straße, String Ort, int PLZ, String Ansprechpartner, String Website, String EMail) {
         this.Betriebsname = Betriebsname;
@@ -34,7 +26,12 @@ public class Betrieb {
         this.Ansprechpartner = Ansprechpartner;
         this.Website = Website;
         this.EMail = EMail;
+        
+        
+        
     }
+
+  
     
     public Betrieb() {
     }

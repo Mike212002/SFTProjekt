@@ -583,7 +583,6 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-   
 
     private void TabelleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelleMouseClicked
         int selectedRow = Tabelle.getSelectedRow();
@@ -657,6 +656,33 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
             System.out.println("Es wurde keine Zeile ausgewählt.");
 }    }//GEN-LAST:event_TabelleMouseClicked
 
+    private void setTableContents() {
+        Datenbank datenbank = new Datenbank();
+        ArrayList<Bewertung> alleBetriebe = datenbank.holeAlleBewertungen();
+
+        DefaultTableModel tableModel = new DefaultTableModel(new Object[]{"BewertID,Sterne,BetriebsID,Beschreibung"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+
+                return false;
+            }
+        };
+
+        for (Bewertung bewertung : alleBetriebe) {
+            Object[] rowData = {
+                bewertung.getBewertID(),
+                bewertung.getSterne(),
+                betrieb.getBetriebsID(),
+                bewertung.getBeschreibung()
+                
+            };
+
+            tableModel.addRow(rowData);
+        }
+
+        Tabelle.setModel(tableModel);
+    }
+
     private void ZurückbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZurückbttnActionPerformed
         this.dispose();
         Navigation navigation = new Navigation();
@@ -664,17 +690,17 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
     }//GEN-LAST:event_ZurückbttnActionPerformed
 
     private void ExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportActionPerformed
-  
+
     }//GEN-LAST:event_ExportActionPerformed
 
     private void EingabeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EingabeMouseClicked
-      
+
     }//GEN-LAST:event_EingabeMouseClicked
 
     private void EingabeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EingabeFocusLost
-  
+
     }//GEN-LAST:event_EingabeFocusLost
-  
+
     private void EingabeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EingabeMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_EingabeMouseExited
@@ -688,12 +714,12 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
     }//GEN-LAST:event_BetriebsnameActionPerformed
 
     private void DatenZurücksetztenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenZurücksetztenbttnActionPerformed
-  
+
 
     }//GEN-LAST:event_DatenZurücksetztenbttnActionPerformed
 
     private void DatenAktualisierenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenAktualisierenbttnActionPerformed
-     
+
     }//GEN-LAST:event_DatenAktualisierenbttnActionPerformed
 
     private void DatenAnlegenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenAnlegenbttnActionPerformed
@@ -703,9 +729,8 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
     }//GEN-LAST:event_DatenAnlegenbttnActionPerformed
 
     private void DatenLöschenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenLöschenbttnActionPerformed
-      
-    }//GEN-LAST:event_DatenLöschenbttnActionPerformed
 
+    }//GEN-LAST:event_DatenLöschenbttnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

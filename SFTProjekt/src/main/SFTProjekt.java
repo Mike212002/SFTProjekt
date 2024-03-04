@@ -34,5 +34,12 @@ public class SFTProjekt {
 
 //EventErtellen t = new EventErtellen();
 //t.setVisible(true);
+<<<<<<< Updated upstream
+=======
+
+DatenbankBewertungBearbeiten o = new DatenbankBewertungBearbeiten();
+o.setVisible(true);
+>>>>>>> Stashed changes
     }
+    
 }
