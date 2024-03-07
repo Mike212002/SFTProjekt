@@ -29,10 +29,10 @@ public class SFTProjekt {
 //newJFrame.setVisible(true);
 
 
-//CustomCalendar  f = new CustomCalendar();
-//f.setVisible(true);
-
-EventErtellen t = new EventErtellen();
-t.setVisible(true);
+CustomCalendar  f = new CustomCalendar();
+f.setVisible(true);
+//
+//EventErtellen t = new EventErtellen();
+//t.setVisible(true);
     }
 }
