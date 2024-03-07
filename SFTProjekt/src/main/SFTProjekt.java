@@ -9,11 +9,11 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class SFTProjekt {
 
     public static void main(String[] args) {
-        //         Datenbank DB = new Datenbank();
-//         DB.dBConnec tor();
+                 Datenbank DB = new Datenbank();
+         DB.dBConnector();
 
-         Login fenster = new Login();
-        fenster.setVisible(true);
+//         Login fenster = new Login();
+//        fenster.setVisible(true);
 //MapFenster map = new MapFenster();
 //map.runSketch(new String[]{"Map"}, map);
 //        DatenbankTabelleAnzeigen f = new DatenbankTabelleAnzeigen();
@@ -29,23 +29,20 @@ public class SFTProjekt {
 //newJFrame.setVisible(true);
 
 
+
+
+DatenbankBewertungBearbeiten f = new DatenbankBewertungBearbeiten(); 
+f.setVisible(true);
+
 //CustomCalendar  f = new CustomCalendar();
 //f.setVisible(true);
 
 //EventErtellen t = new EventErtellen();
 //t.setVisible(true);
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
 
-DatenbankBewertungBearbeiten o = new DatenbankBewertungBearbeiten();
-o.setVisible(true);
->>>>>>> Stashed changes
-=======
 
-DatenbankBewertungBearbeiten o = new DatenbankBewertungBearbeiten();
-o.setVisible(true);
->>>>>>> Stashed changes
+
+
     }
     
 }

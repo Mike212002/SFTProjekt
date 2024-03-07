@@ -169,7 +169,7 @@ public class Datenbank {
                     bewertung.setBewertID(result.getInt("BewertID"));
                     bewertung.setSterne(result.getInt("Sterne"));
                     bewertung.setBeschreibung(result.getString("Beschreibung"));
-                    
+                    bewertung.setBetriebsID(result.getInt("BetriebsID"));
 
                     alleBetriebe.add(bewertung);
                 }
