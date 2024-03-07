@@ -55,7 +55,6 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
     private boolean isSearchTriggered = false;
 
     public DatenbankBewertungBearbeiten() {
-        initComponents();
     }
 
     @SuppressWarnings("unchecked")
@@ -659,7 +658,7 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
 
     private void setTableContents() {
         Datenbank datenbank = new Datenbank();
-        ArrayList<Bewertung> alleBewertungen = datenbank.holeAlleBewertungen();
+        ArrayList<Bewertung> alleBetriebe = datenbank.holeAlleBewertungen();
 
         DefaultTableModel tableModel = new DefaultTableModel(new Object[]{"BewertID,Sterne,BetriebsID,Beschreibung"}, 0) {
             @Override
@@ -669,11 +668,11 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
             }
         };
 
-        for (Bewertung bewertung : alleBewertungen) {
+        for (Bewertung bewertung : alleBetriebe) {
             Object[] rowData = {
                 bewertung.getBewertID(),
                 bewertung.getSterne(),
-//                bewertung.getBetriebsID(),
+//                betrieb.getBetriebsID(),
                 bewertung.getBeschreibung()
                 
             };
