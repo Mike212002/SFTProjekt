@@ -55,6 +55,8 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
     private boolean isSearchTriggered = false;
 
     public DatenbankBewertungBearbeiten() {
+        
+      initComponents();
     }
 
     @SuppressWarnings("unchecked")
@@ -85,10 +87,10 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
         filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         jPanel5 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        Betriebsname = new javax.swing.JTextField();
-        Straße = new javax.swing.JTextField();
-        PLZ = new javax.swing.JTextField();
-        Ort = new javax.swing.JTextField();
+        BewertIDFeld = new javax.swing.JTextField();
+        Sterne = new javax.swing.JTextField();
+        BetriebsID = new javax.swing.JTextField();
+        Beschreibung = new javax.swing.JTextField();
         Orttxtfield = new javax.swing.JLabel();
         Straßetxtfield = new javax.swing.JLabel();
         PLZtxtfield = new javax.swing.JLabel();
@@ -352,12 +354,12 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(25, 118, 211), 4));
         jPanel7.setLayout(new java.awt.GridBagLayout());
 
-        Betriebsname.setMaximumSize(new java.awt.Dimension(100, 20));
-        Betriebsname.setMinimumSize(new java.awt.Dimension(20, 20));
-        Betriebsname.setPreferredSize(new java.awt.Dimension(100, 20));
-        Betriebsname.addActionListener(new java.awt.event.ActionListener() {
+        BewertIDFeld.setMaximumSize(new java.awt.Dimension(100, 20));
+        BewertIDFeld.setMinimumSize(new java.awt.Dimension(20, 20));
+        BewertIDFeld.setPreferredSize(new java.awt.Dimension(100, 20));
+        BewertIDFeld.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BetriebsnameActionPerformed(evt);
+                BewertIDFeldActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -366,40 +368,40 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.5;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
-        jPanel7.add(Betriebsname, gridBagConstraints);
+        jPanel7.add(BewertIDFeld, gridBagConstraints);
 
-        Straße.setMaximumSize(new java.awt.Dimension(100, 20));
-        Straße.setMinimumSize(new java.awt.Dimension(20, 20));
-        Straße.setPreferredSize(new java.awt.Dimension(100, 20));
+        Sterne.setMaximumSize(new java.awt.Dimension(100, 20));
+        Sterne.setMinimumSize(new java.awt.Dimension(20, 20));
+        Sterne.setPreferredSize(new java.awt.Dimension(100, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
-        jPanel7.add(Straße, gridBagConstraints);
+        jPanel7.add(Sterne, gridBagConstraints);
 
-        PLZ.setMaximumSize(new java.awt.Dimension(100, 20));
-        PLZ.setMinimumSize(new java.awt.Dimension(20, 20));
-        PLZ.setPreferredSize(new java.awt.Dimension(100, 20));
+        BetriebsID.setMaximumSize(new java.awt.Dimension(100, 20));
+        BetriebsID.setMinimumSize(new java.awt.Dimension(20, 20));
+        BetriebsID.setPreferredSize(new java.awt.Dimension(100, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
-        jPanel7.add(PLZ, gridBagConstraints);
+        jPanel7.add(BetriebsID, gridBagConstraints);
 
-        Ort.setMaximumSize(new java.awt.Dimension(100, 20));
-        Ort.setMinimumSize(new java.awt.Dimension(20, 20));
-        Ort.setPreferredSize(new java.awt.Dimension(100, 20));
+        Beschreibung.setMaximumSize(new java.awt.Dimension(100, 20));
+        Beschreibung.setMinimumSize(new java.awt.Dimension(20, 20));
+        Beschreibung.setPreferredSize(new java.awt.Dimension(100, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 50);
-        jPanel7.add(Ort, gridBagConstraints);
+        jPanel7.add(Beschreibung, gridBagConstraints);
 
         Orttxtfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Orttxtfield.setText("BetriebsID");
@@ -589,63 +591,43 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
 
         if (selectedRow != -1) {
             try {
-                String betriebsname = "";
-                String straße = "";
-                String postleitzahl = "";
-                String ort = "";
-                String ansprechpartner = "";
-                String website = "";
-                String email = "";
+                String bewertID = "";
+                String sterne = "";
+                String betriebsID = "";
+                String beschreibung = "";
+                
 
                 Object value;
 
                 // Betriebsname
                 value = Tabelle.getValueAt(selectedRow, 1);
                 if (value != null) {
-                    betriebsname = value.toString();
+                    bewertID = value.toString();
                 }
 
                 // Straße
                 value = Tabelle.getValueAt(selectedRow, 2);
                 if (value != null) {
-                    straße = value.toString();
+                    sterne = value.toString();
                 }
 
                 // Postleitzahl (als String behandeln, da aus der Tabelle abgerufen)
-                value = Tabelle.getValueAt(selectedRow, 4);
+                value = Tabelle.getValueAt(selectedRow, 3);
                 if (value != null) {
-                    postleitzahl = value.toString();
+                    betriebsID = value.toString();
                 }
 
                 // Ort
-                value = Tabelle.getValueAt(selectedRow, 3);
+                value = Tabelle.getValueAt(selectedRow, 4);
                 if (value != null) {
-                    ort = value.toString();
+                    beschreibung = value.toString();
                 }
-
-                // Ansprechpartner
-                value = Tabelle.getValueAt(selectedRow, 5);
-                if (value != null) {
-                    ansprechpartner = value.toString();
-                }
-
-                // Website
-                value = Tabelle.getValueAt(selectedRow, 6);
-                if (value != null) {
-                    website = value.toString();
-                }
-
-                // E-Mail
-                value = Tabelle.getValueAt(selectedRow, 7);
-                if (value != null) {
-                    email = value.toString();
-                }
-
+--
                 // Setzen der Werte in die entsprechenden Textfelder
-                Betriebsname.setText(betriebsname);
-                Straße.setText(straße);
-                PLZ.setText(postleitzahl); // Postleitzahl als String setzen
-                Ort.setText(ort);
+                BewertIDFeld.setText(bewertID);
+                Sterne.setText(sterne);
+                BetriebsID.setText(betriebsID); // Postleitzahl als String setzen
+                Beschreibung.setText(beschreibung);
 //                Ansprechpartner.setText(ansprechpartner);
                 //Website.setText(website);
                 //EMail.setText(email);
@@ -658,7 +640,7 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
 
     private void setTableContents() {
         Datenbank datenbank = new Datenbank();
-        ArrayList<Bewertung> alleBetriebe = datenbank.holeAlleBewertungen();
+        ArrayList<Bewertung> alleBewertungen = datenbank.holeAlleBewertungen();
 
         DefaultTableModel tableModel = new DefaultTableModel(new Object[]{"BewertID,Sterne,BetriebsID,Beschreibung"}, 0) {
             @Override
@@ -668,11 +650,11 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
             }
         };
 
-        for (Bewertung bewertung : alleBetriebe) {
+        for (Bewertung bewertung : alleBewertungen) {
             Object[] rowData = {
                 bewertung.getBewertID(),
                 bewertung.getSterne(),
-//                betrieb.getBetriebsID(),
+                bewertung.getBetriebsID(),
                 bewertung.getBeschreibung()
                 
             };
@@ -681,6 +663,18 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
         }
 
         Tabelle.setModel(tableModel);
+    }
+    private void updateTable() {
+
+        DefaultTableModel model = (DefaultTableModel) Tabelle.getModel();
+        model.setRowCount(0);
+
+        Datenbank datenbank = new Datenbank();
+        ArrayList<Bewertung> bewertungen = datenbank.holeAlleBewertungen();
+        for (Bewertung bewertung : bewertungen) {
+            Object[] row = {bewertung.getBewertID(),bewertung.getSterne(),bewertung.getBetriebsID(),bewertung.getBeschreibung()};
+            model.addRow(row);
+        }
     }
 
     private void ZurückbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZurückbttnActionPerformed
@@ -709,9 +703,9 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_EingabeActionPerformed
 
-    private void BetriebsnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BetriebsnameActionPerformed
+    private void BewertIDFeldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BewertIDFeldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BetriebsnameActionPerformed
+    }//GEN-LAST:event_BewertIDFeldActionPerformed
 
     private void DatenZurücksetztenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenZurücksetztenbttnActionPerformed
 
@@ -734,20 +728,20 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Beschreibung;
     private javax.swing.JLabel BetriebeÜbersicht;
-    private javax.swing.JTextField Betriebsname;
+    private javax.swing.JTextField BetriebsID;
     private javax.swing.JLabel Betriebsnametxtfield;
+    private javax.swing.JTextField BewertIDFeld;
     private javax.swing.JButton DatenAktualisierenbttn;
     private javax.swing.JButton DatenAnlegenbttn;
     private javax.swing.JButton DatenLöschenbttn;
     private javax.swing.JButton DatenZurücksetztenbttn;
     private javax.swing.JTextField Eingabe;
     private javax.swing.JButton Export;
-    private javax.swing.JTextField Ort;
     private javax.swing.JLabel Orttxtfield;
-    private javax.swing.JTextField PLZ;
     private javax.swing.JLabel PLZtxtfield;
-    private javax.swing.JTextField Straße;
+    private javax.swing.JTextField Sterne;
     private javax.swing.JLabel Straßetxtfield;
     private javax.swing.JTable Tabelle;
     private javax.swing.JButton Zurückbttn;
