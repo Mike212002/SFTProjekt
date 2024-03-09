@@ -21,61 +21,57 @@ public class CustomCalendar extends JFrame {
     private JLabel dateLabel;
     private Calendar currentCalendar;
     private SimpleDateFormat dateFormat;
-    private JTextField TitelEingabe;
+    private Map<String, String> eventMap;
+
+
     private JLabel lastClickedLabel = null;
     private DayView dayView;
-    private JTextField datumEintrag;
+
     private JLabel selectedLabel = null;
-    private Map<String, String> eventsMap = new HashMap<>();
-    private Map<String, String> eventNotes; 
-    private Map<String, Color> eventDates; 
 
-    private MouseListener mouseClickListener = new MouseAdapter() {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if (e.getSource() instanceof JLabel) {
-                JLabel clickedLabel = (JLabel) e.getSource();
-                if (SwingUtilities.isLeftMouseButton(e)) {
-                    // Überprüfen, ob ein vorheriger Tag ausgewählt wurde
-                    if (selectedLabel != null) {
-                        // Setze den Hintergrund des vorherigen Tags auf Weiß
-                        selectedLabel.setBackground(Color.WHITE);
-                        selectedLabel.setForeground(Color.BLACK);
-                        // Repaint, um die Änderungen anzuzeigen
-                        selectedLabel.repaint();
-                    }
-                    // Setze den Hintergrund des aktuellen Tags auf Blau
-                    clickedLabel.setBackground(Color.BLUE);
-                    clickedLabel.setForeground(Color.WHITE);
-                    // Repaint, um die Änderungen anzuzeigen
-                    clickedLabel.repaint();
-                    // Setze den aktuellen Tag als ausgewählt
-                    selectedLabel = clickedLabel;
+ 
+private MouseListener mouseClickListener = new MouseAdapter() {
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if (e.getSource() instanceof JLabel) {
+            JLabel clickedLabel = (JLabel) e.getSource();
+            if (SwingUtilities.isLeftMouseButton(e)) {
 
-                    // Füge das Ereignis zum ausgewählten Datum hinzu
-                    String date = clickedLabel.getText();
+                if (selectedLabel != null) {
+                    selectedLabel.setBackground(Color.WHITE);
+                    selectedLabel.setForeground(Color.BLACK);
+                    selectedLabel.repaint();
+                }
 
-                } else if (SwingUtilities.isRightMouseButton(e)) {
-                    if (dayView == null || !dayView.isVisible()) {
-                        // Öffne das DayView-Fenster nur, wenn es noch nicht geöffnet ist
-                        dayView = new DayView(new Date());
-                        dayView.setVisible(true);
-                    }
+                clickedLabel.setBackground(Color.BLUE);
+                clickedLabel.setForeground(Color.WHITE);
+                clickedLabel.repaint();
+
+                selectedLabel = clickedLabel;
+
+                String date = clickedLabel.getText();
+
+                // Wenn ein Tag im Kalender geklickt wird, überprüfen Sie, ob ein Ereignis vorhanden ist
+                // und zeigen Sie es an
+                if (eventMap.containsKey(date)) {
+                    String title = eventMap.get(date);
+                    // Hier können Sie den Titel für das Datum anzeigen, z.B. in einem Pop-up-Fenster
+                    JOptionPane.showMessageDialog(CustomCalendar.this, title);
+                }
+            } else if (SwingUtilities.isRightMouseButton(e)) {
+                if (dayView == null || !dayView.isVisible()) {
+                    dayView = new DayView(new Date());
+                    dayView.setVisible(true);
                 }
             }
         }
-    };
+    }
+};
 
     private String selectedDate;
 
     public CustomCalendar() {
-        
-        
-           eventNotes = new HashMap<>();
-        eventDates = new HashMap<>();
-        
-        TitelEingabe = new JTextField();
-        datumEintrag = new JTextField();
+  eventMap = new HashMap<>();
         initCustomComponents();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(1100, 800));
@@ -170,31 +166,18 @@ public class CustomCalendar extends JFrame {
         iconPanel.add(trashButton);
 
         ImageIcon addIcon = new ImageIcon(getClass().getResource("/icon/add.png"));
-        JButton addButton = new JButton(addIcon);
-        addButton.setContentAreaFilled(false);
-        addButton.setBorderPainted(false);
-        addButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                EventErstellen eventErstellen = new EventErstellen(CustomCalendar.this);
-
-                eventErstellen.getErstellen().addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        String title = eventErstellen.getTitelEingabe().getText();
-                        String date = eventErstellen.getDatumEintrag().getText();
-
-                        // Fügen Sie das Ereignis automatisch zum Kalender hinzu
-                        addEventToCalendar(date, title);
-
-                        eventErstellen.dispose();
-                    }
-                });
-
-                eventErstellen.setVisible(true);; // Zeige das Fenster für das Ereignis an
-            }
-        });
-        iconPanel.add(addButton);
+      JButton addButton = new JButton(addIcon);
+addButton.setContentAreaFilled(false);
+addButton.setBorderPainted(false);
+addButton.addActionListener(new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+       
+        EventErstellen eventErstellen = new EventErstellen(CustomCalendar.this); 
+        eventErstellen.setVisible(true);
+    }
+});
+iconPanel.add(addButton);
 
         notesPanel.add(iconPanel, BorderLayout.NORTH);
 
@@ -267,127 +250,34 @@ public class CustomCalendar extends JFrame {
         this.setIconImage(icon.getImage());
 
     }
-
-    public void addEventToSelectedDate(String date, String title) {
-        if (date == null || date.isEmpty() || title == null || title.isEmpty()) {
-            return;
-        }
-
-        // Finden Sie das JLabel für den entsprechenden Tag im Kalender
-        JLabel targetLabel = findLabelForDate(date);
-        if (targetLabel != null) {
-            // Fügen Sie das Ereignis zum JLabel hinzu
-            // Wenn bereits ein Ereignis vorhanden ist, fügen Sie den Titel hinzu, sonst setzen Sie ihn
-            String existingText = targetLabel.getText();
-            if (existingText != null && !existingText.isEmpty()) {
-                targetLabel.setText(existingText + ", " + title);
-            } else {
-                targetLabel.setText(title);
-            }
-        }
-    }
-
-    public void addEventToCalendar(String date, String title) {
-        if (date == null || date.isEmpty() || title == null || title.isEmpty()) {
-            return;
-        }
-
-        // Fügen Sie das Ereignis in die Map ein
-        eventsMap.put(date, title);
-
-        // Aktualisieren Sie das JLabel für den entsprechenden Tag im Kalender
-        JLabel targetLabel = findLabelForDate(date);
-        if (targetLabel != null) {
-            // Fügen Sie das Ereignis zum JLabel hinzu
-            // Wenn bereits ein Ereignis vorhanden ist, fügen Sie den Titel hinzu, sonst setzen Sie ihn
-            String existingText = targetLabel.getText();
-            if (existingText != null && !existingText.isEmpty()) {
-                targetLabel.setText(existingText + ", " + title);
-            } else {
-                targetLabel.setText(title);
-            }
-        }
-    }
-
-    public void updateEventTitle(String date, String title) {
-        if (eventsMap.containsKey(date)) {
-            eventsMap.put(date, title);
-
-            updateNotesTextArea();
-        }
-    }
-
-    private void updateNotesTextArea() {
-        notesTextArea.setText(""); // Leeren Sie zuerst den Inhalt
-
-        for (Map.Entry<String, String> entry : eventsMap.entrySet()) {
-            String date = entry.getKey();
-            String title = entry.getValue();
-            notesTextArea.append(title + " - " + date + "\n");
-        }
-    }
-
-    private JLabel findLabelForDate(String date) {
-        Component[] components = calendarPanel.getComponents();
-        for (Component component : components) {
-            if (component instanceof JLabel) {
-                JLabel label = (JLabel) component;
-                if (label.getText().equals(date)) {
-                    return label;
-                }
-            }
-        }
-        return null;
-    }
-
-    public void addEntryToNotesPanel(String title) {
-        notesTextArea.append("Titel" + title + "\n\n");
-    }
-
-    public void updateSelectedDate(String date) {
-        dateLabel.setText("Date: " + date);
-    }
-
-    public JLabel getSelectedLabel() {
-        return selectedLabel;
-    }
     
-       public void addEventToNotes(String title, String date) {
-        eventNotes.put(date, title);
-    }
+ public void addEvent(String date, String title) {
+    // Speichern Sie das Ereignis im Ereignis-Map
+    eventMap.put(date, title);
 
-    
-    public void addEventToCalendarAndMark(String date, String title, Color color) {
-        eventDates.put(date, color);
+    // Aktualisieren Sie das entsprechende JLabel im Kalender
+    Component[] components = calendarPanel.getComponents();
+    for (Component component : components) {
+        if (component instanceof JLabel) {
+            JLabel label = (JLabel) component;
+            if (label.getText().equals(date)) {
+                label.setText("<html>" + date + "<br>" + title + "</html>");
+                break;
+            }
+        }
     }
-
- 
-    public void markDateWithColor(String date, Color color) {
-        eventDates.put(date, color);
-    }
-
-    public String getEventTitle(String date) {
-        return eventNotes.get(date);
-    }
-
-   
-    public Color getDateColor(String date) {
-        return eventDates.get(date);
-    }
-public void addEventToCalendarAndMark(String date, String title) {
-      addEventToSelectedDate(date, title);
-
-    // Markieren Sie den Tag im Kalender mit der entsprechenden Farbe
-    markDateWithColor(date, color);
 }
-    
 
-    private void markDateAsGreen(String date) {
-        JLabel targetLabel = findLabelForDate(date);
-        if (targetLabel != null) {
-            targetLabel.setBackground(Color.GREEN);
-            targetLabel.setOpaque(true);
-            targetLabel.repaint();
+
+
+      private void showEventForDate(String date) {
+        if (eventMap.containsKey(date)) {
+            String title = eventMap.get(date);
+            // Hier können Sie den Titel für das Datum anzeigen, z.B. in einem Pop-up-Fenster
+            JOptionPane.showMessageDialog(this, title);
+        } else {
+            // Wenn für das Datum kein Ereignis vorhanden ist, zeigen Sie eine entsprechende Nachricht an
+            JOptionPane.showMessageDialog(this, "Kein Ereignis für dieses Datum.");
         }
     }
 

@@ -27,13 +27,12 @@ import javax.swing.border.Border;
 public class EventErstellen extends javax.swing.JFrame {
 
     private CustomCalendar customCalendar;
-    private JTextField dateInputField;
-    private JTextField endDateField;
 
     public EventErstellen(CustomCalendar customCalendar) {
-        initComponents();
-        this.customCalendar = customCalendar;
+            initComponents();
+            this.customCalendar = customCalendar;
     }
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -238,28 +237,8 @@ public class EventErstellen extends javax.swing.JFrame {
     private void ErstellenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ErstellenActionPerformed
      String title = TitelEingabe.getText();
     String date = datumEintrag.getText();
-
-    // Überprüfen, ob alle erforderlichen Felder ausgefüllt sind
-    if (title.isEmpty() || date.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Bitte füllen Sie alle Felder aus.");
-        return;
-    }
-
-    // Feedback anzeigen
-    String message = String.format("Titel: %s%nDatum: %s", title, date);
-    JOptionPane.showMessageDialog(this, message);
-
-    // Erstellen Sie eine Instanz von CustomCalendar
-    CustomCalendar customCalendar = new CustomCalendar();
-
-    // Rufen Sie die Methode addEventToNotes auf
-    customCalendar.addEventToNotes(title, date);
-
-    // Rufen Sie die Methode addEventToCalendarAndMark auf
-    customCalendar.addEventToCalendarAndMark(date, title);
-
-    // Schließen Sie das Fenster nach dem Hinzufügen des Ereignisses
-    dispose();
+    customCalendar.addEvent(date, title);
+    this.dispose();
     }//GEN-LAST:event_ErstellenActionPerformed
 
     private void RotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RotMouseClicked
@@ -268,30 +247,21 @@ public class EventErstellen extends javax.swing.JFrame {
     }//GEN-LAST:event_RotMouseClicked
 
     private void GrünMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GrünMouseClicked
-         Color Grün = Color.GREEN;
-
-
-    // Fügen Sie einen grünen Unterstrich unter dem Tag hinzu
-    JLabel label = (JLabel) evt.getSource();
-    Border existingBorder = label.getBorder();
-    Border greenBorder = BorderFactory.createMatteBorder(0, 0, 2, 0, Color.GREEN); // Grüner Unterstrich
-    label.setBorder(BorderFactory.createCompoundBorder(existingBorder, greenBorder));
+   
     }//GEN-LAST:event_GrünMouseClicked
 
     private void KalenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KalenderMouseClicked
-        CalenderView calendarView = new CalenderView(dateInputField, endDateField, datumEintrag);
-        calendarView.setVisible(true);
+//        CalenderView calendarView = new CalenderView(dateInputField, endDateField, datumEintrag);
+//        calendarView.setVisible(true);
     }//GEN-LAST:event_KalenderMouseClicked
 
 
     private void GelbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GelbMouseClicked
-        Color Gelb = Color.YELLOW;
-        System.out.println("Die Farbe ist: " + Gelb);
+   
     }//GEN-LAST:event_GelbMouseClicked
 
     private void OrangeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OrangeMouseClicked
-        Color Orange = Color.ORANGE;
-        System.out.println("Die Farbe ist: " + Orange);
+       
     }//GEN-LAST:event_OrangeMouseClicked
 
     private void AbbrechenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbbrechenActionPerformed
@@ -310,100 +280,8 @@ public class EventErstellen extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
         this.setIconImage(icon.getImage());
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        JPanel jPanel4 = new JPanel();
-        JLabel überschrift = new JLabel("Erstelle einen neuen Termin");
-        JLabel datumfield = new JLabel("Datum");
-        dateInputField = new JTextField();
-        JButton kalender = new JButton("Kalender");
-
-        jPanel4.setLayout(new GridLayout(0, 2));
-        jPanel4.add(überschrift);
-        jPanel4.add(datumfield);
-        jPanel4.add(new JLabel());
-        jPanel4.add(dateInputField);
-        jPanel4.add(kalender);
-
-        kalender.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                kalenderActionPerformed(evt);
-            }
-        });
-
-        getContentPane().add(jPanel4, BorderLayout.CENTER);
-        pack();
-        setLocationRelativeTo(null);
+      
     }
-
- public void actionPerformed(ActionEvent e) {
-    String title = TitelEingabe.getText();
-    String date = datumEintrag.getText();
-
-    // Überprüfen, ob alle erforderlichen Felder ausgefüllt sind
-    if (title.isEmpty() || date.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Bitte füllen Sie alle Felder aus.");
-        return;
-    }
-
-    // Feedback anzeigen
-    String message = String.format("Titel: %s%nDatum: %s", title, date);
-    JOptionPane.showMessageDialog(this, message);
-
-    // Ereignis zum Notizbereich hinzufügen
-    addEventToNotes(title, date);
-
-    // Ereignis zum Kalender hinzufügen und den Tag markieren
-    addEventToCalendarAndMark(date, title);
-
-    // Schließen Sie das Fenster nach dem Hinzufügen des Ereignisses
-    dispose();
-}
- 
-     
-private void addEventToCalendarAndMark(String date, String title) {
-    // Fügen Sie das Ereignis zum ausgewählten Datum hinzu
-    addEventToSelectedDate(date, title);
-
-    // Markieren Sie den Tag im Kalender als grün
-    markDateAsGreen(date);
-}
-
-    private void kalenderActionPerformed(ActionEvent evt) {
-        JFrame frame = new JFrame("Kalender");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        JTextField startDateField = new JTextField(10);
-        JTextField endDateField = new JTextField(10);
-        JTextField datumEintrag = new JTextField(10);
-        frame.getContentPane().add(new CalenderView(startDateField, endDateField, datumEintrag));
-
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-    }
-
-    public JTextField getDatumEintrag() {
-        return datumEintrag;
-    }
-
-    public JButton getErstellen() {
-        return Erstellen;
-    }
-
-    public JTextField getTitelEingabe() {
-        return TitelEingabe;
-    }
-
-    public JTextField getDateInputField() {
-        return dateInputField;
-    }
-
-    public JTextField getEndDateField() {
-        return endDateField;
-    }
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Abbrechen;
     private javax.swing.JLabel Beschreibungfield;

@@ -55,6 +55,7 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
     private boolean isSearchTriggered = false;
 
     public DatenbankBewertungBearbeiten() {
+        initComponents();
     }
 
     @SuppressWarnings("unchecked")
@@ -697,9 +698,7 @@ public class DatenbankBewertungBearbeiten extends javax.swing.JFrame {
     }//GEN-LAST:event_DatenAktualisierenbttnActionPerformed
 
     private void DatenAnlegenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenAnlegenbttnActionPerformed
-        DatenbankFenster datenbankFenster = new DatenbankFenster();
-        datenbankFenster.setVisible(true);
-        this.dispose();
+       
     }//GEN-LAST:event_DatenAnlegenbttnActionPerformed
 
     private void DatenLöschenbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatenLöschenbttnActionPerformed
