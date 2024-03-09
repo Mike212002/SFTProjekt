@@ -10,12 +10,23 @@ public class Bewertung {
     private int Sterne;
     private int BetriebsID;
     private String Beschreibung;
+    private String Autor;
 
     public Bewertung(int BewertID, int Sterne, String Beschreibung) {
         this.BewertID = BewertID;
         this.Sterne = Sterne;
-        this.Beschreibung = Beschreibung;
         this.BetriebsID = BetriebsID;
+        this.Beschreibung = Beschreibung;
+        
+        this.Autor = Autor;
+    }
+
+    public String getAutor() {
+        return Autor;
+    }
+
+    public void setAutor(String Autor) {
+        this.Autor = Autor;
     }
 
     /**
@@ -24,12 +35,7 @@ public class Bewertung {
      * @param Sterne
      * @param Beschreibung
      */
-    public Bewertung(int Sterne, String Beschreibung) {
 
-        
-        this.Sterne = Sterne;
-        this.Beschreibung = Beschreibung;
-    }
 
     Bewertung() {
         
@@ -58,12 +64,15 @@ public class Bewertung {
     public void setBeschreibung(String Beschreibung) {
         this.Beschreibung = Beschreibung;
     }
-
+    
+    public int getBetriebsID() {
+        return BetriebsID;
+    }
     public void setBetriebsID(int BetriebsID) {
         this.BetriebsID = BetriebsID;
     }
+
     
-    Object getBetriebsID() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+    
 }
