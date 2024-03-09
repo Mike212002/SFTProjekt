@@ -31,12 +31,19 @@ public class CustomCalendar extends JFrame {
 
  
 private MouseListener mouseClickListener = new MouseAdapter() {
+    //Verhindert das das mouseClicked Event 2 mal ausgeführt wird.
+    boolean alreadyClicked = false;
+    
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() instanceof JLabel) {
             JLabel clickedLabel = (JLabel) e.getSource();
             if (SwingUtilities.isLeftMouseButton(e)) {
-
+                if(alreadyClicked){
+                alreadyClicked = false;
+                return;
+                }
+                
                 if (selectedLabel != null) {
                     selectedLabel.setBackground(Color.WHITE);
                     selectedLabel.setForeground(Color.BLACK);
@@ -49,14 +56,16 @@ private MouseListener mouseClickListener = new MouseAdapter() {
 
                 selectedLabel = clickedLabel;
 
-                String date = clickedLabel.getText();
+                int day = Integer.valueOf(clickedLabel.getText());
+                
+                String date = formattedDate(day, currentCalendar.get(Calendar.MONTH) + 1, currentCalendar.get(Calendar.YEAR));
 
                 // Wenn ein Tag im Kalender geklickt wird, überprüfen Sie, ob ein Ereignis vorhanden ist
                 // und zeigen Sie es an
                 if (eventMap.containsKey(date)) {
                     String title = eventMap.get(date);
                     // Hier können Sie den Titel für das Datum anzeigen, z.B. in einem Pop-up-Fenster
-                    JOptionPane.showMessageDialog(CustomCalendar.this, title);
+                   JOptionPane.showMessageDialog(CustomCalendar.this, title);
                 }
             } else if (SwingUtilities.isRightMouseButton(e)) {
                 if (dayView == null || !dayView.isVisible()) {
@@ -64,9 +73,19 @@ private MouseListener mouseClickListener = new MouseAdapter() {
                     dayView.setVisible(true);
                 }
             }
+            
+            alreadyClicked = true;
         }
     }
 };
+
+    private String formattedDate(int day, int month, int year){
+        String formattedDay = String.format("%02d", day);
+        String formattedMonth = String.format("%02d", month);
+        String formattedYear = String.format("%02d", year);
+        
+        return formattedDay + "." + formattedMonth + "." + formattedYear;
+    }
 
     private String selectedDate;
 
@@ -267,8 +286,6 @@ iconPanel.add(addButton);
         }
     }
 }
-
-
 
       private void showEventForDate(String date) {
         if (eventMap.containsKey(date)) {
