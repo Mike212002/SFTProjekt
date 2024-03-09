@@ -922,6 +922,11 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
 
             try (FileWriter fw = new FileWriter(new File(filePath));
                     BufferedWriter bw = new BufferedWriter(fw)) {
+                
+                            for (int i = 0; i < Tabelle.getColumnCount(); i++) {
+                bw.write(Tabelle.getColumnName(i) + ",");
+            }
+            bw.newLine();
 
                 for (int i = 0; i < Tabelle.getRowCount(); i++) {
                     for (int j = 0; j < Tabelle.getColumnCount(); j++) {
@@ -932,7 +937,7 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
                             bw.write(" ");
                         }
                         // Füge einen Zeilenumbruch hinzu, außer bei der letzten Spalte
-                        if (j < Tabelle.getColumnCount() - 1) {
+                        if (j < Tabelle.getColumnCount()) {
                             bw.write(System.getProperty("line.separator"));
                         }
                     }
