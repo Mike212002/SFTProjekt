@@ -417,7 +417,8 @@ public class DatenbankFenster extends javax.swing.JFrame {
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(jPanel4, gridBagConstraints);
 
-        pack();
+        setSize(new java.awt.Dimension(629, 595));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ZurückbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZurückbttnActionPerformed

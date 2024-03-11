@@ -8,13 +8,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Datenbank {
 
-    private final String url = "jdbc:mysql://mike007.lima-db.de:3306/db_427829_1";
-    private final String user = "USER427829";
-    private final String password = "Milka123mo";
+    private final String url = "jdbc:mysql://localhost:3306/db_427829_1";
+    private final String user = "root";
+    private final String password = "";
 
     public Datenbank() {
     }
@@ -158,6 +159,9 @@ public class Datenbank {
         }
         return false;
     }
+    
+      
+    
 
   public ArrayList<Bewertung> holeAlleBewertungen() {
         ArrayList<Bewertung> alleBewertungen = new ArrayList<>();
@@ -186,82 +190,156 @@ public class Datenbank {
     }
   
   
-  public boolean aktualisiereBewertungen(Bewertung bewertung) {
-        try (Connection connection = DriverManager.getConnection(url, user, password)) {
-            System.out.println("Datenbank Verbunden");
-            String statement = "UPDATE Bewertungssystem SET BewertID = ?, Sterne = ?, BetriebsID = ?, Beschreibung = ?,Autor = ?";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
-                preparedStatement.setInt(1, bewertung.getBewertID());
-                preparedStatement.setInt(2, bewertung.getSterne());
-                preparedStatement.setInt(3, bewertung.getBetriebsID());
-                preparedStatement.setString(4, bewertung.getBeschreibung()); // PLZ hinzugefügt
-                preparedStatement.setString(5, bewertung.getAutor());
+public boolean aktualisiereBewertungen(Bewertung bewertung) {
+    try (Connection connection = DriverManager.getConnection(url, user, password)) {
+        connection.setAutoCommit(false); // Setze AutoCommit auf false, um Transaktionen zu steuern
+        String statement = "UPDATE Bewertungssystem SET Sterne = ?, Beschreibung = ?, Autor = ? WHERE BewertID = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
+            preparedStatement.setInt(1, bewertung.getSterne());
+            preparedStatement.setString(2, bewertung.getBeschreibung());
+            preparedStatement.setString(3, bewertung.getAutor());
+            preparedStatement.setInt(4, bewertung.getBewertID());
 
-                int affectedRows = preparedStatement.executeUpdate();
+            int affectedRows = preparedStatement.executeUpdate();
 
-                return affectedRows > 0;
-            } catch (Exception e) {
-                System.out.println(e);
-                return false;
-            }
+            connection.commit(); // Transaktion abschließen
+
+            return affectedRows > 0;
+            
         } catch (SQLException e) {
-            System.out.println(e);
+            connection.rollback(); // Rollback im Fehlerfall
+            System.out.println("SQL-Fehler beim Ausführen des Statements: " + e.getMessage());
+            e.printStackTrace();
             return false;
         }
+    } catch (SQLException e) {
+        System.out.println("Fehler beim Herstellen der Verbindung zur Datenbank: " + e.getMessage());
+        e.printStackTrace();
+        return false;
     }
+}
+
   
   
  
   
    public boolean löscheBewertungen(int BewertID) {
-        try (Connection connection = DriverManager.getConnection(url, user, password)) {
-            System.out.println("Datenbank Verbunden");
-            String statement = "DELETE FROM Bewertungssystem WHERE BewertID = ?";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
-                preparedStatement.setInt(1, BewertID);
+    try (Connection connection = DriverManager.getConnection(url, user, password)) {
+        System.out.println("Datenbank Verbunden");
+        String statement = "DELETE FROM Bewertungssystem WHERE BewertID = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
+            System.out.println("Ausgeführter SQL-Befehl: " + statement);
+            System.out.println("Zu löschende Bewertungs-ID: " + BewertID);
+            
+            preparedStatement.setInt(1, BewertID);
 
-                int affectedRows = preparedStatement.executeUpdate();
+            int affectedRows = preparedStatement.executeUpdate();
 
-                return affectedRows > 0;
-            } catch (Exception e) {
-                System.out.println(e);
+            System.out.println("Anzahl der betroffenen Zeilen: " + affectedRows);
+
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            System.out.println("SQL-Fehler beim Ausführen des Statements: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    } catch (SQLException e) {
+        System.out.println("Fehler beim Herstellen der Verbindung zur Datenbank: " + e.getMessage());
+        e.printStackTrace();
+        return false;
+    }
+}
+  
+ public boolean BewertDatenHinzufügen(Bewertung bewertung) {
+    try (Connection connection = DriverManager.getConnection(url, user, password)) {
+        System.out.println("Datenbank verbunden");
+        
+        // Überprüfen, ob die Betriebs-ID in der Bewertung korrekt gesetzt ist
+        System.out.println("Betriebs-ID in Bewertung: " + bewertung.getBetriebsID());
+        
+        // SQL-Befehl zum Einfügen der Daten in die Bewertungstabelle
+        String statement = "INSERT INTO Bewertungssystem(Sterne,BetriebsID ,Beschreibung, Autor ) VALUES (?, ?, ?,?)";
+        System.out.println("SQL-Befehl: " + statement);
+        
+        
+        
+        
+        System.out.println("Sterne:"+bewertung.getSterne());
+             System.out.println("BetriebsID:"+bewertung.getBetriebsID());
+            System.out.println("Beschreibung:"+bewertung.getBeschreibung());
+           System.out.println("Autor:"+bewertung.getAutor());
+           
+           
+           
+           
+        try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
+            preparedStatement.setInt(1, bewertung.getSterne());
+            preparedStatement.setInt(2, bewertung.getBetriebsID());
+            preparedStatement.setString(3, bewertung.getBeschreibung());
+            preparedStatement.setString(4, bewertung.getAutor());
+            
+            
+             
+            System.out.println("SQL-Befehl: " + statement);
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows > 0) {
+                return true;
+            } else {
                 return false;
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            // Drucken Sie eventuelle Fehlermeldungen aus
+            System.out.println("Fehler beim Ausführen des SQL-Befehls: " + e.getMessage());
+            e.printStackTrace();
+        }
+    } catch (SQLException e) {
+        System.out.println("Fehler beim Herstellen der Verbindung zur Datenbank: " + e.getMessage());
+        e.printStackTrace();
+    }
+    return false;
+}
+  
+  
+ public ArrayList<String> getBetriebsIDsAndNamesFromDatabase() {
+    ArrayList<String> betriebsIDAndNameList = new ArrayList<>();
+    try (Connection connection = DriverManager.getConnection(url, user, password)) {
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT BetriebsID, Betriebsname FROM Betrieb");
+        while (resultSet.next()) {
+            String betriebsID = resultSet.getString("BetriebsID");
+            String betriebsName = resultSet.getString("Betriebsname");
+            String betriebsIDAndName = betriebsID + " - " + betriebsName; // Combine ID and Name
+            betriebsIDAndNameList.add(betriebsIDAndName);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    System.out.println("Datenbankabfrage erfolgreich");
+    return betriebsIDAndNameList;
+}
+ 
+ public boolean addBewertung(Bewertung bewertung) {
+    try (Connection connection = DriverManager.getConnection(url, user, password)) {
+        String statement = "INSERT INTO Bewertung (BetriebsID, Sterne, Beschreibung, Autor) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
+            preparedStatement.setInt(1, bewertung.getBetriebsID());
+            preparedStatement.setInt(2, bewertung.getSterne());
+            preparedStatement.setString(3, bewertung.getBeschreibung());
+            preparedStatement.setString(4, bewertung.getAutor());
+            
+            int affectedRows = preparedStatement.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            System.out.println("SQL-Fehler beim Einfügen der Bewertung: " + e.getMessage());
+            e.printStackTrace();
             return false;
         }
-    }
-  
-  public boolean BewertDatenHinzufügen(Bewertung bewertung) {
-        try (Connection connection = DriverManager.getConnection(url, user, password)) {
-            System.out.println("Datenbank Verbunden");
-            String statement = "INSERT INTO Bewertungssystem(BewertID,Sterne,BetriebsID,Beschreibung,Autor) VALUES (?, ?, ?, ?, ?)";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
-                preparedStatement.setInt(1, bewertung.getBewertID());
-                preparedStatement.setInt(2, bewertung.getSterne());
-                preparedStatement.setInt(3, bewertung.getBetriebsID());
-                preparedStatement.setString(4, bewertung.getBeschreibung());
-                preparedStatement.setString(5, bewertung.getAutor());
-                
-
-                int affectedRows = preparedStatement.executeUpdate();
-
-                if (affectedRows > 0) {
-                    return true;
-                } else {
-                    return false;
-
-                }
-
-            } catch (Exception e) {
-                System.out.println(e);
-            }
-
-        } catch (SQLException e) {
-            System.out.println(e);
-
-        }
+    } catch (SQLException e) {
+        System.out.println("Fehler beim Herstellen der Verbindung zur Datenbank: " + e.getMessage());
+        e.printStackTrace();
         return false;
     }
+}
+
 }

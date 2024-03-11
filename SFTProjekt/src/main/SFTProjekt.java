@@ -11,13 +11,16 @@ public class SFTProjekt {
     public static void main(String[] args) {
         //         Datenbank DB = new Datenbank();
 //         DB.dBConnec tor();
-
+//
 //         Login fenster = new Login();
 //        fenster.setVisible(true);
+
 //MapFenster map = new MapFenster();
 //map.runSketch(new String[]{"Map"}, map);
+
 //        DatenbankTabelleAnzeigen f = new DatenbankTabelleAnzeigen();
 //        f.setVisible(true);
+
 //
 //        Navigation s = new Navigation();
 //        s.setVisible(true);
@@ -28,10 +31,16 @@ public class SFTProjekt {
 //NewJFrame newJFrame = new NewJFrame();
 //newJFrame.setVisible(true);
 
-
-CustomCalendar  f = new CustomCalendar();
+SimpleLogin f = new SimpleLogin();
 f.setVisible(true);
-//
+
+//DatenbankBewertungBearbeiten f = new DatenbankBewertungBearbeiten();
+//f.setVisible(true);
+
+
+//CustomCalendar  f = new CustomCalendar();
+//f.setVisible(true);
+
 //EventErtellen t = new EventErtellen();
 //t.setVisible(true);
     }

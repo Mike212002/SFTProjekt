@@ -8,18 +8,40 @@ public class Bewertung {
 
     private int BewertID;
     private int Sterne;
-    private int BetriebsID;
     private String Beschreibung;
+    private int BetriebsID;
+    
     private String Autor;
 
-    public Bewertung(int BewertID, int Sterne, String Beschreibung) {
-        this.BewertID = BewertID;
-        this.Sterne = Sterne;
-        this.BetriebsID = BetriebsID;
-        this.Beschreibung = Beschreibung;
-        
-        this.Autor = Autor;
+//    public Bewertung(int BewertID, int Sterne,String Beschreibung,int BetriebsID,String Autor) {
+////        this.BewertID = BewertID;
+//        this.Sterne = Sterne;
+//        this.Beschreibung = Beschreibung;
+//        this.BetriebsID = BetriebsID;
+//        
+//        
+//        this.Autor = Autor;
+//    }
+
+    Bewertung(int sterne,int betriebsID ,String Beschreibung, String Autor) {
+    this.Sterne = sterne;
+    this.BetriebsID = betriebsID;
+    this.Beschreibung = Beschreibung;
+    this.Autor = Autor;
+    
+    
     }
+
+//    Bewertung(String sterne, String betriebsID, String beschreibung, String autor) {
+//    this.Sterne = Sterne;
+//    this.BetriebsID = BetriebsID;
+//    this.Beschreibung = Beschreibung;
+//    this.Autor = Autor;
+//    
+//    
+//    }
+
+   
 
     public String getAutor() {
         return Autor;

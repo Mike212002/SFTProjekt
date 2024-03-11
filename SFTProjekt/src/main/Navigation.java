@@ -1,9 +1,14 @@
 package main;
 
+
+import static java.awt.Color.BLACK;
+import static java.awt.Color.BLUE;
+import static java.awt.Color.WHITE;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import javax.swing.ToolTipManager;
 
 /**
  *
@@ -12,12 +17,18 @@ import javax.swing.SwingUtilities;
 public class Navigation extends javax.swing.JFrame {
 PasswortAbfrage passwortAbfrage = new PasswortAbfrage(this, true);
 
-
-
 public Navigation() {
         initComponents();
         initCustomComponents();
-    }
+        DatenHinzufügen.setBackground(WHITE);
+       TabelleAnzeigen.setBackground(WHITE);
+       Bewertungssystem.setBackground(WHITE);
+       InformationenButton.setBackground(WHITE);
+       Zurück.setBackground(WHITE);
+       Zurück.setForeground(BLACK);
+    
+     
+}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -25,6 +36,8 @@ public Navigation() {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jScrollBar1 = new javax.swing.JScrollBar();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -32,13 +45,20 @@ public Navigation() {
         Zurück = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         DatenHinzufügen = new javax.swing.JButton();
-        TabelleAnzeigen = new javax.swing.JButton();
+        try {
+            TabelleAnzeigen =(javax.swing.JButton)java.beans.Beans.instantiate(getClass().getClassLoader(), "main.Navigation_TabelleAnzeigen");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
         Bewertungssystem = new javax.swing.JButton();
-        MapsAnzeigen = new javax.swing.JButton();
         InformationenButton = new javax.swing.JButton();
 
+        jScrollPane1.setViewportView(jTree1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(917, 470));
+        setMinimumSize(new java.awt.Dimension(317, 470));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -68,7 +88,10 @@ public Navigation() {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
+        Zurück.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         Zurück.setText("Ausloggen");
+        Zurück.setBorder(null);
+        Zurück.setMargin(new java.awt.Insets(12, 14, 12, 14));
         Zurück.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ZurückActionPerformed(evt);
@@ -101,10 +124,10 @@ public Navigation() {
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         DatenHinzufügen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        DatenHinzufügen.setText("Daten bearbeiten (Lehrer)");
+        DatenHinzufügen.setText("Daten Hinzufügen");
         DatenHinzufügen.setActionCommand("jbutton1");
         DatenHinzufügen.setAlignmentX(0.5F);
-        DatenHinzufügen.setMargin(new java.awt.Insets(35, 35, 35, 35));
+        DatenHinzufügen.setMargin(new java.awt.Insets(35, 60, 35, 65));
         DatenHinzufügen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DatenHinzufügenActionPerformed(evt);
@@ -112,9 +135,6 @@ public Navigation() {
         });
         jPanel2.add(DatenHinzufügen, new java.awt.GridBagConstraints());
 
-        TabelleAnzeigen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        TabelleAnzeigen.setText("Tabelle Anzeigen");
-        TabelleAnzeigen.setMargin(new java.awt.Insets(35, 75, 35, 75));
         TabelleAnzeigen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TabelleAnzeigenActionPerformed(evt);
@@ -127,9 +147,10 @@ public Navigation() {
         jPanel2.add(TabelleAnzeigen, gridBagConstraints);
 
         Bewertungssystem.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Bewertungssystem.setText("Bewertungssystem");
+        Bewertungssystem.setText("Bewertungen hinzufügen");
+        Bewertungssystem.setToolTipText("Bewertungen hinzufügen");
         Bewertungssystem.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Bewertungssystem.setMargin(new java.awt.Insets(35, 105, 35, 105));
+        Bewertungssystem.setMargin(new java.awt.Insets(35, 30, 35, 45));
         Bewertungssystem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BewertungssystemActionPerformed(evt);
@@ -141,23 +162,9 @@ public Navigation() {
         gridBagConstraints.insets = new java.awt.Insets(15, 15, 15, 15);
         jPanel2.add(Bewertungssystem, gridBagConstraints);
 
-        MapsAnzeigen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        MapsAnzeigen.setText("Maps Anzeigen");
-        MapsAnzeigen.setMargin(new java.awt.Insets(35, 75, 35, 75));
-        MapsAnzeigen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MapsAnzeigenActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.insets = new java.awt.Insets(15, 15, 15, 15);
-        jPanel2.add(MapsAnzeigen, gridBagConstraints);
-
-        InformationenButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        InformationenButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         InformationenButton.setText("Informationen");
-        InformationenButton.setMargin(new java.awt.Insets(35, 125, 35, 125));
+        InformationenButton.setMargin(new java.awt.Insets(35, 85, 35, 75));
         InformationenButton.setMaximumSize(new java.awt.Dimension(363, 99));
         InformationenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,12 +182,12 @@ public Navigation() {
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(jPanel2, gridBagConstraints);
 
-        setSize(new java.awt.Dimension(1118, 687));
+        setSize(new java.awt.Dimension(862, 592));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ZurückActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZurückActionPerformed
-        Login fenster = new Login();
+        SimpleLogin fenster = new SimpleLogin();
         fenster.setVisible(true);
 
         this.dispose();
@@ -210,11 +217,6 @@ public Navigation() {
 
     }//GEN-LAST:event_TabelleAnzeigenActionPerformed
 
-    private void MapsAnzeigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MapsAnzeigenActionPerformed
-        MapFenster map = new MapFenster();
-        map.runSketch(new String[]{"Map"}, map);
-    }//GEN-LAST:event_MapsAnzeigenActionPerformed
-
     private void InformationenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InformationenButtonActionPerformed
         NewJFrame newJFrame = new NewJFrame();
         newJFrame.setVisible(true);
@@ -227,13 +229,13 @@ public Navigation() {
         this.setIconImage(icon.getImage());
 
     }
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bewertungssystem;
     private javax.swing.JButton DatenHinzufügen;
     private javax.swing.JButton InformationenButton;
-    private javax.swing.JButton MapsAnzeigen;
     private javax.swing.JButton TabelleAnzeigen;
     private javax.swing.JButton Zurück;
     private javax.swing.JLabel jLabel1;
@@ -242,5 +244,9 @@ public Navigation() {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTree jTree1;
     // End of variables declaration//GEN-END:variables
+
+    
 }

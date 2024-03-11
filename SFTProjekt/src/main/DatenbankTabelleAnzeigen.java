@@ -342,11 +342,11 @@ jTable2.setRowSorter(sorter);
 
             },
             new String [] {
-                "BetreibsID", "Betriebsname", "Straße", "Ort", "PLZ", "Ansprechpartner", "Website", "E-Mail"
+                "BetreibsID", "Betriebsname", "Straße", "Ort", "PLZ", "SterneBewertung", "Ansprechpartner", "Website", "E-Mail"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true, true, true
+                false, false, false, false, false, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

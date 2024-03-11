@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -22,78 +23,82 @@ public class CustomCalendar extends JFrame {
     private Calendar currentCalendar;
     private SimpleDateFormat dateFormat;
     private Map<String, String> eventMap;
-
+    private JTextField TimeEintrag;
+    private JTextField TimeEintrag2;
 
     private JLabel lastClickedLabel = null;
     private DayView dayView;
 
     private JLabel selectedLabel = null;
 
- 
-private MouseListener mouseClickListener = new MouseAdapter() {
-    //Verhindert das das mouseClicked Event 2 mal ausgeführt wird.
-    boolean alreadyClicked = false;
-    
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        if (e.getSource() instanceof JLabel) {
-            JLabel clickedLabel = (JLabel) e.getSource();
-            if (SwingUtilities.isLeftMouseButton(e)) {
-                if(alreadyClicked){
-                alreadyClicked = false;
-                return;
-                }
-                
-                if (selectedLabel != null) {
-                    selectedLabel.setBackground(Color.WHITE);
-                    selectedLabel.setForeground(Color.BLACK);
-                    selectedLabel.repaint();
-                }
-
-                clickedLabel.setBackground(Color.BLUE);
-                clickedLabel.setForeground(Color.WHITE);
-                clickedLabel.repaint();
-
-                selectedLabel = clickedLabel;
-
-                int day = Integer.valueOf(clickedLabel.getText());
-                
-                String date = formattedDate(day, currentCalendar.get(Calendar.MONTH) + 1, currentCalendar.get(Calendar.YEAR));
-
-                // Wenn ein Tag im Kalender geklickt wird, überprüfen Sie, ob ein Ereignis vorhanden ist
-                // und zeigen Sie es an
-                if (eventMap.containsKey(date)) {
-                    String title = eventMap.get(date);
-                    // Hier können Sie den Titel für das Datum anzeigen, z.B. in einem Pop-up-Fenster
-                   JOptionPane.showMessageDialog(CustomCalendar.this, title);
-                }
-            } else if (SwingUtilities.isRightMouseButton(e)) {
-                if (dayView == null || !dayView.isVisible()) {
-                    dayView = new DayView(new Date());
-                    dayView.setVisible(true);
-                }
+    private MouseListener mouseClickListener = new MouseAdapter() {
+     @Override
+public void mouseClicked(MouseEvent e) {
+    if (e.getSource() instanceof JLabel) {
+        JLabel clickedLabel = (JLabel) e.getSource();
+        if (SwingUtilities.isLeftMouseButton(e)) {
+            // Setze die Hervorhebung für das ausgewählte Label zurück
+            if (selectedLabel != null) {
+                selectedLabel.setBackground(Color.WHITE);
+                selectedLabel.setForeground(Color.BLACK);
+                selectedLabel.repaint();
             }
-            
-            alreadyClicked = true;
+
+            // Aktualisiere das ausgewählte Label
+            clickedLabel.setBackground(Color.BLUE);
+            clickedLabel.setForeground(Color.WHITE);
+            clickedLabel.repaint();
+
+            selectedLabel = clickedLabel;
+
+            int day = Integer.valueOf(clickedLabel.getText());
+
+            String date = formattedDate(day, currentCalendar.get(Calendar.MONTH) + 1, currentCalendar.get(Calendar.YEAR));
+
+            // Überprüfe, ob ein Ereignis für das Datum vorhanden ist
+            if (eventMap.containsKey(date)) {
+                // Extrahiere startTime und endTime aus dem Ereignisdatum
+                String eventDetails = eventMap.get(date);
+                String[] timeEntries = eventDetails.split(" - ");
+                if (timeEntries.length >= 2) {
+                    String startTime = timeEntries[0];
+                    String endTime = timeEntries[1];
+
+                    // Zeige den Titel und die Uhrzeit im JTextArea-Bereich an
+                    showEventInNotesArea(eventDetails, startTime, endTime);
+                } else {
+                    // Fehlerbehandlung, wenn die Ereignisdetails nicht erwartungsgemäß aufgeteilt werden können
+                    notesTextArea.setText("Fehler: Ungültiges Ereignisformat.");
+                }
+            } else {
+                // Lösche den Text im notesTextArea, wenn kein Ereignis vorhanden ist
+                notesTextArea.setText("");
+            }
+        } else if (SwingUtilities.isRightMouseButton(e)) {
+            if (dayView == null || !dayView.isVisible()) {
+                dayView = new DayView(new Date());
+                dayView.setVisible(true);
+            }
         }
     }
-};
+}
+    };
 
-    private String formattedDate(int day, int month, int year){
+    private String formattedDate(int day, int month, int year) {
         String formattedDay = String.format("%02d", day);
         String formattedMonth = String.format("%02d", month);
         String formattedYear = String.format("%02d", year);
-        
+
         return formattedDay + "." + formattedMonth + "." + formattedYear;
     }
 
     private String selectedDate;
 
     public CustomCalendar() {
-  eventMap = new HashMap<>();
+        eventMap = new HashMap<>();
         initCustomComponents();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setPreferredSize(new Dimension(1100, 800));
+        setPreferredSize(new Dimension(1400, 1100));
 
         JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
         mainPanel.setBackground(Color.GRAY);
@@ -167,12 +172,15 @@ private MouseListener mouseClickListener = new MouseAdapter() {
 
         JPanel notesPanel = new JPanel(new BorderLayout());
 
-        notesTextArea = new JTextArea();
-        notesTextArea.setEditable(false);
-        notesTextArea.setFont(new Font("Arial", Font.PLAIN, 16));
-        notesTextArea.setBorder(new EmptyBorder(150, 150, 150, 150));
-        JScrollPane scrollPane = new JScrollPane(notesTextArea);
-        notesPanel.add(scrollPane, BorderLayout.CENTER);
+       notesTextArea = new JTextArea();
+notesTextArea.setEditable(false);
+notesTextArea.setFont(new Font("Arial", Font.PLAIN, 18));
+notesTextArea.setBorder(new EmptyBorder(150, 150, 150, 150));
+notesTextArea.setLineWrap(true); 
+notesTextArea.setWrapStyleWord(true); 
+notesTextArea.setPreferredSize(new Dimension(500, 500)); 
+JScrollPane scrollPane = new JScrollPane(notesTextArea);
+notesPanel.add(scrollPane, BorderLayout.CENTER);
 
         JPanel iconPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         iconPanel.setBackground(Color.GRAY);
@@ -185,18 +193,18 @@ private MouseListener mouseClickListener = new MouseAdapter() {
         iconPanel.add(trashButton);
 
         ImageIcon addIcon = new ImageIcon(getClass().getResource("/icon/add.png"));
-      JButton addButton = new JButton(addIcon);
-addButton.setContentAreaFilled(false);
-addButton.setBorderPainted(false);
-addButton.addActionListener(new ActionListener() {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-       
-        EventErstellen eventErstellen = new EventErstellen(CustomCalendar.this); 
-        eventErstellen.setVisible(true);
-    }
-});
-iconPanel.add(addButton);
+        JButton addButton = new JButton(addIcon);
+        addButton.setContentAreaFilled(false);
+        addButton.setBorderPainted(false);
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                EventErstellen eventErstellen = new EventErstellen(CustomCalendar.this);
+                eventErstellen.setVisible(true);
+            }
+        });
+        iconPanel.add(addButton);
 
         notesPanel.add(iconPanel, BorderLayout.NORTH);
 
@@ -269,33 +277,60 @@ iconPanel.add(addButton);
         this.setIconImage(icon.getImage());
 
     }
-    
- public void addEvent(String date, String title) {
-    // Speichern Sie das Ereignis im Ereignis-Map
+
+    private void showEventForDate(String date) {
+        if (eventMap.containsKey(date)) {
+            String titleAndTime = eventMap.get(date);
+            JOptionPane.showMessageDialog(this, titleAndTime, "Ereignisdetails", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Kein Ereignis für dieses Datum.");
+        }
+    }
+
+    private String formatTime(String time) {
+    try {
+        SimpleDateFormat originalFormat = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat targetFormat = new SimpleDateFormat("HH:mm");
+        Date date = originalFormat.parse(time);
+        return targetFormat.format(date);
+    } catch (ParseException e) {
+        e.printStackTrace();
+    }
+    return time; // Rückgabe der unveränderten Zeit, falls ein Fehler auftritt
+}
+
+private void showEventInNotesArea(String title, String startTime, String endTime) {
+    if (notesTextArea != null) {
+        String formattedText = "Titel:\n\t" + (title != null ? title : "");
+
+        if (startTime != null && endTime != null) {
+            formattedText += "\n\nUhrzeit:\n\t" + startTime + " - " + endTime;
+        }
+
+        notesTextArea.setText(formattedText);
+    } else {
+        System.err.println("notesTextArea is null. Initialization issue!");
+    }
+}
+
+public void addEvent(String date, String title, String startTime, String endTime) {
+    // Füge das Ereignis zur Ereignismap hinzu
     eventMap.put(date, title);
 
-    // Aktualisieren Sie das entsprechende JLabel im Kalender
-    Component[] components = calendarPanel.getComponents();
-    for (Component component : components) {
-        if (component instanceof JLabel) {
-            JLabel label = (JLabel) component;
-            if (label.getText().equals(date)) {
-                label.setText("<html>" + date + "<br>" + title + "</html>");
-                break;
-            }
+    // Überprüfe, ob das hinzugefügte Ereignis dem Datum des ausgewählten Labels entspricht
+    if (selectedLabel != null) {
+        int day = Integer.parseInt(selectedLabel.getText());
+        String selectedDate = formattedDate(day, currentCalendar.get(Calendar.MONTH) + 1, currentCalendar.get(Calendar.YEAR));
+        if (date.equals(selectedDate)) {
+            // Aktualisiere das JTextArea-Feld mit Titel und Uhrzeit
+            showEventInNotesArea(title, startTime, endTime);
+        } else {
+            // Lösche den Text im JTextArea-Feld, wenn das Datum nicht übereinstimmt
+            notesTextArea.setText("");
         }
     }
 }
 
-      private void showEventForDate(String date) {
-        if (eventMap.containsKey(date)) {
-            String title = eventMap.get(date);
-            // Hier können Sie den Titel für das Datum anzeigen, z.B. in einem Pop-up-Fenster
-            JOptionPane.showMessageDialog(this, title);
-        } else {
-            // Wenn für das Datum kein Ereignis vorhanden ist, zeigen Sie eine entsprechende Nachricht an
-            JOptionPane.showMessageDialog(this, "Kein Ereignis für dieses Datum.");
-        }
-    }
+
 
 }

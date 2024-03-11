@@ -3,12 +3,16 @@ package main;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import static java.awt.Color.WHITE;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,6 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import static org.apache.poi.hssf.usermodel.HeaderFooter.date;
 
 /**
  *
@@ -28,11 +33,15 @@ public class EventErstellen extends javax.swing.JFrame {
 
     private CustomCalendar customCalendar;
 
+
+
+
+
     public EventErstellen(CustomCalendar customCalendar) {
             initComponents();
             this.customCalendar = customCalendar;
+         
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -51,7 +60,6 @@ public class EventErstellen extends javax.swing.JFrame {
         Timefield = new javax.swing.JLabel();
         TimeBild = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        Ganztätig = new javax.swing.JRadioButton();
         TimeEintrag = new javax.swing.JTextField();
         TimeEintrag2 = new javax.swing.JTextField();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(2, 0), new java.awt.Dimension(2, 0), new java.awt.Dimension(2, 32767));
@@ -137,16 +145,22 @@ public class EventErstellen extends javax.swing.JFrame {
         jLabel5.setText("-");
         jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 292, 20, 30));
 
-        Ganztätig.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Ganztätig.setText("Ganztätig");
-        jPanel4.add(Ganztätig, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, -1, -1));
-
         TimeEintrag.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         TimeEintrag.setBorder(null);
+        TimeEintrag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TimeEintragActionPerformed(evt);
+            }
+        });
         jPanel4.add(TimeEintrag, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 80, -1));
 
         TimeEintrag2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         TimeEintrag2.setBorder(null);
+        TimeEintrag2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TimeEintrag2ActionPerformed(evt);
+            }
+        });
         jPanel4.add(TimeEintrag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 70, -1));
 
         filler3.setAlignmentX(0.2F);
@@ -235,19 +249,42 @@ public class EventErstellen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ErstellenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ErstellenActionPerformed
-     String title = TitelEingabe.getText();
-    String date = datumEintrag.getText();
-    customCalendar.addEvent(date, title);
-    this.dispose();
+   String title = TitelEingabe.getText(); // Titel des Ereignisses
+String startTime = TimeEintrag.getText(); // Startzeit des Ereignisses
+String endTime = TimeEintrag2.getText(); // Endzeit des Ereignisses
+String dateInput = datumEintrag.getText(); // Eingabe des Datums
+
+try {
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+    Date date = dateFormat.parse(dateInput);
+
+    // Überprüfe, ob startTime und endTime im richtigen Format sind
+    SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+    timeFormat.setLenient(false); // Setze die strenge Überprüfung für Uhrzeiten
+
+    Date startTimeDate = timeFormat.parse(startTime);
+    Date endTimeDate = timeFormat.parse(endTime);
+
+    // Fügen Sie das Ereignis in Ihrem CustomCalendar hinzu
+    customCalendar.addEvent(dateInput, title, timeFormat.format(startTimeDate), timeFormat.format(endTimeDate));
+
+    // Schließe das Event-Erstellungs-Fenster
+    this.dispose(); 
+} catch (ParseException ex) {
+    // Zeige eine Fehlermeldung an, wenn das Format ungültig ist
+    JOptionPane.showMessageDialog(this, "Ungültiges Datums- oder Uhrzeitformat. Bitte geben Sie gültige Daten und Uhrzeiten ein.");
+}
+
+
     }//GEN-LAST:event_ErstellenActionPerformed
 
     private void RotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RotMouseClicked
-        Color Rot = Color.RED;
-        System.out.println("Die Farbe ist: " + Rot);
+  
+   
     }//GEN-LAST:event_RotMouseClicked
 
     private void GrünMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GrünMouseClicked
-   
+
     }//GEN-LAST:event_GrünMouseClicked
 
     private void KalenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KalenderMouseClicked
@@ -276,19 +313,27 @@ public class EventErstellen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_datumEintragActionPerformed
 
+    private void TimeEintragActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimeEintragActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TimeEintragActionPerformed
+
+    private void TimeEintrag2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimeEintrag2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TimeEintrag2ActionPerformed
+
     private void initCustomComponents() {
         ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
         this.setIconImage(icon.getImage());
+}
 
-      
-    }
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Abbrechen;
     private javax.swing.JLabel Beschreibungfield;
     private javax.swing.JLabel Datumfield;
     private javax.swing.JButton Erstellen;
     private javax.swing.JLabel Farbauswahlfield;
-    private javax.swing.JRadioButton Ganztätig;
     private javax.swing.JLabel Gelb;
     private javax.swing.JLabel Grün;
     private javax.swing.JLabel Kalender;

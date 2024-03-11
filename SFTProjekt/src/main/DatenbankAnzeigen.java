@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -980,11 +981,26 @@ public class DatenbankAnzeigen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_EingabeActionPerformed
 
-    private void initCustomComponents() {
-        ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
-        this.setIconImage(icon.getImage());
+    
+    
+private void initCustomComponents() {
+    ImageIcon icon = new ImageIcon(getClass().getResource("/icon/icon.png"));
+    this.setIconImage(icon.getImage());
 
+    try {
+        // Setze das System-Look-and-Feel
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+
+        // Ändern der Farbe des Fenstertitels
+        UIManager.put("InternalFrame.titleBackground", Color.BLUE); // Blaue Farbe
+    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+            | UnsupportedLookAndFeelException e) {
+        e.printStackTrace();
     }
+}
+
+
+
 
     private void updateTable() {
 
