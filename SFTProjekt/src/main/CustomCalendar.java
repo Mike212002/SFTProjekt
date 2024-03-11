@@ -57,15 +57,16 @@ public void mouseClicked(MouseEvent e) {
 
             // Überprüfe, ob ein Ereignis für das Datum vorhanden ist
             if (eventMap.containsKey(date)) {
-                // Extrahiere startTime und endTime aus dem Ereignisdatum
+                // Extrahiere startTime, endTime und title aus dem Ereignisdatum
                 String eventDetails = eventMap.get(date);
-                String[] timeEntries = eventDetails.split(" - ");
-                if (timeEntries.length >= 2) {
+                String[] timeEntries = eventDetails.split("-");
+                if (timeEntries.length == 3) {
                     String startTime = timeEntries[0];
                     String endTime = timeEntries[1];
+                    String title = timeEntries[2];
 
                     // Zeige den Titel und die Uhrzeit im JTextArea-Bereich an
-                    showEventInNotesArea(eventDetails, startTime, endTime);
+                    showEventInNotesArea(title, startTime, endTime);
                 } else {
                     // Fehlerbehandlung, wenn die Ereignisdetails nicht erwartungsgemäß aufgeteilt werden können
                     notesTextArea.setText("Fehler: Ungültiges Ereignisformat.");
@@ -248,11 +249,15 @@ notesPanel.add(scrollPane, BorderLayout.CENTER);
         for (int day = 1; day <= daysInMonth; day++) {
             JLabel label = new JLabel(String.valueOf(day), SwingConstants.CENTER);
             label.addMouseListener(mouseClickListener);
-            calendarPanel.add(label);
-
-            label.setOpaque(true); // Stellen Sie sicher, dass das Label undurchsichtig ist
+            label.setOpaque(true);
+            
+            String formattedDate = formattedDate(day, currentCalendar.get(Calendar.MONTH)+1, currentCalendar.get(Calendar.YEAR));
+            if(eventMap.containsKey(formattedDate)){
+                label.setBackground(Color.GREEN); 
+            }
+            else{
             label.setBackground(Color.WHITE); // Standardhintergrundfarbe
-            label.addMouseListener(mouseClickListener); // Fügen Sie den Maus-Listener hinzu
+            }
             calendarPanel.add(label);
         }
         monthYearLabel.setText(new SimpleDateFormat("MMMM yyyy").format(currentCalendar.getTime()));
@@ -315,7 +320,8 @@ private void showEventInNotesArea(String title, String startTime, String endTime
 
 public void addEvent(String date, String title, String startTime, String endTime) {
     // Füge das Ereignis zur Ereignismap hinzu
-    eventMap.put(date, title);
+    String fullEventDetails = startTime + "-" + endTime + "-" + title;
+    eventMap.put(date, fullEventDetails);
 
     // Überprüfe, ob das hinzugefügte Ereignis dem Datum des ausgewählten Labels entspricht
     if (selectedLabel != null) {

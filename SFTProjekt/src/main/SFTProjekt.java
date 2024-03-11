@@ -31,15 +31,15 @@ public class SFTProjekt {
 //NewJFrame newJFrame = new NewJFrame();
 //newJFrame.setVisible(true);
 
-SimpleLogin f = new SimpleLogin();
-f.setVisible(true);
+//SimpleLogin f = new SimpleLogin();
+//f.setVisible(true);
 
 //DatenbankBewertungBearbeiten f = new DatenbankBewertungBearbeiten();
 //f.setVisible(true);
 
 
-//CustomCalendar  f = new CustomCalendar();
-//f.setVisible(true);
+CustomCalendar  f = new CustomCalendar();
+f.setVisible(true);
 
 //EventErtellen t = new EventErtellen();
 //t.setVisible(true);

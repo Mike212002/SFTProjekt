@@ -45,13 +45,7 @@ public Navigation() {
         Zurück = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         DatenHinzufügen = new javax.swing.JButton();
-        try {
-            TabelleAnzeigen =(javax.swing.JButton)java.beans.Beans.instantiate(getClass().getClassLoader(), "main.Navigation_TabelleAnzeigen");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (java.io.IOException e) {
-            e.printStackTrace();
-        }
+        TabelleAnzeigen = new javax.swing.JButton();
         Bewertungssystem = new javax.swing.JButton();
         InformationenButton = new javax.swing.JButton();
 
