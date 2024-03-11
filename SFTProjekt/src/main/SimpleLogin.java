@@ -126,12 +126,5 @@ public class SimpleLogin extends JFrame {
         navigation.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new SimpleLogin().setVisible(true);
-            }
-        });
-    }
+  
 }
